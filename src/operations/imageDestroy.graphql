@@ -1,0 +1,3 @@
+mutation imageDestroy($input: ImageDestroyInput!) {
+  imageDestroy(input: $input)
+}

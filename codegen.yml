@@ -1,0 +1,12 @@
+schema:
+  - http://your-stash-url/graphql:
+      headers:
+        ApiKey: your-api-key
+documents:
+  - src/operations/**/*.graphql
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-document-nodes

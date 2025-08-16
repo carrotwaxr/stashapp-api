@@ -1,0 +1,17 @@
+mutation performerCreate($input: PerformerCreateInput!) {
+  performerCreate(input: $input) {
+    id
+    name
+    birthdate
+    ethnicity
+    country
+    tags {
+      id
+      name
+    }
+    scenes {
+      id
+      title
+    }
+  }
+}

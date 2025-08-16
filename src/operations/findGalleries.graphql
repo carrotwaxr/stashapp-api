@@ -1,0 +1,24 @@
+query findGalleries($filter: FindFilterType) {
+  findGalleries(filter: $filter) {
+    count
+    galleries {
+      id
+      title
+      details
+      date
+      rating100
+      studio {
+        id
+        name
+      }
+      performers {
+        id
+        name
+      }
+      tags {
+        id
+        name
+      }
+    }
+  }
+}

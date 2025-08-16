@@ -1,0 +1,15 @@
+# Node
+node_modules/
+dist/
+.env
+*.log
+
+# VS Code
+.vscode/
+
+# Codegen
+src/generated/
+
+# OS
+.DS_Store
+Thumbs.db

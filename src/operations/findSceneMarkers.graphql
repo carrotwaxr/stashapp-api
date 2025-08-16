@@ -1,0 +1,14 @@
+query findSceneMarkers($filter: FindFilterType) {
+  findSceneMarkers(filter: $filter) {
+    count
+    scene_markers {
+      id
+      title
+      seconds
+      scene {
+        id
+        title
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+mutation studioCreate($input: StudioCreateInput!) {
+  studioCreate(input: $input) {
+    id
+    name
+    details
+    tags {
+      id
+      name
+    }
+  }
+}

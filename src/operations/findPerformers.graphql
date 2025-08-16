@@ -1,0 +1,20 @@
+query findPerformers($filter: FindFilterType) {
+  findPerformers(filter: $filter) {
+    count
+    performers {
+      id
+      name
+      birthdate
+      ethnicity
+      country
+      tags {
+        id
+        name
+      }
+      scenes {
+        id
+        title
+      }
+    }
+  }
+}

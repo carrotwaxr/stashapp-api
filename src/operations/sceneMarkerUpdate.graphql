@@ -1,0 +1,11 @@
+mutation sceneMarkerUpdate($input: SceneMarkerUpdateInput!) {
+  sceneMarkerUpdate(input: $input) {
+    id
+    title
+    seconds
+    scene {
+      id
+      title
+    }
+  }
+}
