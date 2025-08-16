@@ -1,0 +1,26 @@
+query findScenes($filter: FindFilterType) {
+  findScenes(filter: $filter) {
+    count
+    duration
+    filesize
+    scenes {
+      id
+      title
+      details
+      date
+      rating100
+      studio {
+        id
+        name
+      }
+      performers {
+        id
+        name
+      }
+      tags {
+        id
+        name
+      }
+    }
+  }
+}

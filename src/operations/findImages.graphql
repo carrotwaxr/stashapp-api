@@ -1,0 +1,10 @@
+query findImages($filter: FindFilterType) {
+  findImages(filter: $filter) {
+    count
+    images {
+      id
+      created_at
+      updated_at
+    }
+  }
+}

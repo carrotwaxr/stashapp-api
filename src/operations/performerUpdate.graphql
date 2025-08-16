@@ -1,0 +1,17 @@
+mutation performerUpdate($input: PerformerUpdateInput!) {
+  performerUpdate(input: $input) {
+    id
+    name
+    birthdate
+    ethnicity
+    country
+    tags {
+      id
+      name
+    }
+    scenes {
+      id
+      title
+    }
+  }
+}

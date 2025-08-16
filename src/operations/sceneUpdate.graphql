@@ -1,0 +1,21 @@
+mutation sceneUpdate($input: SceneUpdateInput!) {
+  sceneUpdate(input: $input) {
+    id
+    title
+    details
+    date
+    rating100
+    studio {
+      id
+      name
+    }
+    performers {
+      id
+      name
+    }
+    tags {
+      id
+      name
+    }
+  }
+}

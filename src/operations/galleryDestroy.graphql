@@ -1,0 +1,3 @@
+mutation galleryDestroy($input: GalleryDestroyInput!) {
+  galleryDestroy(input: $input)
+}

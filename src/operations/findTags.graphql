@@ -1,0 +1,12 @@
+query findTags($filter: FindFilterType) {
+  findTags(filter: $filter) {
+    count
+    tags {
+      id
+      name
+      description
+      scene_count
+      performer_count
+    }
+  }
+}

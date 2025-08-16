@@ -1,0 +1,36 @@
+{
+  "name": "stashapp-api",
+  "version": "0.1.0",
+  "description": "TypeScript adapter for Stash GraphQL API with strict types and codegen.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "stash",
+    "graphql",
+    "typescript",
+    "api",
+    "codegen"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-document-nodes": "^4.0.16",
+    "@graphql-codegen/typescript-graphql-request": "^6.3.0",
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "graphql-request": "^6.0.0"
+  }
+}
