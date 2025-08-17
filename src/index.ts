@@ -1,3 +1,14 @@
+// Export important enums and filter types for query construction
+export type {
+  GenderEnum,
+  CriterionModifier,
+  PerformerFilterType,
+  SceneFilterType,
+  TagFilterType,
+  StudioFilterType,
+  GalleryFilterType,
+  ImageFilterType,
+} from "./generated/graphql.js";
 import { GraphQLClient } from "graphql-request";
 import { getSdk } from "./generated/graphql.js";
 
@@ -5,6 +16,16 @@ export interface StashAppConfig {
   url: string;
   apiKey: string;
 }
+
+// Export important types for consumers
+export type {
+  Performer,
+  Scene,
+  Tag,
+  Studio,
+  Gallery,
+  Image,
+} from "./generated/graphql.js";
 
 export class StashApp {
   private static instance: StashApp;
