@@ -1,9 +1,0 @@
-mutation tagCreate($input: TagCreateInput!) {
-  tagCreate(input: $input) {
-    id
-    name
-    description
-    scene_count
-    performer_count
-  }
-}

@@ -1,3 +1,0 @@
-mutation sceneDestroy($input: SceneDestroyInput!) {
-  sceneDestroy(input: $input)
-}

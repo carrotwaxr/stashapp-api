@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-import { attachStashMethods } from "./stash-methods.js";
+import { getSdk } from "./generated/graphql.js";
 
 export interface StashAppConfig {
   url: string;
@@ -9,12 +9,24 @@ export interface StashAppConfig {
 export class StashApp {
   private static instance: StashApp;
   private client: GraphQLClient;
+  private sdk: ReturnType<typeof getSdk>;
+  public findPerformers: ReturnType<typeof getSdk>["FindPerformers"];
+  public findStudios: ReturnType<typeof getSdk>["FindStudios"];
+  public findScenes: ReturnType<typeof getSdk>["FindScenes"];
+  public findTags: ReturnType<typeof getSdk>["FindTags"];
+
+  public sceneUpdate: ReturnType<typeof getSdk>["sceneUpdate"];
 
   private constructor(config: StashAppConfig) {
     this.client = new GraphQLClient(config.url, {
       headers: { ApiKey: config.apiKey },
     });
-    attachStashMethods(this, this.client);
+    this.sdk = getSdk(this.client);
+    this.findPerformers = this.sdk.FindPerformers;
+    this.findStudios = this.sdk.FindStudios;
+    this.findScenes = this.sdk.FindScenes;
+    this.findTags = this.sdk.FindTags;
+    this.sceneUpdate = this.sdk.sceneUpdate;
   }
 
   public static init(config: StashAppConfig): StashApp {
@@ -23,9 +35,4 @@ export class StashApp {
     }
     return StashApp.instance;
   }
-
-  // Example query method (to be codegen'd)
-  // async getPerformers(args: GetPerformersArgs): Promise<GetPerformersResult> {
-  //   return this.client.request(...);
-  // }
 }

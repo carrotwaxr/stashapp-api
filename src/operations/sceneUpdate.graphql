@@ -3,19 +3,48 @@ mutation sceneUpdate($input: SceneUpdateInput!) {
     id
     title
     details
+    code
     date
+    director
+    organized
     rating100
+    resume_time
+    play_count
+    play_duration
+    o_counter
+    performers {
+      id
+      name
+    }
     studio {
       id
       name
     }
-    performers {
+    galleries {
       id
-      name
+      title
     }
     tags {
       id
       name
     }
+    groups {
+      group {
+        id
+        name
+      }
+    }
+    movies {
+      movie {
+        id
+        name
+      }
+    }
+    files {
+      id
+      path
+    }
+    urls
+    updated_at
   }
 }
