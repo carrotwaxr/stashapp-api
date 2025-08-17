@@ -1,5 +1,9 @@
-query findScenes($filter: FindFilterType) {
-  findScenes(filter: $filter) {
+query FindScenes(
+  $filter: FindFilterType
+  $ids: [ID!]
+  $scene_filter: SceneFilterType
+) {
+  findScenes(filter: $filter, ids: $ids, scene_filter: $scene_filter) {
     count
     duration
     filesize
@@ -7,6 +11,7 @@ query findScenes($filter: FindFilterType) {
       id
       title
       details
+      code
       date
       rating100
       studio {
@@ -21,6 +26,11 @@ query findScenes($filter: FindFilterType) {
         id
         name
       }
+      files {
+        id
+        size
+      }
+      updated_at
     }
   }
 }

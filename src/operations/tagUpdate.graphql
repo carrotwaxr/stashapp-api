@@ -1,9 +1,0 @@
-mutation tagUpdate($input: TagUpdateInput!) {
-  tagUpdate(input: $input) {
-    id
-    name
-    description
-    scene_count
-    performer_count
-  }
-}
