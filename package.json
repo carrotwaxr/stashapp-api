@@ -8,8 +8,7 @@
   "scripts": {
     "build": "tsc",
     "codegen": "graphql-codegen --config codegen.yml",
-    "refresh": "npm run codegen && npm run build",
-    "prepare": "npm run refresh"
+    "refresh": "npm run codegen && npm run build"
   },
   "files": [
     "dist"
