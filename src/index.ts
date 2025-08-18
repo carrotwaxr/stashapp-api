@@ -1,7 +1,5 @@
 // Export important enums and filter types for query construction
 export type {
-  GenderEnum,
-  CriterionModifier,
   PerformerFilterType,
   SceneFilterType,
   TagFilterType,
@@ -9,6 +7,12 @@ export type {
   GalleryFilterType,
   ImageFilterType,
 } from "./generated/graphql.js";
+import {
+  CriterionModifier as _CriterionModifier,
+  GenderEnum as _GenderEnum,
+} from "./generated/graphql.js";
+export const CriterionModifier = _CriterionModifier;
+export const GenderEnum = _GenderEnum;
 import { GraphQLClient } from "graphql-request";
 import { getSdk } from "./generated/graphql.js";
 
