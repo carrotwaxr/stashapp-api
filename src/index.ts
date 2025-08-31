@@ -29,6 +29,7 @@ export type {
   Studio,
   Gallery,
   Image,
+  ScanMetadataInput,
 } from "./generated/graphql.js";
 
 /**
@@ -56,6 +57,8 @@ export class StashApp {
   public performerUpdate: ReturnType<typeof getSdk>["performerUpdate"];
   /** Update a studio */
   public studioUpdate: ReturnType<typeof getSdk>["studioUpdate"];
+  /** Start a metadata scan - returns job ID */
+  public metadataScan: ReturnType<typeof getSdk>["metadataScan"];
 
   private constructor(config: StashAppConfig) {
     this.client = new GraphQLClient(config.url, {
@@ -70,6 +73,7 @@ export class StashApp {
     this.scenesUpdate = this.sdk.scenesUpdate;
     this.performerUpdate = this.sdk.performerUpdate;
     this.studioUpdate = this.sdk.studioUpdate;
+    this.metadataScan = this.sdk.metadataScan;
   }
 
   /** Initialize the singleton StashApp instance */
