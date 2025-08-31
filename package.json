@@ -9,7 +9,14 @@
     "build": "tsc",
     "codegen": "graphql-codegen --config codegen.yml",
     "update-schema": "./update-schema.sh",
-    "refresh": "npm run update-schema && npm run codegen && npm run build"
+    "refresh": "npm run update-schema && npm run codegen && npm run build",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "prepublishOnly": "npm run refresh",
+    "publish:patch": "npm run version:patch && npm install && npm publish",
+    "publish:minor": "npm run version:minor && npm install && npm publish",
+    "publish:major": "npm run version:major && npm install && npm publish"
   },
   "files": [
     "dist"
