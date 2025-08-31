@@ -9,6 +9,7 @@ dist/
 
 # Codegen
 codegen.yml
+schema.json
 src/generated/
 
 # OS
