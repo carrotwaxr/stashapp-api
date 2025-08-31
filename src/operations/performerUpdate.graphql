@@ -1,0 +1,38 @@
+mutation performerUpdate($input: PerformerUpdateInput!) {
+  performerUpdate(input: $input) {
+    id
+    name
+    disambiguation
+    alias_list
+    gender
+    birthdate
+    death_date
+    height_cm
+    ethnicity
+    country
+    eye_color
+    hair_color
+    measurements
+    fake_tits
+    penis_length
+    circumcised
+    career_length
+    tattoos
+    piercings
+    favorite
+    rating100
+    details
+    image_path
+    tags {
+      id
+      name
+    }
+    stash_ids {
+      endpoint
+      stash_id
+    }
+    urls
+    created_at
+    updated_at
+  }
+}

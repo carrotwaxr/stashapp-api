@@ -53,6 +53,31 @@ const updatedScene = await stash.sceneUpdate({
     title: "New Title",
   },
 });
+
+// Update multiple scenes
+const updatedScenes = await stash.scenesUpdate({
+  input: {
+    ids: ["scene-id-1", "scene-id-2"],
+    title: "Bulk Updated Title",
+  },
+});
+
+// Update a performer
+const updatedPerformer = await stash.performerUpdate({
+  input: {
+    id: "performer-id",
+    name: "Updated Name",
+    favorite: true,
+  },
+});
+
+// Update a studio
+const updatedStudio = await stash.studioUpdate({
+  input: {
+    id: "studio-id",
+    name: "Updated Studio Name",
+  },
+});
 ```
 
 ## Development
