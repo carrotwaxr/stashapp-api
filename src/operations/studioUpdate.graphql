@@ -1,0 +1,31 @@
+mutation studioUpdate($input: StudioUpdateInput!) {
+  studioUpdate(input: $input) {
+    id
+    name
+    url
+    details
+    parent_studio {
+      id
+      name
+    }
+    child_studios {
+      id
+      name
+    }
+    image_path
+    tags {
+      id
+      name
+    }
+    stash_ids {
+      endpoint
+      stash_id
+    }
+    aliases
+    rating100
+    favorite
+    ignore_auto_tag
+    created_at
+    updated_at
+  }
+}

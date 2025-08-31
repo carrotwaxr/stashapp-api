@@ -50,6 +50,12 @@ export class StashApp {
   public findTags: ReturnType<typeof getSdk>["FindTags"];
   /** Update a scene */
   public sceneUpdate: ReturnType<typeof getSdk>["sceneUpdate"];
+  /** Update multiple scenes */
+  public scenesUpdate: ReturnType<typeof getSdk>["scenesUpdate"];
+  /** Update a performer */
+  public performerUpdate: ReturnType<typeof getSdk>["performerUpdate"];
+  /** Update a studio */
+  public studioUpdate: ReturnType<typeof getSdk>["studioUpdate"];
 
   private constructor(config: StashAppConfig) {
     this.client = new GraphQLClient(config.url, {
@@ -61,6 +67,9 @@ export class StashApp {
     this.findScenes = this.sdk.FindScenes;
     this.findTags = this.sdk.FindTags;
     this.sceneUpdate = this.sdk.sceneUpdate;
+    this.scenesUpdate = this.sdk.scenesUpdate;
+    this.performerUpdate = this.sdk.performerUpdate;
+    this.studioUpdate = this.sdk.studioUpdate;
   }
 
   /** Initialize the singleton StashApp instance */

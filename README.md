@@ -53,13 +53,62 @@ const updatedScene = await stash.sceneUpdate({
     title: "New Title",
   },
 });
+
+// Update multiple scenes
+const updatedScenes = await stash.scenesUpdate({
+  input: {
+    ids: ["scene-id-1", "scene-id-2"],
+    title: "Bulk Updated Title",
+  },
+});
+
+// Update a performer
+const updatedPerformer = await stash.performerUpdate({
+  input: {
+    id: "performer-id",
+    name: "Updated Name",
+    favorite: true,
+  },
+});
+
+// Update a studio
+const updatedStudio = await stash.studioUpdate({
+  input: {
+    id: "studio-id",
+    name: "Updated Studio Name",
+  },
+});
 ```
 
 ## Development
 
-- Run `npm run refresh` to update codegen output and build the package
-- Run `npm run codegen` to update types and queries only
-- Run `npm run build` to compile only
+### Environment Setup
+
+1. Copy `.env.example` to `.env` and fill in your Stash server details:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit `.env` with your Stash server configuration:
+   ```
+   STASH_ENDPOINT=http://your-stash-server:port
+   STASH_API_KEY=your_api_key_here
+   ```
+
+### Scripts
+
+- Run `npm run refresh` to update schema, codegen output, and build the package
+- Run `npm run update-schema` to fetch the latest GraphQL schema from your Stash server
+- Run `npm run codegen` to generate types and queries from the schema
+- Run `npm run build` to compile TypeScript to JavaScript
+
+### Initial Setup
+
+Before using the package, you need to generate the GraphQL types:
+
+1. Set up your `.env` file with your Stash server details
+2. Run `npm run refresh` to fetch the schema and generate types
+3. The generated files will be in `src/generated/`
 
 ## License
 

@@ -1,0 +1,50 @@
+mutation scenesUpdate($input: BulkSceneUpdateInput!) {
+  bulkSceneUpdate(input: $input) {
+    id
+    title
+    details
+    code
+    date
+    director
+    organized
+    rating100
+    resume_time
+    play_count
+    play_duration
+    o_counter
+    performers {
+      id
+      name
+    }
+    studio {
+      id
+      name
+    }
+    galleries {
+      id
+      title
+    }
+    tags {
+      id
+      name
+    }
+    groups {
+      group {
+        id
+        name
+      }
+    }
+    movies {
+      movie {
+        id
+        name
+      }
+    }
+    files {
+      id
+      path
+    }
+    urls
+    updated_at
+  }
+}
