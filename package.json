@@ -8,7 +8,8 @@
   "scripts": {
     "build": "tsc",
     "codegen": "graphql-codegen --config codegen.yml",
-    "refresh": "npm run codegen && npm run build"
+    "update-schema": "./update-schema.sh",
+    "refresh": "npm run update-schema && npm run codegen && npm run build"
   },
   "files": [
     "dist"
@@ -28,6 +29,7 @@
     "@graphql-codegen/typescript-graphql-request": "^6.3.0",
     "@graphql-codegen/typescript-operations": "^4.6.1",
     "@types/node": "^24.3.0",
+    "dotenv-cli": "^10.0.0",
     "prettier": "^3.4.2",
     "typescript": "^5.9.2"
   },
