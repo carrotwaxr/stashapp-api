@@ -3,28 +3,42 @@ query FindPerformers($filter: FindFilterType!, $performer_filter: PerformerFilte
     count
     performers {
       id
-      birthdate
-      circumcised
-      country
-      ethnicity
-      eye_color
-      fake_tits
-      favorite
-      gender
-      hair_color
-      height_cm
-      measurements
       name
-      o_counter
-      penis_length
-      scene_count
+      disambiguation
+      alias_list
+      gender
+      birthdate
+      death_date
+      height_cm
       weight
+      ethnicity
+      country
+      eye_color
+      hair_color
+      measurements
+      fake_tits
+      penis_length
+      circumcised
+      career_length
+      tattoos
+      piercings
+      favorite
+      rating100
+      details
+      o_counter
+      scene_count
+      image_count
+      gallery_count
+      movie_count
+      performer_count
+      o_counter
       scenes {
         id
+        title
         o_counter
         play_duration
         play_count
-        title
+        rating100
         files {
           id
           size
@@ -38,7 +52,15 @@ query FindPerformers($filter: FindFilterType!, $performer_filter: PerformerFilte
       tags {
         id
         name
+        description
       }
+      stash_ids {
+        endpoint
+        stash_id
+      }
+      urls
+      created_at
+      updated_at
     }
   }
 }
