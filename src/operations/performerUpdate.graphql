@@ -8,6 +8,7 @@ mutation performerUpdate($input: PerformerUpdateInput!) {
     birthdate
     death_date
     height_cm
+    weight
     ethnicity
     country
     eye_color
@@ -22,6 +23,12 @@ mutation performerUpdate($input: PerformerUpdateInput!) {
     favorite
     rating100
     details
+    o_counter
+    scene_count
+    image_count
+    gallery_count
+    movie_count
+    performer_count
     image_path
     tags {
       id

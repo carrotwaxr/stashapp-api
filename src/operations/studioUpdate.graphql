@@ -25,6 +25,12 @@ mutation studioUpdate($input: StudioUpdateInput!) {
     rating100
     favorite
     ignore_auto_tag
+    scene_count
+    image_count
+    gallery_count
+    performer_count
+    movie_count
+    group_count
     created_at
     updated_at
   }
