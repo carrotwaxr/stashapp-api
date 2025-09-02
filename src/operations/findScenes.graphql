@@ -13,23 +13,95 @@ query FindScenes(
       details
       code
       date
+      director
+      organized
       rating100
+      resume_time
+      play_count
+      play_duration
+      o_counter
       studio {
         id
         name
+        url
+        details
+        parent_studio {
+          id
+          name
+        }
+        aliases
+        rating100
+        favorite
+        ignore_auto_tag
+        created_at
+        updated_at
       }
       performers {
         id
         name
+        disambiguation
+        alias_list
+        gender
+        birthdate
+        death_date
+        height_cm
+        ethnicity
+        country
+        eye_color
+        hair_color
+        measurements
+        fake_tits
+        penis_length
+        circumcised
+        career_length
+        tattoos
+        piercings
+        favorite
+        rating100
+        details
+        created_at
+        updated_at
       }
       tags {
         id
         name
+        description
+        aliases
+        ignore_auto_tag
+        favorite
+        parent_count
+        child_count
+        created_at
+        updated_at
       }
       files {
         id
         size
+        path
+        mod_time
+        fingerprints {
+          type
+          value
+        }
       }
+      galleries {
+        id
+        title
+      }
+      groups {
+        group {
+          id
+          name
+        }
+      }
+      movies {
+        movie {
+          id
+          name
+        }
+      }
+      urls
+      created_at
       updated_at
     }
   }

@@ -28,13 +28,27 @@ const performers = await stash.findPerformers({
   },
 });
 
-// Find scenes with scene_filter
+// Find scenes with scene_filter (now returns detailed studio, performer, and tag information)
 const scenes = await stash.findScenes({
   filter: { per_page: 5 },
   scene_filter: {
     rating100: { modifier: "GREATER_THAN", value: 80 },
     performer_favorite: true,
   },
+});
+
+// Access detailed information
+scenes.scenes.forEach(scene => {
+  console.log(`Scene: ${scene.title}`);
+  console.log(`Studio: ${scene.studio?.name} (${scene.studio?.url})`);
+  scene.performers.forEach(performer => {
+    console.log(`Performer: ${performer.name} (${performer.gender})`);
+    console.log(`  Details: ${performer.details}`);
+    console.log(`  Rating: ${performer.rating100}`);
+  });
+  scene.tags.forEach(tag => {
+    console.log(`Tag: ${tag.name} - ${tag.description}`);
+  });
 });
 
 // Find tags with tag_filter
@@ -45,6 +59,22 @@ const tags = await stash.findTags({
     name: { modifier: "MATCHES_REGEX", value: "^A" },
   },
 });
+
+// Start a metadata scan
+const scanJobId = await stash.metadataScan({
+  input: {
+    paths: ["/path/to/your/content"],
+    rescan: false,
+    scanGenerateCovers: true,
+    scanGeneratePreviews: false,
+    scanGenerateImagePreviews: false,
+    scanGenerateSprites: false,
+    scanGeneratePhashes: true,
+    scanGenerateThumbnails: true,
+  },
+});
+
+console.log(`Scan started with job ID: ${scanJobId}`);
 
 // Update a scene
 const updatedScene = await stash.sceneUpdate({
