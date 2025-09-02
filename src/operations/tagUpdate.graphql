@@ -1,0 +1,15 @@
+mutation tagUpdate($input: TagUpdateInput!) {
+  tagUpdate(input: $input) {
+    id
+    name
+    description
+    ignore_auto_tag
+    favorite
+    aliases
+    image_path
+    parent_count
+    child_count
+    created_at
+    updated_at
+  }
+}
