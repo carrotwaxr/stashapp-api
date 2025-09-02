@@ -15,6 +15,7 @@ mutation sceneUpdate($input: SceneUpdateInput!) {
     performers {
       id
       name
+      gender
     }
     studio {
       id
@@ -43,8 +44,10 @@ mutation sceneUpdate($input: SceneUpdateInput!) {
     files {
       id
       path
+      size
     }
     urls
+    created_at
     updated_at
   }
 }
