@@ -38,15 +38,15 @@ const scenes = await stash.findScenes({
 });
 
 // Access detailed information
-scenes.scenes.forEach(scene => {
+scenes.scenes.forEach((scene) => {
   console.log(`Scene: ${scene.title}`);
   console.log(`Studio: ${scene.studio?.name} (${scene.studio?.url})`);
-  scene.performers.forEach(performer => {
+  scene.performers.forEach((performer) => {
     console.log(`Performer: ${performer.name} (${performer.gender})`);
     console.log(`  Details: ${performer.details}`);
     console.log(`  Rating: ${performer.rating100}`);
   });
-  scene.tags.forEach(tag => {
+  scene.tags.forEach((tag) => {
     console.log(`Tag: ${tag.name} - ${tag.description}`);
   });
 });
@@ -115,6 +115,7 @@ const updatedStudio = await stash.studioUpdate({
 ### Environment Setup
 
 1. Copy `.env.example` to `.env` and fill in your Stash server details:
+
    ```bash
    cp .env.example .env
    ```
@@ -125,12 +126,25 @@ const updatedStudio = await stash.studioUpdate({
    STASH_API_KEY=your_api_key_here
    ```
 
-### Scripts
+### 🔄 Schema Refresh Process
 
-- Run `npm run refresh` to update schema, codegen output, and build the package
-- Run `npm run update-schema` to fetch the latest GraphQL schema from your Stash server
-- Run `npm run codegen` to generate types and queries from the schema
-- Run `npm run build` to compile TypeScript to JavaScript
+**When you need to refresh the schema** (after updating GraphQL operations or when Stash server schema changes):
+
+```bash
+npm run refresh
+```
+
+This single command does everything:
+
+1. `npm run update-schema` - Fetches latest GraphQL schema from your Stash server
+2. `npm run codegen` - Regenerates TypeScript types and SDK methods from schema + operations
+3. `npm run build` - Compiles TypeScript to JavaScript
+
+**Individual commands** (if you need granular control):
+
+- `npm run update-schema` - Only fetch the latest GraphQL schema from your Stash server
+- `npm run codegen` - Only generate types and queries from the schema
+- `npm run build` - Only compile TypeScript to JavaScript
 
 ### Initial Setup
 
@@ -139,6 +153,13 @@ Before using the package, you need to generate the GraphQL types:
 1. Set up your `.env` file with your Stash server details
 2. Run `npm run refresh` to fetch the schema and generate types
 3. The generated files will be in `src/generated/`
+
+### 📝 Important Notes
+
+- **Always run `npm run refresh`** after modifying `.graphql` files in `src/operations/`
+- The schema refresh requires your Stash server to be running and accessible
+- Generated types are based on both your GraphQL operations AND the server's schema
+- If you get type errors after adding fields, you forgot to run `npm run refresh`
 
 ## License
 

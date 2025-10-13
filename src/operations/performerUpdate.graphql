@@ -1,45 +1,65 @@
 mutation performerUpdate($input: PerformerUpdateInput!) {
   performerUpdate(input: $input) {
-    id
-    name
-    disambiguation
     alias_list
-    gender
     birthdate
-    death_date
-    height_cm
-    weight
-    ethnicity
-    country
-    eye_color
-    hair_color
-    measurements
-    fake_tits
-    penis_length
-    circumcised
     career_length
-    tattoos
-    piercings
-    favorite
-    rating100
+    circumcised
+    country
+    created_at
+    death_date
     details
-    o_counter
-    scene_count
-    image_count
+    disambiguation
+    ethnicity
+    eye_color
+    fake_tits
+    favorite
     gallery_count
-    movie_count
-    performer_count
+    gender
+    hair_color
+    height_cm
+    id
+    image_count
     image_path
-    tags {
+    instagram
+    measurements
+    movie_count
+    name
+    o_counter
+    penis_length
+    piercings
+    rating100
+    scene_count
+    scenes {
       id
-      name
+      title
+      o_counter
+      play_duration
+      play_count
+      rating100
+      files {
+        id
+        size
+      }
+      performers {
+        id
+        gender
+        name
+      }
     }
     stash_ids {
       endpoint
       stash_id
     }
-    urls
-    created_at
+    tags {
+      id
+      name
+      description
+    }
+    tattoos
+    twitter
     updated_at
+    url
+    urls
+    weight
   }
 }

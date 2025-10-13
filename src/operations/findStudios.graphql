@@ -6,8 +6,6 @@ query FindStudios(
   findStudios(filter: $filter, ids: $ids, studio_filter: $studio_filter) {
     count
     studios {
-      id
-      name
       aliases
       child_studios {
         id
@@ -22,6 +20,7 @@ query FindStudios(
         id
         name
       }
+      id
       ignore_auto_tag
       image_count
       image_path
@@ -30,9 +29,23 @@ query FindStudios(
         id
         name
       }
+      name
       parent_studio {
+        aliases
+        created_at
+        details
+        favorite
         id
+        image_count
+        image_path
+        gallery_count
+        movie_count
         name
+        performer_count
+        rating100
+        scene_count
+        updated_at
+        url
       }
       performer_count
       rating100
@@ -42,6 +55,7 @@ query FindStudios(
         stash_id
       }
       tags {
+        description
         id
         name
       }
