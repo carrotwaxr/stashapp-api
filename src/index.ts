@@ -90,15 +90,7 @@ export class StashApp {
     });
     this.sdk = getSdk(this.client);
 
-    // Wrap findPerformers to log the actual request
-    const originalFindPerformers = this.sdk.FindPerformers;
-    this.findPerformers = async (variables, requestHeaders, signal) => {
-      console.log(
-        "FindPerformers called with variables:",
-        JSON.stringify(variables, null, 2)
-      );
-      return originalFindPerformers(variables, requestHeaders, signal);
-    };
+    this.findPerformers = this.sdk.FindPerformers;
     this.findStudios = this.sdk.FindStudios;
     this.findScenes = this.sdk.FindScenes;
     this.findTags = this.sdk.FindTags;
