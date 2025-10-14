@@ -89,7 +89,16 @@ export class StashApp {
       headers: { ApiKey: config.apiKey },
     });
     this.sdk = getSdk(this.client);
-    this.findPerformers = this.sdk.FindPerformers;
+
+    // Wrap findPerformers to log the actual request
+    const originalFindPerformers = this.sdk.FindPerformers;
+    this.findPerformers = async (variables, requestHeaders, signal) => {
+      console.log(
+        "FindPerformers called with variables:",
+        JSON.stringify(variables, null, 2)
+      );
+      return originalFindPerformers(variables, requestHeaders, signal);
+    };
     this.findStudios = this.sdk.FindStudios;
     this.findScenes = this.sdk.FindScenes;
     this.findTags = this.sdk.FindTags;
