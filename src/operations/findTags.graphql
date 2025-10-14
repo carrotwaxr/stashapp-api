@@ -1,6 +1,6 @@
 query FindTags(
   $filter: FindFilterType
-  $ids: [ID!]
+  $ids: [ID]
   $tag_filter: TagFilterType
 ) {
   findTags(filter: $filter, ids: $ids, tag_filter: $tag_filter) {

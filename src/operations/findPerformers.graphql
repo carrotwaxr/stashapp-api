@@ -1,8 +1,15 @@
 query FindPerformers(
-  $filter: FindFilterType!
-  $performer_filter: PerformerFilterType!
+  $filter: FindFilterType
+  $ids: [ID]
+  $performer_filter: PerformerFilterType
+  $performer_ids: [Int]
 ) {
-  findPerformers(filter: $filter, performer_filter: $performer_filter) {
+  findPerformers(
+    filter: $filter
+    ids: $ids
+    performer_filter: $performer_filter
+    performer_ids: $performer_ids
+  ) {
     count
     performers {
       alias_list
