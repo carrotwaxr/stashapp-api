@@ -1,6 +1,6 @@
 query FindStudios(
   $filter: FindFilterType
-  $ids: [ID]
+  $ids: [ID!]
   $studio_filter: StudioFilterType
 ) {
   findStudios(filter: $filter, ids: $ids, studio_filter: $studio_filter) {

@@ -1,8 +1,8 @@
 query FindScenes(
   $filter: FindFilterType
-  $ids: [ID]
+  $ids: [ID!]
   $scene_filter: SceneFilterType
-  $scene_ids: [Int]
+  $scene_ids: [Int!]
 ) {
   findScenes(
     filter: $filter

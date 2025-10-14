@@ -1,8 +1,8 @@
 query FindPerformers(
   $filter: FindFilterType
-  $ids: [ID]
+  $ids: [ID!]
   $performer_filter: PerformerFilterType
-  $performer_ids: [Int]
+  $performer_ids: [Int!]
 ) {
   findPerformers(
     filter: $filter
