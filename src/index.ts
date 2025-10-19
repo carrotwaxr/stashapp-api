@@ -89,6 +89,7 @@ export class StashApp {
       headers: { ApiKey: config.apiKey },
     });
     this.sdk = getSdk(this.client);
+
     this.findPerformers = this.sdk.FindPerformers;
     this.findStudios = this.sdk.FindStudios;
     this.findScenes = this.sdk.FindScenes;

@@ -2,87 +2,114 @@ query FindScenes(
   $filter: FindFilterType
   $ids: [ID!]
   $scene_filter: SceneFilterType
+  $scene_ids: [Int!]
 ) {
-  findScenes(filter: $filter, ids: $ids, scene_filter: $scene_filter) {
+  findScenes(
+    filter: $filter
+    ids: $ids
+    scene_filter: $scene_filter
+    scene_ids: $scene_ids
+  ) {
     count
     duration
     filesize
     scenes {
-      id
-      title
-      details
       code
+      created_at
       date
+      details
       director
+      id
+      o_counter
       organized
-      rating100
-      resume_time
       play_count
       play_duration
-      o_counter
+      rating100
+      resume_time
+      title
+      updated_at
+      urls
       studio {
-        id
-        name
-        url
+        aliases
+        created_at
         details
+        favorite
+        id
+        ignore_auto_tag
+        name
         parent_studio {
           id
           name
         }
-        aliases
         rating100
-        favorite
-        ignore_auto_tag
-        created_at
         updated_at
+        url
       }
       performers {
-        id
-        name
-        disambiguation
         alias_list
-        gender
         birthdate
-        death_date
-        height_cm
-        ethnicity
-        country
-        eye_color
-        hair_color
-        measurements
-        fake_tits
-        penis_length
-        circumcised
         career_length
-        tattoos
-        piercings
-        favorite
-        rating100
-        details
+        circumcised
+        country
         created_at
+        death_date
+        details
+        disambiguation
+        ethnicity
+        eye_color
+        fake_tits
+        favorite
+        gender
+        hair_color
+        height_cm
+        id
+        measurements
+        name
+        penis_length
+        piercings
+        rating100
+        tattoos
         updated_at
       }
       tags {
-        id
-        name
-        description
         aliases
-        ignore_auto_tag
-        favorite
-        parent_count
         child_count
         created_at
+        description
+        favorite
+        id
+        ignore_auto_tag
+        name
+        parent_count
         updated_at
       }
       files {
-        id
-        size
-        path
-        mod_time
+        audio_codec
+        basename
+        bit_rate
+        created_at
+        duration
         fingerprints {
           type
           value
         }
+        format
+        frame_rate
+        height
+        id
+        mod_time
+        path
+        size
+        updated_at
+        video_codec
+        width
+      }
+      paths {
+        preview
+        screenshot
+        sprite
+        stream
+        webp
       }
       galleries {
         id

@@ -8,7 +8,6 @@ dist/
 .vscode/
 
 # Codegen
-codegen.yml
 schema.json
 src/generated/
 

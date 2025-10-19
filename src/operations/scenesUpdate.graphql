@@ -1,33 +1,34 @@
 mutation scenesUpdate($input: BulkSceneUpdateInput!) {
   bulkSceneUpdate(input: $input) {
-    id
-    title
-    details
     code
+    created_at
     date
+    details
     director
-    organized
-    rating100
-    resume_time
-    play_count
-    play_duration
-    o_counter
-    performers {
+    files {
+      audio_codec
+      basename
+      bit_rate
+      created_at
+      duration
+      fingerprints {
+        type
+        value
+      }
+      format
+      frame_rate
+      height
       id
-      name
-      gender
-    }
-    studio {
-      id
-      name
+      mod_time
+      path
+      size
+      updated_at
+      video_codec
+      width
     }
     galleries {
       id
       title
-    }
-    tags {
-      id
-      name
     }
     groups {
       group {
@@ -35,19 +36,82 @@ mutation scenesUpdate($input: BulkSceneUpdateInput!) {
         name
       }
     }
+    id
     movies {
       movie {
         id
         name
       }
     }
-    files {
-      id
-      path
-      size
+    o_counter
+    organized
+    paths {
+      preview
+      screenshot
+      sprite
+      stream
+      webp
     }
-    urls
-    created_at
+    performers {
+      alias_list
+      birthdate
+      career_length
+      circumcised
+      country
+      created_at
+      death_date
+      details
+      disambiguation
+      ethnicity
+      eye_color
+      fake_tits
+      favorite
+      gender
+      hair_color
+      height_cm
+      id
+      measurements
+      name
+      penis_length
+      piercings
+      rating100
+      tattoos
+      updated_at
+    }
+    play_count
+    play_duration
+    rating100
+    resume_time
+    studio {
+      aliases
+      created_at
+      details
+      favorite
+      id
+      ignore_auto_tag
+      name
+      parent_studio {
+        id
+        name
+      }
+      rating100
+      updated_at
+      url
+    }
+    tags {
+      aliases
+      child_count
+      created_at
+      description
+      favorite
+      id
+      ignore_auto_tag
+      name
+      parent_count
+      updated_at
+    }
+    title
     updated_at
+    urls
   }
 }

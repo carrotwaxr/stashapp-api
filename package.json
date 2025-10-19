@@ -1,6 +1,6 @@
 {
   "name": "stashapp-api",
-  "version": "0.2.4",
+  "version": "0.2.10",
   "description": "Easy to use adapter for interaction with a Stash server through GraphQL.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "codegen": "graphql-codegen --config codegen.yml",
-    "update-schema": "./update-schema.sh",
+    "update-schema": "node update-schema.js",
     "refresh": "npm run update-schema && npm run codegen && npm run build",
     "version:patch": "npm version patch",
     "version:minor": "npm version minor",
