@@ -15,6 +15,7 @@ mutation performerUpdate($input: PerformerUpdateInput!) {
     favorite
     gallery_count
     gender
+    group_count
     hair_color
     height_cm
     id
@@ -29,37 +30,20 @@ mutation performerUpdate($input: PerformerUpdateInput!) {
     piercings
     rating100
     scene_count
-    scenes {
-      id
-      title
-      o_counter
-      play_duration
-      play_count
-      rating100
-      files {
-        id
-        size
-      }
-      performers {
-        id
-        gender
-        name
-      }
-    }
-    stash_ids {
-      endpoint
-      stash_id
-    }
-    tags {
-      id
-      name
-      description
-    }
     tattoos
     twitter
     updated_at
     url
     urls
     weight
+    tags {
+      id
+      name
+      description
+    }
+    stash_ids {
+      endpoint
+      stash_id
+    }
   }
 }

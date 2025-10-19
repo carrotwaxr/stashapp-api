@@ -48,23 +48,6 @@ query FindPerformers(
       url
       urls
       weight
-      scenes {
-        id
-        title
-        o_counter
-        play_duration
-        play_count
-        rating100
-        files {
-          id
-          size
-        }
-        performers {
-          id
-          gender
-          name
-        }
-      }
       tags {
         id
         name
