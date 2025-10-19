@@ -109,6 +109,7 @@ query FindScenes(
         screenshot
         sprite
         stream
+        vtt
         webp
       }
       galleries {
