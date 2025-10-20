@@ -63,6 +63,7 @@ query FindScenes(
         hair_color
         height_cm
         id
+        image_path
         measurements
         name
         penis_length
@@ -79,6 +80,7 @@ query FindScenes(
         favorite
         id
         ignore_auto_tag
+        image_path
         name
         parent_count
         updated_at
