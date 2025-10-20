@@ -83,6 +83,8 @@ export class StashApp {
   public tagCreate: ReturnType<typeof getSdk>["tagCreate"];
   /** Update a tag */
   public tagUpdate: ReturnType<typeof getSdk>["tagUpdate"];
+  /** Increment scene O counter */
+  public sceneIncrementO: ReturnType<typeof getSdk>["sceneIncrementO"];
 
   private constructor(config: StashAppConfig) {
     this.client = new GraphQLClient(config.url, {
@@ -108,6 +110,7 @@ export class StashApp {
     this.sceneDestroy = this.sdk.sceneDestroy;
     this.tagCreate = this.sdk.tagCreate;
     this.tagUpdate = this.sdk.tagUpdate;
+    this.sceneIncrementO = this.sdk.sceneIncrementO;
   }
 
   /** Initialize the singleton StashApp instance */
