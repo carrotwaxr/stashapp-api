@@ -85,6 +85,12 @@ export class StashApp {
   public tagUpdate: ReturnType<typeof getSdk>["tagUpdate"];
   /** Increment scene O counter */
   public sceneIncrementO: ReturnType<typeof getSdk>["sceneIncrementO"];
+  /** Decrement scene O counter */
+  public sceneDecrementO: ReturnType<typeof getSdk>["SceneDecrementO"];
+  /** Save scene activity (resume time and play duration) */
+  public sceneSaveActivity: ReturnType<typeof getSdk>["SceneSaveActivity"];
+  /** Add play history timestamp(s) to scene */
+  public sceneAddPlay: ReturnType<typeof getSdk>["SceneAddPlay"];
   /** Get Stash configuration including library paths */
   public configuration: ReturnType<typeof getSdk>["Configuration"];
 
@@ -113,6 +119,9 @@ export class StashApp {
     this.tagCreate = this.sdk.tagCreate;
     this.tagUpdate = this.sdk.tagUpdate;
     this.sceneIncrementO = this.sdk.sceneIncrementO;
+    this.sceneDecrementO = this.sdk.SceneDecrementO;
+    this.sceneSaveActivity = this.sdk.SceneSaveActivity;
+    this.sceneAddPlay = this.sdk.SceneAddPlay;
     this.configuration = this.sdk.Configuration;
   }
 
