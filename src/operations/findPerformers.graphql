@@ -53,10 +53,6 @@ query FindPerformers(
         name
         description
       }
-      stash_ids {
-        endpoint
-        stash_id
-      }
     }
   }
 }

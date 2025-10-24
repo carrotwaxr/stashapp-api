@@ -7,6 +7,11 @@ query FindTags(
     count
     tags {
       aliases
+      child_count
+      children {
+        id
+        name
+      }
       created_at
       description
       favorite
@@ -25,7 +30,6 @@ query FindTags(
       performer_count
       scene_count
       scene_marker_count
-      sort_name
       studio_count
       updated_at
     }

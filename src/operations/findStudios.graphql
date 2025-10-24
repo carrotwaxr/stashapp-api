@@ -21,7 +21,6 @@ query FindStudios(
         name
       }
       id
-      ignore_auto_tag
       image_count
       image_path
       movie_count
@@ -31,29 +30,13 @@ query FindStudios(
       }
       name
       parent_studio {
-        aliases
-        created_at
-        details
-        favorite
         id
-        image_count
-        image_path
-        gallery_count
-        movie_count
         name
-        performer_count
-        rating100
-        scene_count
-        updated_at
-        url
+        image_path
       }
       performer_count
       rating100
       scene_count
-      stash_ids {
-        endpoint
-        stash_id
-      }
       tags {
         description
         id

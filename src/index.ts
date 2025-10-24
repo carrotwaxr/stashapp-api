@@ -53,6 +53,8 @@ export class StashApp {
   public findStudios: ReturnType<typeof getSdk>["FindStudios"];
   /** Find scenes */
   public findScenes: ReturnType<typeof getSdk>["FindScenes"];
+  /** Find scenes (compact - trimmed nested objects for better performance) */
+  public findScenesCompact: ReturnType<typeof getSdk>["FindScenesCompact"];
   /** Find tags */
   public findTags: ReturnType<typeof getSdk>["FindTags"];
   /** Update a scene */
@@ -103,6 +105,7 @@ export class StashApp {
     this.findPerformers = this.sdk.FindPerformers;
     this.findStudios = this.sdk.FindStudios;
     this.findScenes = this.sdk.FindScenes;
+    this.findScenesCompact = this.sdk.FindScenesCompact;
     this.findTags = this.sdk.FindTags;
     this.sceneUpdate = this.sdk.sceneUpdate;
     this.scenesUpdate = this.sdk.scenesUpdate;
