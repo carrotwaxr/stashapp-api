@@ -42,6 +42,10 @@ query FindScenes(
         rating100
         updated_at
         url
+        tags {
+          id
+          name
+        }
       }
       performers {
         alias_list
@@ -69,6 +73,10 @@ query FindScenes(
         rating100
         tattoos
         updated_at
+        tags {
+          id
+          name
+        }
       }
       tags {
         aliases
