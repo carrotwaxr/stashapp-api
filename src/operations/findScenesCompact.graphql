@@ -30,12 +30,20 @@ query FindScenesCompact(
       studio {
         id
         name
+        tags {
+          id
+          name
+        }
       }
       performers {
         id
         name
         image_path
         gender
+        tags {
+          id
+          name
+        }
       }
       tags {
         id
