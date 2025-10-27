@@ -1,6 +1,6 @@
 {
   "name": "stashapp-api",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Easy to use adapter for interaction with a Stash server through GraphQL.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
