@@ -89,6 +89,9 @@ query FindGalleries(
         created_at
         updated_at
       }
+      folder {
+        path
+      }
       paths {
         cover
         preview
