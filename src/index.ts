@@ -57,6 +57,10 @@ export class StashApp {
   public findScenesCompact: ReturnType<typeof getSdk>["FindScenesCompact"];
   /** Find tags */
   public findTags: ReturnType<typeof getSdk>["FindTags"];
+  /** Find galleries */
+  public findGalleries: ReturnType<typeof getSdk>["FindGalleries"];
+  /** Find a single gallery */
+  public findGallery: ReturnType<typeof getSdk>["FindGallery"];
   /** Update a scene */
   public sceneUpdate: ReturnType<typeof getSdk>["sceneUpdate"];
   /** Update multiple scenes */
@@ -107,6 +111,8 @@ export class StashApp {
     this.findScenes = this.sdk.FindScenes;
     this.findScenesCompact = this.sdk.FindScenesCompact;
     this.findTags = this.sdk.FindTags;
+    this.findGalleries = this.sdk.FindGalleries;
+    this.findGallery = this.sdk.FindGallery;
     this.sceneUpdate = this.sdk.sceneUpdate;
     this.scenesUpdate = this.sdk.scenesUpdate;
     this.performerUpdate = this.sdk.performerUpdate;
