@@ -61,6 +61,8 @@ export class StashApp {
   public findGalleries: ReturnType<typeof getSdk>["FindGalleries"];
   /** Find a single gallery */
   public findGallery: ReturnType<typeof getSdk>["FindGallery"];
+  /** Find images */
+  public findImages: ReturnType<typeof getSdk>["FindImages"];
   /** Update a scene */
   public sceneUpdate: ReturnType<typeof getSdk>["sceneUpdate"];
   /** Update multiple scenes */
@@ -113,6 +115,7 @@ export class StashApp {
     this.findTags = this.sdk.FindTags;
     this.findGalleries = this.sdk.FindGalleries;
     this.findGallery = this.sdk.FindGallery;
+    this.findImages = this.sdk.FindImages;
     this.sceneUpdate = this.sdk.sceneUpdate;
     this.scenesUpdate = this.sdk.scenesUpdate;
     this.performerUpdate = this.sdk.performerUpdate;
