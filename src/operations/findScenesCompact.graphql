@@ -81,6 +81,7 @@ query FindScenesCompact(
           id
           name
         }
+        scene_index
       }
       created_at
       updated_at
