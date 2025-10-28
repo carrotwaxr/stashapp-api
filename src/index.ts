@@ -6,6 +6,7 @@ export type {
   StudioFilterType,
   GalleryFilterType,
   ImageFilterType,
+  GroupFilterType,
 } from "./generated/graphql.js";
 import {
   CriterionModifier as _CriterionModifier,
@@ -28,6 +29,7 @@ export type {
   Tag,
   Studio,
   Gallery,
+  Group,
   Image,
   ScanMetadataInput,
   PerformerDestroyInput,
@@ -57,6 +59,10 @@ export class StashApp {
   public findScenesCompact: ReturnType<typeof getSdk>["FindScenesCompact"];
   /** Find tags */
   public findTags: ReturnType<typeof getSdk>["FindTags"];
+  /** Find groups */
+  public findGroups: ReturnType<typeof getSdk>["FindGroups"];
+  /** Find a single group */
+  public findGroup: ReturnType<typeof getSdk>["FindGroup"];
   /** Find galleries */
   public findGalleries: ReturnType<typeof getSdk>["FindGalleries"];
   /** Find a single gallery */
@@ -113,6 +119,8 @@ export class StashApp {
     this.findScenes = this.sdk.FindScenes;
     this.findScenesCompact = this.sdk.FindScenesCompact;
     this.findTags = this.sdk.FindTags;
+    this.findGroups = this.sdk.FindGroups;
+    this.findGroup = this.sdk.FindGroup;
     this.findGalleries = this.sdk.FindGalleries;
     this.findGallery = this.sdk.FindGallery;
     this.findImages = this.sdk.FindImages;
