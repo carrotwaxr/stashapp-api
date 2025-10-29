@@ -33,6 +33,8 @@ query FindScenesCompact(
         tags {
           id
           name
+          image_path
+          favorite
         }
       }
       performers {
@@ -43,12 +45,15 @@ query FindScenesCompact(
         tags {
           id
           name
+          image_path
+          favorite
         }
       }
       tags {
         id
         name
         image_path
+        favorite
       }
       files {
         audio_codec
