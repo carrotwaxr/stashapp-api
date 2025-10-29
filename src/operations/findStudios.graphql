@@ -41,6 +41,8 @@ query FindStudios(
         description
         id
         name
+        image_path
+        favorite
       }
       updated_at
       url
