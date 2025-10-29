@@ -28,6 +28,7 @@ export type {
   Tag,
   Studio,
   Gallery,
+  Group,
   Image,
   ScanMetadataInput,
   PerformerDestroyInput,
