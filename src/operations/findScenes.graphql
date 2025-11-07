@@ -122,6 +122,7 @@ query FindScenes(
         title
       }
       groups {
+        scene_index
         group {
           id
           name
