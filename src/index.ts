@@ -77,6 +77,12 @@ export class StashApp {
   public performerUpdate: ReturnType<typeof getSdk>["performerUpdate"];
   /** Update a studio */
   public studioUpdate: ReturnType<typeof getSdk>["studioUpdate"];
+  /** Update a gallery */
+  public galleryUpdate: ReturnType<typeof getSdk>["galleryUpdate"];
+  /** Update a group */
+  public groupUpdate: ReturnType<typeof getSdk>["groupUpdate"];
+  /** Update an image */
+  public imageUpdate: ReturnType<typeof getSdk>["imageUpdate"];
   /** Start a metadata scan - returns job ID */
   public metadataScan: ReturnType<typeof getSdk>["metadataScan"];
   /** Destroy a performer */
@@ -128,6 +134,9 @@ export class StashApp {
     this.scenesUpdate = this.sdk.scenesUpdate;
     this.performerUpdate = this.sdk.performerUpdate;
     this.studioUpdate = this.sdk.studioUpdate;
+    this.galleryUpdate = this.sdk.galleryUpdate;
+    this.groupUpdate = this.sdk.groupUpdate;
+    this.imageUpdate = this.sdk.imageUpdate;
     this.metadataScan = this.sdk.metadataScan;
     this.performerDestroy = this.sdk.performerDestroy;
     this.performersDestroy = this.sdk.performersDestroy;
