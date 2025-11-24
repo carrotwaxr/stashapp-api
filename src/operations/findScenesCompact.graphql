@@ -15,6 +15,7 @@ query FindScenesCompact(
     filesize
     scenes {
       created_at
+      code
       date
       details
       director
