@@ -76,6 +76,11 @@ query FindScenesCompact(
         sprite
         vtt
         webp
+        caption
+      }
+      captions {
+        language_code
+        caption_type
       }
       galleries {
         id
