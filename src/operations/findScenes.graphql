@@ -118,6 +118,11 @@ query FindScenes(
         vtt
         webp
       }
+      sceneStreams {
+        url
+        mime_type
+        label
+      }
       galleries {
         id
         title
