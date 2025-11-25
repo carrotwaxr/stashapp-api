@@ -42,6 +42,7 @@ query FindGalleries(
       performers {
         id
         name
+        image_path
         alias_list
         birthdate
         career_length
