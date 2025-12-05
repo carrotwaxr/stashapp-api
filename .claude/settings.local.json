@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit:*)",
+      "Bash(npm run build:*)",
+      "Bash(git push:*)",
+      "Bash(npx prisma migrate:*)",
+      "Bash(npx prisma db push)",
+      "Bash(npm run codegen:*)",
+      "Bash(npm run publish:patch:*)",
+      "Bash(npm install:*)",
+      "Bash(git tag:*)",
+      "Bash(git add:*)",
+      "Bash(docker-compose logs:*)",
+      "Bash(docker-compose ps:*)",
+      "Bash(git checkout:*)",
+      "Bash(cat:*)",
+      "Bash(npm run depcheck:*)",
+      "Bash(timeout 5 bash:*)",
+      "Bash(docker-compose build:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(git branch:*)",
+      "Bash(git pull:*)",
+      "Bash(git reset:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm test:*)",
+      "Bash(git restore:*)",
+      "Bash(npm version:*)",
+      "Bash(python:*)",
+      "Bash(find:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker-compose restart:*)",
+      "Bash(npm run knip:*)",
+      "Bash(git stash:*)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
