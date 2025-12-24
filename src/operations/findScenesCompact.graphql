@@ -28,6 +28,7 @@ query FindScenesCompact(
       resume_time
       title
       updated_at
+      urls
       studio {
         id
         name
