@@ -69,6 +69,20 @@ export class StashApp {
   public findGallery: ReturnType<typeof getSdk>["FindGallery"];
   /** Find images */
   public findImages: ReturnType<typeof getSdk>["FindImages"];
+  /** Find scene IDs only (lightweight for bulk operations) */
+  public findSceneIDs: ReturnType<typeof getSdk>["FindSceneIDs"];
+  /** Find performer IDs only (lightweight for bulk operations) */
+  public findPerformerIDs: ReturnType<typeof getSdk>["FindPerformerIDs"];
+  /** Find studio IDs only (lightweight for bulk operations) */
+  public findStudioIDs: ReturnType<typeof getSdk>["FindStudioIDs"];
+  /** Find tag IDs only (lightweight for bulk operations) */
+  public findTagIDs: ReturnType<typeof getSdk>["FindTagIDs"];
+  /** Find group IDs only (lightweight for bulk operations) */
+  public findGroupIDs: ReturnType<typeof getSdk>["FindGroupIDs"];
+  /** Find gallery IDs only (lightweight for bulk operations) */
+  public findGalleryIDs: ReturnType<typeof getSdk>["FindGalleryIDs"];
+  /** Find image IDs only (lightweight for bulk operations) */
+  public findImageIDs: ReturnType<typeof getSdk>["FindImageIDs"];
   /** Update a scene */
   public sceneUpdate: ReturnType<typeof getSdk>["sceneUpdate"];
   /** Update multiple scenes */
@@ -130,6 +144,13 @@ export class StashApp {
     this.findGalleries = this.sdk.FindGalleries;
     this.findGallery = this.sdk.FindGallery;
     this.findImages = this.sdk.FindImages;
+    this.findSceneIDs = this.sdk.FindSceneIDs;
+    this.findPerformerIDs = this.sdk.FindPerformerIDs;
+    this.findStudioIDs = this.sdk.FindStudioIDs;
+    this.findTagIDs = this.sdk.FindTagIDs;
+    this.findGroupIDs = this.sdk.FindGroupIDs;
+    this.findGalleryIDs = this.sdk.FindGalleryIDs;
+    this.findImageIDs = this.sdk.FindImageIDs;
     this.sceneUpdate = this.sdk.sceneUpdate;
     this.scenesUpdate = this.sdk.scenesUpdate;
     this.performerUpdate = this.sdk.performerUpdate;
