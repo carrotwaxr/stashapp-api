@@ -1,185 +1,21 @@
-// Export important enums and filter types for query construction
-export type {
-  PerformerFilterType,
-  SceneFilterType,
-  TagFilterType,
-  StudioFilterType,
-  GalleryFilterType,
-  ImageFilterType,
-  GroupFilterType,
-} from "./generated/graphql.js";
-import {
-  CriterionModifier as _CriterionModifier,
-  GenderEnum as _GenderEnum,
-} from "./generated/graphql.js";
-export const CriterionModifier = _CriterionModifier;
-export const GenderEnum = _GenderEnum;
-import { GraphQLClient } from "graphql-request";
-import { getSdk } from "./generated/graphql.js";
+// Client
+export { StashClient } from './client.js'
+export type { StashClientConfig } from './client.js'
 
-export interface StashAppConfig {
-  url: string;
-  apiKey: string;
-}
+// Re-export all generated types for consumers
+export * from './generated/index.js'
 
-// Export important types for consumers
-export type {
-  Performer,
-  Scene,
-  Tag,
-  Studio,
-  Gallery,
-  Group,
-  Image,
-  ScanMetadataInput,
-  PerformerDestroyInput,
-  TagDestroyInput,
-  StudioDestroyInput,
-  SceneDestroyInput,
-  TagCreateInput,
-  TagUpdateInput,
-} from "./generated/graphql.js";
+// Backwards compatibility
+import { StashClient, type StashClientConfig } from './client.js'
 
-/**
- * Singleton class for interacting with the Stash GraphQL API.
- * Provides type-safe query and mutation methods.
- */
+/** @deprecated Use StashClient instead */
 export class StashApp {
-  private static instance: StashApp;
-  private client: GraphQLClient;
-  private sdk: ReturnType<typeof getSdk>;
+  private static instance: StashClient
 
-  /** Find performers */
-  public findPerformers: ReturnType<typeof getSdk>["FindPerformers"];
-  /** Find studios */
-  public findStudios: ReturnType<typeof getSdk>["FindStudios"];
-  /** Find scenes */
-  public findScenes: ReturnType<typeof getSdk>["FindScenes"];
-  /** Find scenes (compact - trimmed nested objects for better performance) */
-  public findScenesCompact: ReturnType<typeof getSdk>["FindScenesCompact"];
-  /** Find tags */
-  public findTags: ReturnType<typeof getSdk>["FindTags"];
-  /** Find groups */
-  public findGroups: ReturnType<typeof getSdk>["FindGroups"];
-  /** Find a single group */
-  public findGroup: ReturnType<typeof getSdk>["FindGroup"];
-  /** Find galleries */
-  public findGalleries: ReturnType<typeof getSdk>["FindGalleries"];
-  /** Find a single gallery */
-  public findGallery: ReturnType<typeof getSdk>["FindGallery"];
-  /** Find images */
-  public findImages: ReturnType<typeof getSdk>["FindImages"];
-  /** Find scene IDs only (lightweight for bulk operations) */
-  public findSceneIDs: ReturnType<typeof getSdk>["FindSceneIDs"];
-  /** Find performer IDs only (lightweight for bulk operations) */
-  public findPerformerIDs: ReturnType<typeof getSdk>["FindPerformerIDs"];
-  /** Find studio IDs only (lightweight for bulk operations) */
-  public findStudioIDs: ReturnType<typeof getSdk>["FindStudioIDs"];
-  /** Find tag IDs only (lightweight for bulk operations) */
-  public findTagIDs: ReturnType<typeof getSdk>["FindTagIDs"];
-  /** Find group IDs only (lightweight for bulk operations) */
-  public findGroupIDs: ReturnType<typeof getSdk>["FindGroupIDs"];
-  /** Find gallery IDs only (lightweight for bulk operations) */
-  public findGalleryIDs: ReturnType<typeof getSdk>["FindGalleryIDs"];
-  /** Find image IDs only (lightweight for bulk operations) */
-  public findImageIDs: ReturnType<typeof getSdk>["FindImageIDs"];
-  /** Update a scene */
-  public sceneUpdate: ReturnType<typeof getSdk>["sceneUpdate"];
-  /** Update multiple scenes */
-  public scenesUpdate: ReturnType<typeof getSdk>["scenesUpdate"];
-  /** Update a performer */
-  public performerUpdate: ReturnType<typeof getSdk>["performerUpdate"];
-  /** Update a studio */
-  public studioUpdate: ReturnType<typeof getSdk>["studioUpdate"];
-  /** Update a gallery */
-  public galleryUpdate: ReturnType<typeof getSdk>["galleryUpdate"];
-  /** Update a group */
-  public groupUpdate: ReturnType<typeof getSdk>["groupUpdate"];
-  /** Update an image */
-  public imageUpdate: ReturnType<typeof getSdk>["imageUpdate"];
-  /** Start a metadata scan - returns job ID */
-  public metadataScan: ReturnType<typeof getSdk>["metadataScan"];
-  /** Destroy a performer */
-  public performerDestroy: ReturnType<typeof getSdk>["performerDestroy"];
-  /** Destroy multiple performers */
-  public performersDestroy: ReturnType<typeof getSdk>["performersDestroy"];
-  /** Destroy a tag */
-  public tagDestroy: ReturnType<typeof getSdk>["tagDestroy"];
-  /** Destroy multiple tags */
-  public tagsDestroy: ReturnType<typeof getSdk>["tagsDestroy"];
-  /** Destroy a studio */
-  public studioDestroy: ReturnType<typeof getSdk>["studioDestroy"];
-  /** Destroy multiple studios */
-  public studiosDestroy: ReturnType<typeof getSdk>["studiosDestroy"];
-  /** Destroy a scene */
-  public sceneDestroy: ReturnType<typeof getSdk>["sceneDestroy"];
-  /** Create a tag */
-  public tagCreate: ReturnType<typeof getSdk>["tagCreate"];
-  /** Update a tag */
-  public tagUpdate: ReturnType<typeof getSdk>["tagUpdate"];
-  /** Increment scene O counter */
-  public sceneIncrementO: ReturnType<typeof getSdk>["sceneIncrementO"];
-  /** Decrement scene O counter */
-  public sceneDecrementO: ReturnType<typeof getSdk>["SceneDecrementO"];
-  /** Save scene activity (resume time and play duration) */
-  public sceneSaveActivity: ReturnType<typeof getSdk>["SceneSaveActivity"];
-  /** Add play history timestamp(s) to scene */
-  public sceneAddPlay: ReturnType<typeof getSdk>["SceneAddPlay"];
-  /** Get Stash configuration including library paths */
-  public configuration: ReturnType<typeof getSdk>["Configuration"];
-
-  private constructor(config: StashAppConfig) {
-    this.client = new GraphQLClient(config.url, {
-      headers: { ApiKey: config.apiKey },
-    });
-    this.sdk = getSdk(this.client);
-
-    this.findPerformers = this.sdk.FindPerformers;
-    this.findStudios = this.sdk.FindStudios;
-    this.findScenes = this.sdk.FindScenes;
-    this.findScenesCompact = this.sdk.FindScenesCompact;
-    this.findTags = this.sdk.FindTags;
-    this.findGroups = this.sdk.FindGroups;
-    this.findGroup = this.sdk.FindGroup;
-    this.findGalleries = this.sdk.FindGalleries;
-    this.findGallery = this.sdk.FindGallery;
-    this.findImages = this.sdk.FindImages;
-    this.findSceneIDs = this.sdk.FindSceneIDs;
-    this.findPerformerIDs = this.sdk.FindPerformerIDs;
-    this.findStudioIDs = this.sdk.FindStudioIDs;
-    this.findTagIDs = this.sdk.FindTagIDs;
-    this.findGroupIDs = this.sdk.FindGroupIDs;
-    this.findGalleryIDs = this.sdk.FindGalleryIDs;
-    this.findImageIDs = this.sdk.FindImageIDs;
-    this.sceneUpdate = this.sdk.sceneUpdate;
-    this.scenesUpdate = this.sdk.scenesUpdate;
-    this.performerUpdate = this.sdk.performerUpdate;
-    this.studioUpdate = this.sdk.studioUpdate;
-    this.galleryUpdate = this.sdk.galleryUpdate;
-    this.groupUpdate = this.sdk.groupUpdate;
-    this.imageUpdate = this.sdk.imageUpdate;
-    this.metadataScan = this.sdk.metadataScan;
-    this.performerDestroy = this.sdk.performerDestroy;
-    this.performersDestroy = this.sdk.performersDestroy;
-    this.tagDestroy = this.sdk.tagDestroy;
-    this.tagsDestroy = this.sdk.tagsDestroy;
-    this.studioDestroy = this.sdk.studioDestroy;
-    this.studiosDestroy = this.sdk.studiosDestroy;
-    this.sceneDestroy = this.sdk.sceneDestroy;
-    this.tagCreate = this.sdk.tagCreate;
-    this.tagUpdate = this.sdk.tagUpdate;
-    this.sceneIncrementO = this.sdk.sceneIncrementO;
-    this.sceneDecrementO = this.sdk.SceneDecrementO;
-    this.sceneSaveActivity = this.sdk.SceneSaveActivity;
-    this.sceneAddPlay = this.sdk.SceneAddPlay;
-    this.configuration = this.sdk.Configuration;
-  }
-
-  /** Initialize the singleton StashApp instance */
-  public static init(config: StashAppConfig): StashApp {
+  static init(config: StashClientConfig): StashClient {
     if (!StashApp.instance) {
-      StashApp.instance = new StashApp(config);
+      StashApp.instance = new StashClient(config)
     }
-    return StashApp.instance;
+    return StashApp.instance
   }
 }

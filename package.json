@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "generate": "dotenv -- bash -c 'genql --endpoint $STASH_ENDPOINT/graphql -H \"ApiKey:$STASH_API_KEY\" --output ./src/generated -S Time:string -S Timestamp:string -S Int64:string -S Any:any \"-S Map:Record<string, unknown>\" \"-S BoolMap:Record<string, boolean>\" \"-S PluginConfigMap:Record<string, unknown>\" -S Upload:File --sort'",
+    "generate": "dotenv -- bash -c 'genql --endpoint $STASH_ENDPOINT/graphql -H \"ApiKey:$STASH_API_KEY\" --output ./src/generated -S Time:string -S Timestamp:string -S Int64:string -S Any:any \"-S Map:Record<string, unknown>\" \"-S BoolMap:Record<string, boolean>\" \"-S PluginConfigMap:Record<string, unknown>\" -S Upload:File --sort' && node fix-imports.js",
     "build": "npm run generate && tsc",
     "update-schema": "node update-schema.js",
     "schema:snapshot": "npm run update-schema",

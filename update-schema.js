@@ -1,8 +1,5 @@
-import dotenv from "dotenv";
+import 'dotenv/config'
 import fs from "fs";
-import fetch from "node-fetch";
-
-dotenv.config();
 
 const endpoint = process.env.STASH_ENDPOINT;
 const apiKey = process.env.STASH_API_KEY;
