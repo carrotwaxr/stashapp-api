@@ -5,6 +5,17 @@ export type { StashClientConfig } from './client.js'
 // Re-export all generated types for consumers
 export * from './generated/index.js'
 
+// Field selection presets
+export {
+  SceneFields,
+  PerformerFields,
+  StudioFields,
+  TagFields,
+  GalleryFields,
+  GroupFields,
+  ImageFields,
+} from './presets.js'
+
 // Backwards compatibility
 import { StashClient, type StashClientConfig } from './client.js'
 
