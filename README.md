@@ -137,6 +137,107 @@ import type {
 import type { CriterionModifier, GenderEnum, SortDirectionEnum } from 'stashapp-api'
 ```
 
+## Field Selection Presets
+
+Pre-built field selections for common entity types. These select all scalar fields plus commonly-used relationships (tags, studio, performers, stash_ids), so you don't need to list every field manually or deal with narrowed return types.
+
+```typescript
+import { StashClient, SceneFields, PerformerFields } from 'stashapp-api'
+
+// Use a preset directly
+const { findScenes } = await stash.query({
+  findScenes: {
+    __args: { filter: { per_page: 10 } },
+    count: true,
+    scenes: SceneFields,
+  },
+})
+
+// Spread and extend with additional relationships
+const { findPerformers } = await stash.query({
+  findPerformers: {
+    __args: { filter: { per_page: 5 } },
+    performers: {
+      ...PerformerFields,
+      scenes: { id: true, title: true },
+    },
+  },
+})
+```
+
+Available presets: `SceneFields`, `PerformerFields`, `StudioFields`, `TagFields`, `GalleryFields`, `GroupFields`, `ImageFields`.
+
+Each preset includes all scalar fields plus:
+| Preset | Relationships |
+|--------|--------------|
+| `SceneFields` | studio, performers (with gender), tags, stash_ids |
+| `PerformerFields` | tags, stash_ids |
+| `StudioFields` | parent_studio, tags, stash_ids |
+| `TagFields` | parents, children, stash_ids |
+| `GalleryFields` | studio, performers (with gender), tags |
+| `GroupFields` | studio, tags |
+| `ImageFields` | studio, performers (with gender), tags |
+
+## Migrating from v0.x
+
+### Narrowed return types
+
+GenQL returns `Pick<Scene, selected_fields>` — not the full `Scene` interface. If existing code passes query results to functions typed with `Scene[]`, TypeScript will reject the narrowed type.
+
+**Before (v0.x):** All queries returned full `Scene` objects with every field.
+
+**After (v1.0):** Use field selection presets to get all common fields without manual casting:
+
+```typescript
+// Instead of: as unknown as Scene[]
+const { findScenes } = await stash.query({
+  findScenes: {
+    __args: { filter: { per_page: 10 } },
+    scenes: SceneFields,  // all scalars + common relationships
+  },
+})
+```
+
+Or use `__scalar: true` to select all scalar fields on any entity:
+
+```typescript
+const { findPerformer } = await stash.query({
+  findPerformer: {
+    __args: { id: '123' },
+    __scalar: true,
+    tags: { id: true, name: true },
+  },
+})
+```
+
+### Enum naming convention
+
+GenQL exports enums in two forms:
+
+- **Type-level** (bare names): `import type { CriterionModifier, GenderEnum } from 'stashapp-api'`
+- **Runtime objects** (prefixed): `import { enumCriterionModifier, enumGenderEnum } from 'stashapp-api'`
+
+In practice, string literals work directly in most places:
+
+```typescript
+// String literals — no import needed
+scene_filter: { rating100: { modifier: 'GREATER_THAN', value: 80 } }
+```
+
+### Generic utility functions
+
+GenQL generates TypeScript `interface` types, which don't have implicit index signatures. Generic functions constrained to `<T extends Record<string, unknown>>` will reject GenQL types.
+
+**Fix:** Loosen constraints on the consumer side:
+
+```typescript
+// Before — breaks with GenQL interfaces
+function process<T extends Record<string, unknown>>(items: T[]): void
+
+// After — works with any object type
+function process<T extends object>(items: T[]): void
+```
+
 ## Development
 
 ### Setup
