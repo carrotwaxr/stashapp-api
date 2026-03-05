@@ -6,10 +6,11 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "codegen": "graphql-codegen --config codegen.yml",
+    "generate": "dotenv -- bash -c 'genql --endpoint $STASH_ENDPOINT/graphql -H \"ApiKey:$STASH_API_KEY\" --output ./src/generated -S Time:string -S Timestamp:string -S Int64:string -S Any:any \"-S Map:Record<string, unknown>\" \"-S BoolMap:Record<string, boolean>\" \"-S PluginConfigMap:Record<string, unknown>\" -S Upload:File --sort'",
+    "build": "npm run generate && tsc",
     "update-schema": "node update-schema.js",
-    "refresh": "npm run update-schema && npm run codegen && npm run build",
+    "schema:snapshot": "npm run update-schema",
+    "refresh": "npm run schema:snapshot && npm run build",
     "version:patch": "npm version patch",
     "version:minor": "npm version minor",
     "version:major": "npm version major",
@@ -31,18 +32,13 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@graphql-codegen/cli": "^5.0.7",
-    "@graphql-codegen/typescript": "^4.1.6",
-    "@graphql-codegen/typescript-graphql-request": "^6.3.0",
-    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "@genql/cli": "^6.3.3",
     "@types/node": "^24.3.0",
     "dotenv-cli": "^10.0.0",
     "prettier": "^3.4.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "graphql": "^16.11.0",
-    "graphql-request": "^7.2.0",
-    "graphql-tag": "^2.12.6"
+    "@genql/runtime": "^2.10.0"
   }
 }

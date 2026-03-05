@@ -1,3 +1,0 @@
-mutation sceneIncrementO($id: ID!) {
-  sceneIncrementO(id: $id)
-}
