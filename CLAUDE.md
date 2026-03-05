@@ -1,33 +1,40 @@
 # stashapp-api
 
-TypeScript npm package providing a type-safe GraphQL client for Stash servers.
+TypeScript npm package providing a typed GraphQL client for Stash media organizer servers.
 
-## Overview
+## Current State (v0.4.0 -> v1.0.0 migration in progress)
 
-- Singleton `StashApp` class with URL + API key
-- Auto-generated TypeScript types from GraphQL schema via codegen
-- Published to npm, consumed by `peek-stash-browser`
+**v0.4.0 (legacy):** graphql-codegen + 38 hand-written `.graphql` operations, `StashApp` singleton class, fixed field selections.
+
+**v1.0.0 (target):** GenQL-generated typed client with Prisma-style `{ field: true }` field selection, full API coverage (74 queries + 129 mutations), `StashClient` wrapper class.
 
 ## Development
 
 ```bash
-# Full refresh (fetch schema, generate types, build)
-npm run refresh
+# GenQL generate + compile (v1.0)
+npm run build          # runs generate + tsc
 
-# Individual steps
-npm run update-schema  # Fetch schema from Stash server
-npm run codegen        # Generate TypeScript from schema + operations
-npm run build          # Compile TypeScript
+# Schema snapshot (for diffing across Stash versions)
+npm run schema:snapshot
+
+# Full refresh
+npm run refresh        # schema snapshot + build
 ```
 
-Requires `.env` with `STASH_ENDPOINT` and `STASH_API_KEY` pointing to a running Stash server.
+Requires `.env` with `STASH_ENDPOINT` and `STASH_API_KEY` pointing to a running Stash server (10.0.0.4:6969).
 
-## Adding/Modifying GraphQL Operations
+## Architecture
 
-1. Edit `.graphql` files in `src/operations/`
-2. Run `npm run codegen` to regenerate types
-3. Run `npm run build` to compile
-4. Commit only source files (`.graphql`), not generated files in `src/generated/`
+- `src/client.ts` - `StashClient` class (auth, query/mutation proxies, raw escape hatch)
+- `src/index.ts` - Public API re-exports (StashClient + all GenQL types)
+- `src/generated/` - GenQL output (gitignored, regenerated from schema introspection)
+- `genql.config.js` - GenQL codegen configuration (endpoint, scalar type mappings)
+
+## Key Dependencies
+
+- `@genql/runtime` - GenQL client runtime
+- `@genql/cli` (dev) - Code generation from GraphQL introspection
+- `typescript` - Compilation
 
 ## Publishing
 
@@ -35,17 +42,8 @@ Requires `.env` with `STASH_ENDPOINT` and `STASH_API_KEY` pointing to a running 
 npm run publish:patch  # or :minor or :major
 ```
 
-This runs `prepublishOnly` hook which does full refresh before publishing.
+Runs `prepublishOnly` hook (full build) before publishing.
 
-**After publishing**, update consumers:
-```bash
-cd ~/code/peek-stash-browser/server
-npm install stashapp-api@<new-version>
-```
+## Consumers
 
-## Key Files
-
-- `src/index.ts` - Main export (StashApp class)
-- `src/operations/*.graphql` - GraphQL query/mutation definitions
-- `src/generated/` - Auto-generated types and SDK (gitignored)
-- `codegen.yml` - GraphQL Code Generator config
+- `stashapp-cli` (`/home/carrot/code/stashapp-cli`) - CLI tool, only consumer
