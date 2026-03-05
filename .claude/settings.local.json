@@ -33,7 +33,16 @@
       "Bash(npm run knip:*)",
       "Bash(git stash:*)",
       "Bash(tasklist:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "mcp__memory__memory_search",
+      "mcp__memory__memory_store",
+      "Bash(npm uninstall:*)",
+      "Bash(npx genql:*)",
+      "Bash(npm run:*)",
+      "Bash(/home/carrot/code/stashapp-api/.env.example:*)",
+      "Bash(npm ls:*)",
+      "Bash(ls:*)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []

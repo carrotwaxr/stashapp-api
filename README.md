@@ -1,165 +1,167 @@
 # stashapp-api
 
-A TypeScript npm package for interacting with the Stash GraphQL server.
+Typed TypeScript client for the [Stash](https://stashapp.cc/) GraphQL API. Full coverage of all 74 queries and 129 mutations with Prisma-style field selection and compile-time type narrowing.
 
-## Features
+Powered by [GenQL](https://github.com/remorses/genql) — select exactly the fields you need, get narrowed return types automatically.
 
-- Singleton connection class (URL + API key)
-- Type-safe methods for all available queries (auto-generated via GraphQL introspection/codegen)
-- Strict TypeScript types for all queries and arguments
-- Ready for npm publishing
+## Installation
 
-## Usage
+```bash
+npm install stashapp-api
+```
 
-```ts
-import { StashApp } from "stashapp-api";
+## Quick Start
 
-const stash = StashApp.init({
-  url: "http://your-stash-url/graphql",
-  apiKey: "your-api-key",
-});
+```typescript
+import { StashClient } from 'stashapp-api'
 
-// Find performers with performer_filter
-const performers = await stash.findPerformers({
-  filter: { per_page: 10 },
-  performer_filter: {
-    gender: { modifier: "EQUALS", value: "FEMALE" },
-    favorite: true,
+const stash = new StashClient({
+  url: 'http://localhost:9999',
+  apiKey: 'your-api-key',
+})
+
+const result = await stash.query({
+  findPerformers: {
+    __args: { filter: { per_page: 10 } },
+    count: true,
+    performers: {
+      id: true,
+      name: true,
+      birthdate: true,
+      tags: { id: true, name: true },
+    },
   },
-});
+})
 
-// Find scenes with scene_filter (now returns detailed studio, performer, and tag information)
-const scenes = await stash.findScenes({
-  filter: { per_page: 5 },
-  scene_filter: {
-    rating100: { modifier: "GREATER_THAN", value: 80 },
-    performer_favorite: true,
+// result.findPerformers.performers[0].name — typed as string
+// result.findPerformers.performers[0].tags[0].name — typed as string
+```
+
+## Field Selection
+
+Select exactly the fields you need. The return type narrows to match your selection.
+
+```typescript
+// Nested relationships — go as deep as you want
+const result = await stash.query({
+  findScenes: {
+    __args: {
+      filter: { per_page: 5 },
+      scene_filter: { rating100: { modifier: 'GREATER_THAN', value: 80 } },
+    },
+    count: true,
+    scenes: {
+      id: true,
+      title: true,
+      studio: { id: true, name: true },
+      performers: { id: true, name: true, gender: true },
+      tags: { id: true, name: true },
+    },
   },
-});
+})
 
-// Access detailed information
-scenes.scenes.forEach((scene) => {
-  console.log(`Scene: ${scene.title}`);
-  console.log(`Studio: ${scene.studio?.name} (${scene.studio?.url})`);
-  scene.performers.forEach((performer) => {
-    console.log(`Performer: ${performer.name} (${performer.gender})`);
-    console.log(`  Details: ${performer.details}`);
-    console.log(`  Rating: ${performer.rating100}`);
-  });
-  scene.tags.forEach((tag) => {
-    console.log(`Tag: ${tag.name} - ${tag.description}`);
-  });
-});
-
-// Find tags with tag_filter
-const tags = await stash.findTags({
-  filter: { per_page: 10 },
-  tag_filter: {
-    favorite: true,
-    name: { modifier: "MATCHES_REGEX", value: "^A" },
+// All scalar fields shorthand
+const full = await stash.query({
+  findPerformer: {
+    __args: { id: '123' },
+    __scalar: true,                    // all scalar fields on Performer
+    tags: { id: true, name: true },    // plus nested relationships
   },
-});
+})
+```
+
+## Mutations
+
+```typescript
+// Update a performer
+await stash.mutation({
+  performerUpdate: {
+    __args: { input: { id: '123', name: 'New Name', tag_ids: ['1', '2'] } },
+    id: true,
+    name: true,
+  },
+})
+
+// Bulk update scenes
+await stash.mutation({
+  scenesUpdate: {
+    __args: {
+      input: [
+        { id: 'scene-1', title: 'Updated Title' },
+        { id: 'scene-2', rating100: 90 },
+      ],
+    },
+    id: true,
+    title: true,
+  },
+})
 
 // Start a metadata scan
-const scanJobId = await stash.metadataScan({
-  input: {
-    paths: ["/path/to/your/content"],
-    rescan: false,
-    scanGenerateCovers: true,
-    scanGeneratePreviews: false,
-    scanGenerateImagePreviews: false,
-    scanGenerateSprites: false,
-    scanGeneratePhashes: true,
-    scanGenerateThumbnails: true,
+await stash.mutation({
+  metadataScan: {
+    __args: { input: { paths: ['/media/videos'], scanGeneratePhashes: true } },
   },
-});
+})
+```
 
-console.log(`Scan started with job ID: ${scanJobId}`);
+## Raw Queries
 
-// Update a scene
-const updatedScene = await stash.sceneUpdate({
-  input: {
-    id: "scene-id",
-    title: "New Title",
-  },
-});
+Escape hatch for edge cases not covered by the typed client:
 
-// Update multiple scenes
-const updatedScenes = await stash.scenesUpdate({
-  input: {
-    ids: ["scene-id-1", "scene-id-2"],
-    title: "Bulk Updated Title",
-  },
-});
+```typescript
+const result = await stash.raw<{ version: { version: string } }>(
+  `query { version { version } }`
+)
+console.log(result.version.version)
+```
 
-// Update a performer
-const updatedPerformer = await stash.performerUpdate({
-  input: {
-    id: "performer-id",
-    name: "Updated Name",
-    favorite: true,
-  },
-});
+## Type Exports
 
-// Update a studio
-const updatedStudio = await stash.studioUpdate({
-  input: {
-    id: "studio-id",
-    name: "Updated Studio Name",
-  },
-});
+All schema types are re-exported for consumer use:
+
+```typescript
+import type {
+  Performer,
+  Scene,
+  Studio,
+  Tag,
+  Gallery,
+  Group,
+  Image,
+  PerformerFilterType,
+  SceneFilterType,
+  FindFilterType,
+} from 'stashapp-api'
+
+// Enums are exported as string union types
+import type { CriterionModifier, GenderEnum, SortDirectionEnum } from 'stashapp-api'
 ```
 
 ## Development
 
-### Environment Setup
-
-1. Copy `.env.example` to `.env` and fill in your Stash server details:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-2. Edit `.env` with your Stash server configuration:
-   ```
-   STASH_ENDPOINT=http://your-stash-server:port
-   STASH_API_KEY=your_api_key_here
-   ```
-
-### 🔄 Schema Refresh Process
-
-**When you need to refresh the schema** (after updating GraphQL operations or when Stash server schema changes):
+### Setup
 
 ```bash
-npm run refresh
+cp .env.example .env
+# Edit .env with your Stash server URL and API key
+
+npm run build        # Generate types from Stash server + compile
 ```
 
-This single command does everything:
+### Commands
 
-1. `npm run update-schema` - Fetches latest GraphQL schema from your Stash server
-2. `npm run codegen` - Regenerates TypeScript types and SDK methods from schema + operations
-3. `npm run build` - Compiles TypeScript to JavaScript
+| Command | Description |
+|---------|-------------|
+| `npm run build` | Generate GenQL client + compile TypeScript |
+| `npm run generate` | Generate GenQL client only |
+| `npm run schema:snapshot` | Save schema.json for diffing across Stash versions |
+| `npm run refresh` | Schema snapshot + full build |
 
-**Individual commands** (if you need granular control):
+### Publishing
 
-- `npm run update-schema` - Only fetch the latest GraphQL schema from your Stash server
-- `npm run codegen` - Only generate types and queries from the schema
-- `npm run build` - Only compile TypeScript to JavaScript
-
-### Initial Setup
-
-Before using the package, you need to generate the GraphQL types:
-
-1. Set up your `.env` file with your Stash server details
-2. Run `npm run refresh` to fetch the schema and generate types
-3. The generated files will be in `src/generated/`
-
-### 📝 Important Notes
-
-- **Always run `npm run refresh`** after modifying `.graphql` files in `src/operations/`
-- The schema refresh requires your Stash server to be running and accessible
-- Generated types are based on both your GraphQL operations AND the server's schema
-- If you get type errors after adding fields, you forgot to run `npm run refresh`
+```bash
+npm run publish:patch   # or :minor or :major
+```
 
 ## License
 
