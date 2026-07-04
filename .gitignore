@@ -7,9 +7,8 @@ dist/
 # VS Code
 .vscode/
 
-# Codegen
-schema.json
-src/generated/
+# Codegen: schema.json (introspection snapshot), schema.graphql (SDL codegen
+# source), and src/generated/ are committed so the client builds fully offline.
 
 # Claude Code
 .claude/settings.local.json

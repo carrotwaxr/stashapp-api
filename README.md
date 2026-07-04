@@ -242,21 +242,32 @@ function process<T extends object>(items: T[]): void
 
 ### Setup
 
-```bash
-cp .env.example .env
-# Edit .env with your Stash server URL and API key
+The client builds **fully offline** from the committed schema - no Stash server
+or `.env` needed to build:
 
-npm run build        # Generate types from Stash server + compile
+```bash
+npm install
+npm run build        # Generate GenQL client from schema.graphql + compile
 ```
+
+`.env` (`cp .env.example .env`) is only needed to *refresh* the schema against a
+live Stash server (`npm run update-schema` / `npm run refresh`).
+
+The committed `schema.graphql` (SDL) is the codegen source; `schema.json`
+(introspection) is kept as a snapshot for diffing across Stash versions. Both,
+plus the generated `src/generated/` client, are committed so the build is
+reproducible with no network access to Stash.
 
 ### Commands
 
 | Command | Description |
 |---------|-------------|
-| `npm run build` | Generate GenQL client + compile TypeScript |
-| `npm run generate` | Generate GenQL client only |
-| `npm run schema:snapshot` | Save schema.json for diffing across Stash versions |
-| `npm run refresh` | Schema snapshot + full build |
+| `npm run build` | Generate GenQL client from `schema.graphql` + compile TypeScript (offline) |
+| `npm run generate` | Generate GenQL client only (offline, from `schema.graphql`) |
+| `npm run schema:sdl` | Regenerate `schema.graphql` (SDL) from the committed `schema.json` (offline) |
+| `npm run update-schema` | Fetch introspection from the live Stash server → `schema.json` + `schema.graphql` |
+| `npm run schema:snapshot` | Alias for `update-schema` |
+| `npm run refresh` | Update schema from live server + full build |
 
 ### Publishing
 
