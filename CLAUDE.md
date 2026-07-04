@@ -11,24 +11,29 @@ TypeScript npm package providing a typed GraphQL client for Stash media organize
 ## Development
 
 ```bash
-# GenQL generate + compile (v1.0)
-npm run build          # runs generate + tsc
+# GenQL generate + compile — fully offline, from committed schema.graphql
+npm run build          # runs generate (--schema schema.graphql) + tsc
 
-# Schema snapshot (for diffing across Stash versions)
-npm run schema:snapshot
+# Refresh the schema against a live Stash server (needs .env)
+npm run update-schema  # fetch introspection → schema.json + schema.graphql
+npm run refresh        # update-schema + build
 
-# Full refresh
-npm run refresh        # schema snapshot + build
+# Regenerate SDL from the committed introspection snapshot (offline)
+npm run schema:sdl     # schema.json → schema.graphql
 ```
 
-Requires `.env` with `STASH_ENDPOINT` and `STASH_API_KEY` pointing to a running Stash server (10.0.0.4:6969).
+The build does **not** need a Stash server: `schema.graphql` (SDL, the codegen
+source), `schema.json` (introspection snapshot for diffing), and `src/generated/`
+are all committed. Only `update-schema`/`refresh` reach out, using `.env`
+(`STASH_ENDPOINT` + `STASH_API_KEY`, pointing at 10.0.0.4:6969).
 
 ## Architecture
 
 - `src/client.ts` - `StashClient` class (auth, query/mutation proxies, raw escape hatch)
 - `src/index.ts` - Public API re-exports (StashClient + all GenQL types)
-- `src/generated/` - GenQL output (gitignored, regenerated from schema introspection)
-- `genql.config.js` - GenQL codegen configuration (endpoint, scalar type mappings)
+- `src/generated/` - GenQL output (committed; regenerated from `schema.graphql`)
+- `json-to-sdl.js` - converts `schema.json` (introspection) → `schema.graphql` (SDL)
+- `update-schema.js` - fetches live introspection → `schema.json` + `schema.graphql`
 
 ## Key Dependencies
 
@@ -46,4 +51,5 @@ Runs `prepublishOnly` hook (full build) before publishing.
 
 ## Consumers
 
-- `stashapp-cli` (`/home/carrot/code/stashapp-cli`) - CLI tool, only consumer
+- `stash-curator` (`/home/carrot/code/stash-curator`) - conversational curation CLI (primary consumer, via `npm link` in dev)
+- `stashapp-cli` (`/home/carrot/code/stashapp-cli`) - legacy CLI, being retired into stash-curator
