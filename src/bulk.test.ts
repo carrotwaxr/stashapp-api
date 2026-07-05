@@ -36,4 +36,10 @@ describe('bulkSceneUpdateChunked', () => {
     expect(mutation).not.toHaveBeenCalled()
     expect(res).toEqual([])
   })
+
+  it('never infinite-loops on a non-positive chunk size (clamped to 1)', async () => {
+    const mutation = vi.fn(async (_req: any) => ({ bulkSceneUpdate: [] }))
+    await bulkSceneUpdateChunked({ mutation } as any, { ids: ['1', '2'] }, { chunkSize: 0 })
+    expect(mutation).toHaveBeenCalledTimes(2)
+  })
 })

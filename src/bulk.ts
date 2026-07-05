@@ -12,7 +12,7 @@ export async function bulkSceneUpdateChunked(
   input: BulkSceneUpdateInput,
   opts: { chunkSize?: number } = {},
 ): Promise<{ id: string }[]> {
-  const chunkSize = opts.chunkSize ?? 100
+  const chunkSize = Math.max(1, opts.chunkSize ?? 100)
   const ids = input.ids ?? []
   const out: { id: string }[] = []
   for (let i = 0; i < ids.length; i += chunkSize) {
