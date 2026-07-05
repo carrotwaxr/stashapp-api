@@ -2,6 +2,10 @@
 export { StashClient } from './client.js'
 export type { StashClientConfig } from './client.js'
 
+// Structured errors
+export { StashApiError } from './errors.js'
+export type { GraphQLErrorLike } from './errors.js'
+
 // Re-export all generated types for consumers
 export * from './generated/index.js'
 
