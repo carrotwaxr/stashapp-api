@@ -6,6 +6,9 @@ export type { StashClientConfig } from './client.js'
 export { StashApiError } from './errors.js'
 export type { GraphQLErrorLike } from './errors.js'
 
+// Bulk helpers
+export { bulkSceneUpdateChunked } from './bulk.js'
+
 // Re-export all generated types for consumers
 export * from './generated/index.js'
 
