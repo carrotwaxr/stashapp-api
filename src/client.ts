@@ -1,4 +1,5 @@
 import { createClient, type Client } from './generated/index.js'
+import { StashApiError, type GraphQLErrorLike } from './errors.js'
 
 export interface StashClientConfig {
   /** Full URL to Stash server, e.g. "http://localhost:9999" */
@@ -46,9 +47,9 @@ export class StashClient {
       },
       body: JSON.stringify({ query, variables }),
     })
-    const json = (await response.json()) as { data?: T; errors?: { message: string }[] }
+    const json = (await response.json()) as { data?: T; errors?: GraphQLErrorLike[] }
     if (json.errors?.length) {
-      throw new Error(json.errors.map((e) => e.message).join(', '))
+      throw new StashApiError(json.errors, response.status)
     }
     return json.data as T
   }

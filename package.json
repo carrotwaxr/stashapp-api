@@ -1,6 +1,6 @@
 {
   "name": "stashapp-api",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Easy to use adapter for interaction with a Stash server through GraphQL.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,8 @@
   "scripts": {
     "generate": "genql --schema schema.graphql --output ./src/generated -S Time:string -S Timestamp:string -S Int64:string -S Any:any \"-S Map:Record<string, unknown>\" \"-S BoolMap:Record<string, boolean>\" \"-S PluginConfigMap:Record<string, unknown>\" -S Upload:File --sort && node fix-imports.js",
     "build": "npm run generate && tsc",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
     "schema:sdl": "node json-to-sdl.js",
     "update-schema": "node update-schema.js",
     "schema:snapshot": "npm run update-schema",
@@ -38,7 +40,8 @@
     "dotenv": "^16.6.1",
     "graphql": "^16.11.0",
     "prettier": "^3.4.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.9"
   },
   "dependencies": {
     "@genql/runtime": "^2.10.0"
