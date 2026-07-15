@@ -54,7 +54,7 @@ export type BlobsStorageType = 'DATABASE' | 'FILESYSTEM'
 
 export type BulkUpdateIdMode = 'ADD' | 'REMOVE' | 'SET'
 
-export type CircumisedEnum = 'CUT' | 'UNCUT'
+export type CircumcisedEnum = 'CUT' | 'UNCUT'
 
 export interface ConfigDLNAResult {
     /** True if DLNA service should be enabled by default */
@@ -161,8 +161,12 @@ export interface ConfigGeneralResult {
     maxStreamingTranscodeSize: (StreamingResolutionEnum | null)
     /** Max generated transcode size */
     maxTranscodeSize: (StreamingResolutionEnum | null)
+    /** Maximum number of sprites to be generated - only used if useCustomSpriteInterval is true */
+    maximumSprites: Scalars['Int']
     /** Path to import/export files */
     metadataPath: Scalars['String']
+    /** Minimum number of sprites to be generated - only used if useCustomSpriteInterval is true */
+    minimumSprites: Scalars['Int']
     /** Number of parallel tasks to start during scan/generate */
     parallelTasks: Scalars['Int']
     /** Password */
@@ -189,6 +193,10 @@ export interface ConfigGeneralResult {
     scraperPackageSources: PackageSource[]
     /** Path to scrapers */
     scrapersPath: Scalars['String']
+    /** Time between two different scrubber sprites in seconds - only used if useCustomSpriteInterval is true */
+    spriteInterval: Scalars['Float']
+    /** Size of the longest dimension for each sprite in pixels */
+    spriteScreenshotSize: Scalars['Int']
     /** Stash-box instances used for tagging */
     stashBoxes: StashBox[]
     /** Array of file paths to content */
@@ -205,6 +213,8 @@ export interface ConfigGeneralResult {
      * These are applied to generated transcodes (previews and transcodes)
      */
     transcodeOutputArgs: Scalars['String'][]
+    /** True if sprite generation should use the sprite interval and min/max sprites settings instead of the default */
+    useCustomSpriteInterval: Scalars['Boolean']
     /** Username */
     username: Scalars['String']
     /** Array of video file extensions */
@@ -240,6 +250,8 @@ export interface ConfigInterfaceResult {
     /** Custom Locales */
     customLocales: (Scalars['String'] | null)
     customLocalesEnabled: (Scalars['Boolean'] | null)
+    /** When true, disables all customizations (plugins, CSS, JavaScript, locales) for troubleshooting */
+    disableCustomizations: (Scalars['Boolean'] | null)
     /** Fields are true if creating via dropdown menus are disabled */
     disableDropdownCreate: ConfigDisableDropdownCreate
     /** Funscript Time Offset */
@@ -424,13 +436,18 @@ export interface Fingerprint {
 }
 
 export interface Folder {
+    basename: Scalars['String']
     created_at: Scalars['Time']
     id: Scalars['ID']
     mod_time: Scalars['Time']
     parent_folder: (Folder | null)
     /** @deprecated Use parent_folder instead */
     parent_folder_id: (Scalars['ID'] | null)
+    /** Returns all parent folders in order from immediate parent to top-level */
+    parent_folders: Folder[]
     path: Scalars['String']
+    /** Returns direct sub-folders */
+    sub_folders: Folder[]
     updated_at: Scalars['Time']
     zip_file: (BasicFile | null)
     /** @deprecated Use zip_file instead */
@@ -445,6 +462,7 @@ export interface Gallery {
     code: (Scalars['String'] | null)
     cover: (Image | null)
     created_at: Scalars['Time']
+    custom_fields: Scalars['Map']
     date: (Scalars['String'] | null)
     details: (Scalars['String'] | null)
     files: GalleryFile[]
@@ -541,6 +559,7 @@ export interface Group {
     back_image_path: (Scalars['String'] | null)
     containing_groups: GroupDescription[]
     created_at: Scalars['Time']
+    custom_fields: Scalars['Map']
     date: (Scalars['String'] | null)
     director: (Scalars['String'] | null)
     /** Duration in seconds */
@@ -592,8 +611,13 @@ export type IdentifyFieldStrategy = 'IGNORE' | 'MERGE' | 'OVERWRITE'
 export interface IdentifyMetadataOptions {
     /** any fields missing from here are defaulted to MERGE and createMissing false */
     fieldOptions: (IdentifyFieldOptions[] | null)
-    /** defaults to true if not provided */
+    /**
+     * @deprecated Use performerGenders
+     * defaults to true if not provided
+     */
     includeMalePerformers: (Scalars['Boolean'] | null)
+    /** Filter to only include performers with these genders. If not provided, all genders are included. */
+    performerGenders: (GenderEnum[] | null)
     /** defaults to true if not provided */
     setCoverImage: (Scalars['Boolean'] | null)
     setOrganized: (Scalars['Boolean'] | null)
@@ -626,6 +650,7 @@ export interface IdentifySource {
 export interface Image {
     code: (Scalars['String'] | null)
     created_at: Scalars['Time']
+    custom_fields: Scalars['Map']
     date: (Scalars['String'] | null)
     details: (Scalars['String'] | null)
     /** @deprecated Use visual_files */
@@ -804,6 +829,8 @@ export interface Mutation {
      */
     configureUISetting: Scalars['Map']
     deleteFiles: Scalars['Boolean']
+    /** Deletes file entries from the database without deleting the files from the filesystem */
+    destroyFiles: Scalars['Boolean']
     destroySavedFilter: Scalars['Boolean']
     /** Disables DLNA for an optional duration. Has no effect if DLNA is disabled by default */
     disableDLNA: Scalars['Boolean']
@@ -894,6 +921,7 @@ export interface Mutation {
     optimiseDatabase: Scalars['ID']
     performerCreate: (Performer | null)
     performerDestroy: Scalars['Boolean']
+    performerMerge: Performer
     performerUpdate: (Performer | null)
     performersDestroy: Scalars['Boolean']
     /** DANGEROUS: Execute an arbitrary SQL statement that returns rows. */
@@ -908,6 +936,10 @@ export interface Mutation {
     /** Reorder sub groups within a group. Returns true if successful. */
     reorderSubGroups: Scalars['Boolean']
     resetGalleryCover: Scalars['Boolean']
+    /** Reveal the file in the system file manager */
+    revealFileInFileManager: Scalars['Boolean']
+    /** Reveal the folder in the system file manager */
+    revealFolderInFileManager: Scalars['Boolean']
     /**
      * Runs a plugin operation. The operation is run immediately and does not use the job queue.
      * Returns a map of the result.
@@ -979,6 +1011,8 @@ export interface Mutation {
     stashBoxBatchPerformerTag: Scalars['String']
     /** Run batch studio tag task. Returns the job ID. */
     stashBoxBatchStudioTag: Scalars['String']
+    /** Run batch tag tag task. Returns the job ID. */
+    stashBoxBatchTagTag: Scalars['String']
     stopAllJobs: Scalars['Boolean']
     stopJob: Scalars['Boolean']
     studioCreate: (Studio | null)
@@ -1041,8 +1075,11 @@ export type PackageType = 'Plugin' | 'Scraper'
 export interface Performer {
     alias_list: Scalars['String'][]
     birthdate: (Scalars['String'] | null)
+    career_end: (Scalars['String'] | null)
+    /** @deprecated Use career_start and career_end */
     career_length: (Scalars['String'] | null)
-    circumcised: (CircumisedEnum | null)
+    career_start: (Scalars['String'] | null)
+    circumcised: (CircumcisedEnum | null)
     country: (Scalars['String'] | null)
     created_at: Scalars['Time']
     custom_fields: Scalars['Map']
@@ -1356,9 +1393,11 @@ export interface ScanMetadataOptions {
     scanGenerateClipPreviews: Scalars['Boolean']
     /** Generate covers during scan */
     scanGenerateCovers: Scalars['Boolean']
+    /** Generate image phashes during scan */
+    scanGenerateImagePhashes: (Scalars['Boolean'] | null)
     /** Generate image previews during scan */
     scanGenerateImagePreviews: Scalars['Boolean']
-    /** Generate phashes during scan */
+    /** Generate video phashes during scan */
     scanGeneratePhashes: Scalars['Boolean']
     /** Generate previews during scan */
     scanGeneratePreviews: Scalars['Boolean']
@@ -1373,6 +1412,7 @@ export interface Scene {
     captions: (VideoCaption[] | null)
     code: (Scalars['String'] | null)
     created_at: Scalars['Time']
+    custom_fields: Scalars['Map']
     date: (Scalars['String'] | null)
     details: (Scalars['String'] | null)
     director: (Scalars['String'] | null)
@@ -1604,7 +1644,10 @@ export interface ScrapedMovie {
 export interface ScrapedPerformer {
     aliases: (Scalars['String'] | null)
     birthdate: (Scalars['String'] | null)
+    career_end: (Scalars['String'] | null)
+    /** @deprecated Use career_start and career_end */
     career_length: (Scalars['String'] | null)
+    career_start: (Scalars['String'] | null)
     circumcised: (Scalars['String'] | null)
     country: (Scalars['String'] | null)
     death_date: (Scalars['String'] | null)
@@ -1684,7 +1727,10 @@ export interface ScrapedStudio {
 }
 
 export interface ScrapedTag {
+    alias_list: (Scalars['String'][] | null)
+    description: (Scalars['String'] | null)
     name: Scalars['String']
+    parent: (ScrapedTag | null)
     /** Remote site ID, if applicable */
     remote_site_id: (Scalars['String'] | null)
     /** Set if tag matched */
@@ -1802,6 +1848,7 @@ export interface Studio {
     aliases: Scalars['String'][]
     child_studios: Studio[]
     created_at: Scalars['Time']
+    custom_fields: Scalars['Map']
     details: (Scalars['String'] | null)
     favorite: Scalars['Boolean']
     gallery_count: Scalars['Int']
@@ -1817,6 +1864,7 @@ export interface Studio {
     movies: Movie[]
     name: Scalars['String']
     o_counter: (Scalars['Int'] | null)
+    organized: Scalars['Boolean']
     parent_studio: (Studio | null)
     performer_count: Scalars['Int']
     rating100: (Scalars['Int'] | null)
@@ -1859,6 +1907,7 @@ export interface Tag {
     child_count: Scalars['Int']
     children: Tag[]
     created_at: Scalars['Time']
+    custom_fields: Scalars['Map']
     description: (Scalars['String'] | null)
     favorite: Scalars['Boolean']
     gallery_count: Scalars['Int']
@@ -1954,7 +2003,9 @@ export interface AutoTagMetadataOptionsGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface BackupDatabaseInput {download?: (Scalars['Boolean'] | null)}
+export interface BackupDatabaseInput {download?: (Scalars['Boolean'] | null),
+/** If true, blob files will be included in the backup. This can significantly increase the size of the backup and the time it takes to create it, but allows for a complete backup of the system that can be restored without needing access to the original media files. */
+includeBlobs?: (Scalars['Boolean'] | null)}
 
 export interface BaseFileGenqlSelection{
     basename?: boolean | number
@@ -2000,23 +2051,27 @@ export interface BasicFileGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface BulkGalleryUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),ids?: (Scalars['ID'][] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (BulkUpdateIds | null),photographer?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),scene_ids?: (BulkUpdateIds | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (BulkUpdateIds | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null)}
+export interface BulkGalleryUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),ids?: (Scalars['ID'][] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (BulkUpdateIds | null),photographer?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),scene_ids?: (BulkUpdateIds | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (BulkUpdateIds | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null)}
 
-export interface BulkGroupUpdateInput {clientMutationId?: (Scalars['String'] | null),containing_groups?: (BulkUpdateGroupDescriptionsInput | null),director?: (Scalars['String'] | null),ids?: (Scalars['ID'][] | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),sub_groups?: (BulkUpdateGroupDescriptionsInput | null),tag_ids?: (BulkUpdateIds | null),urls?: (BulkUpdateStrings | null)}
+export interface BulkGroupUpdateInput {clientMutationId?: (Scalars['String'] | null),containing_groups?: (BulkUpdateGroupDescriptionsInput | null),custom_fields?: (CustomFieldsInput | null),date?: (Scalars['String'] | null),director?: (Scalars['String'] | null),ids?: (Scalars['ID'][] | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),sub_groups?: (BulkUpdateGroupDescriptionsInput | null),synopsis?: (Scalars['String'] | null),tag_ids?: (BulkUpdateIds | null),urls?: (BulkUpdateStrings | null)}
 
-export interface BulkImageUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),gallery_ids?: (BulkUpdateIds | null),ids?: (Scalars['ID'][] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (BulkUpdateIds | null),photographer?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (BulkUpdateIds | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null)}
+export interface BulkImageUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),gallery_ids?: (BulkUpdateIds | null),ids?: (Scalars['ID'][] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (BulkUpdateIds | null),photographer?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (BulkUpdateIds | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null)}
 
 export interface BulkMovieUpdateInput {clientMutationId?: (Scalars['String'] | null),director?: (Scalars['String'] | null),ids?: (Scalars['ID'][] | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (BulkUpdateIds | null),urls?: (BulkUpdateStrings | null)}
 
-export interface BulkPerformerUpdateInput {alias_list?: (BulkUpdateStrings | null),birthdate?: (Scalars['String'] | null),career_length?: (Scalars['String'] | null),circumcised?: (CircumisedEnum | null),clientMutationId?: (Scalars['String'] | null),country?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),death_date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),disambiguation?: (Scalars['String'] | null),ethnicity?: (Scalars['String'] | null),eye_color?: (Scalars['String'] | null),fake_tits?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),gender?: (GenderEnum | null),hair_color?: (Scalars['String'] | null),height_cm?: (Scalars['Int'] | null),ids?: (Scalars['ID'][] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),instagram?: (Scalars['String'] | null),measurements?: (Scalars['String'] | null),penis_length?: (Scalars['Float'] | null),piercings?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),tag_ids?: (BulkUpdateIds | null),tattoos?: (Scalars['String'] | null),twitter?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null),weight?: (Scalars['Int'] | null)}
+export interface BulkPerformerUpdateInput {
+/** Duplicate aliases and those equal to name will result in an error (case-insensitive) */
+alias_list?: (BulkUpdateStrings | null),birthdate?: (Scalars['String'] | null),career_end?: (Scalars['String'] | null),career_length?: (Scalars['String'] | null),career_start?: (Scalars['String'] | null),circumcised?: (CircumcisedEnum | null),clientMutationId?: (Scalars['String'] | null),country?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),death_date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),disambiguation?: (Scalars['String'] | null),ethnicity?: (Scalars['String'] | null),eye_color?: (Scalars['String'] | null),fake_tits?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),gender?: (GenderEnum | null),hair_color?: (Scalars['String'] | null),height_cm?: (Scalars['Int'] | null),ids?: (Scalars['ID'][] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),instagram?: (Scalars['String'] | null),measurements?: (Scalars['String'] | null),penis_length?: (Scalars['Float'] | null),piercings?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),tag_ids?: (BulkUpdateIds | null),tattoos?: (Scalars['String'] | null),twitter?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null),weight?: (Scalars['Int'] | null)}
 
 export interface BulkSceneMarkerUpdateInput {ids?: (Scalars['ID'][] | null),primary_tag_id?: (Scalars['ID'] | null),tag_ids?: (BulkUpdateIds | null),title?: (Scalars['String'] | null)}
 
-export interface BulkSceneUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),director?: (Scalars['String'] | null),gallery_ids?: (BulkUpdateIds | null),group_ids?: (BulkUpdateIds | null),ids?: (Scalars['ID'][] | null),movie_ids?: (BulkUpdateIds | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (BulkUpdateIds | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (BulkUpdateIds | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null)}
+export interface BulkSceneUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),director?: (Scalars['String'] | null),gallery_ids?: (BulkUpdateIds | null),group_ids?: (BulkUpdateIds | null),ids?: (Scalars['ID'][] | null),movie_ids?: (BulkUpdateIds | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (BulkUpdateIds | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (BulkUpdateIds | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null)}
 
-export interface BulkStudioUpdateInput {details?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),ids: Scalars['ID'][],ignore_auto_tag?: (Scalars['Boolean'] | null),parent_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),tag_ids?: (BulkUpdateIds | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null)}
+export interface BulkStudioUpdateInput {details?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),ids: Scalars['ID'][],ignore_auto_tag?: (Scalars['Boolean'] | null),organized?: (Scalars['Boolean'] | null),parent_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),tag_ids?: (BulkUpdateIds | null),url?: (Scalars['String'] | null),urls?: (BulkUpdateStrings | null)}
 
-export interface BulkTagUpdateInput {aliases?: (BulkUpdateStrings | null),child_ids?: (BulkUpdateIds | null),description?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),ids?: (Scalars['ID'][] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),parent_ids?: (BulkUpdateIds | null)}
+export interface BulkTagUpdateInput {
+/** Duplicate aliases and those equal to name will result in an error (case-insensitive) */
+aliases?: (BulkUpdateStrings | null),child_ids?: (BulkUpdateIds | null),description?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),ids?: (Scalars['ID'][] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),parent_ids?: (BulkUpdateIds | null)}
 
 export interface BulkUpdateGroupDescriptionsInput {groups: GroupDescriptionInput[],mode: BulkUpdateIdMode}
 
@@ -2024,7 +2079,7 @@ export interface BulkUpdateIds {ids?: (Scalars['ID'][] | null),mode: BulkUpdateI
 
 export interface BulkUpdateStrings {mode: BulkUpdateIdMode,values?: (Scalars['String'][] | null)}
 
-export interface CircumcisionCriterionInput {modifier: CriterionModifier,value?: (CircumisedEnum[] | null)}
+export interface CircumcisionCriterionInput {modifier: CriterionModifier,value?: (CircumcisedEnum[] | null)}
 
 export interface CleanGeneratedInput {
 /** Clean blob files without blob entries */
@@ -2044,7 +2099,14 @@ transcodes?: (Scalars['Boolean'] | null)}
 
 export interface CleanMetadataInput {
 /** Do a dry run. Don't delete any files */
-dryRun: Scalars['Boolean'],paths?: (Scalars['String'][] | null)}
+dryRun: Scalars['Boolean'],
+/**
+ * Don't check zip file contents when determining whether to clean a file.
+ * This can significantly speed up the clean process, but will potentially miss removed files within zip files.
+ * Where users do not modify zip files contents directly, this should be safe to use.
+ * Defaults to false.
+ */
+ignoreZipFileContents?: (Scalars['Boolean'] | null),paths?: (Scalars['String'][] | null)}
 
 export interface ConfigDLNAInput {
 /** True if DLNA service should be enabled by default */
@@ -2170,8 +2232,12 @@ maxSessionAge?: (Scalars['Int'] | null),
 maxStreamingTranscodeSize?: (StreamingResolutionEnum | null),
 /** Max generated transcode size */
 maxTranscodeSize?: (StreamingResolutionEnum | null),
+/** Minimum number of sprites to be generated - only used if useCustomSpriteInterval is true */
+maximumSprites?: (Scalars['Int'] | null),
 /** Path to import/export files */
 metadataPath?: (Scalars['String'] | null),
+/** Minimum number of sprites to be generated - only used if useCustomSpriteInterval is true */
+minimumSprites?: (Scalars['Int'] | null),
 /** Number of parallel tasks to start during scan/generate */
 parallelTasks?: (Scalars['Int'] | null),
 /** Password */
@@ -2198,6 +2264,10 @@ pythonPath?: (Scalars['String'] | null),
 scraperPackageSources?: (PackageSourceInput[] | null),
 /** Path to scrapers */
 scrapersPath?: (Scalars['String'] | null),
+/** Time between two different scrubber sprites in seconds - only used if useCustomSpriteInterval is true */
+spriteInterval?: (Scalars['Float'] | null),
+/** Size of the longest dimension for each sprite in pixels */
+spriteScreenshotSize?: (Scalars['Int'] | null),
 /** Stash-box instances used for tagging */
 stashBoxes?: (StashBoxInput[] | null),
 /** Array of file paths to content */
@@ -2214,6 +2284,8 @@ transcodeInputArgs?: (Scalars['String'][] | null),
  * These are applied to generated transcodes (previews and transcodes)
  */
 transcodeOutputArgs?: (Scalars['String'][] | null),
+/** True if sprite generation should use the sprite interval and min/max sprites settings instead of the default */
+useCustomSpriteInterval?: (Scalars['Boolean'] | null),
 /** Username */
 username?: (Scalars['String'] | null),
 /** Array of video file extensions */
@@ -2292,8 +2364,12 @@ export interface ConfigGeneralResultGenqlSelection{
     maxStreamingTranscodeSize?: boolean | number
     /** Max generated transcode size */
     maxTranscodeSize?: boolean | number
+    /** Maximum number of sprites to be generated - only used if useCustomSpriteInterval is true */
+    maximumSprites?: boolean | number
     /** Path to import/export files */
     metadataPath?: boolean | number
+    /** Minimum number of sprites to be generated - only used if useCustomSpriteInterval is true */
+    minimumSprites?: boolean | number
     /** Number of parallel tasks to start during scan/generate */
     parallelTasks?: boolean | number
     /** Password */
@@ -2320,6 +2396,10 @@ export interface ConfigGeneralResultGenqlSelection{
     scraperPackageSources?: PackageSourceGenqlSelection
     /** Path to scrapers */
     scrapersPath?: boolean | number
+    /** Time between two different scrubber sprites in seconds - only used if useCustomSpriteInterval is true */
+    spriteInterval?: boolean | number
+    /** Size of the longest dimension for each sprite in pixels */
+    spriteScreenshotSize?: boolean | number
     /** Stash-box instances used for tagging */
     stashBoxes?: StashBoxGenqlSelection
     /** Array of file paths to content */
@@ -2336,6 +2416,8 @@ export interface ConfigGeneralResultGenqlSelection{
      * These are applied to generated transcodes (previews and transcodes)
      */
     transcodeOutputArgs?: boolean | number
+    /** True if sprite generation should use the sprite interval and min/max sprites settings instead of the default */
+    useCustomSpriteInterval?: boolean | number
     /** Username */
     username?: boolean | number
     /** Array of video file extensions */
@@ -2373,6 +2455,8 @@ continuePlaylistDefault?: (Scalars['Boolean'] | null),
 css?: (Scalars['String'] | null),cssEnabled?: (Scalars['Boolean'] | null),
 /** Custom Locales */
 customLocales?: (Scalars['String'] | null),customLocalesEnabled?: (Scalars['Boolean'] | null),
+/** When true, disables all customizations (plugins, CSS, JavaScript, locales) for troubleshooting */
+disableCustomizations?: (Scalars['Boolean'] | null),
 /** Set to true to disable creating new objects via the dropdown menus */
 disableDropdownCreate?: (ConfigDisableDropdownCreateInput | null),
 /** Funscript Time Offset */
@@ -2419,6 +2503,8 @@ export interface ConfigInterfaceResultGenqlSelection{
     /** Custom Locales */
     customLocales?: boolean | number
     customLocalesEnabled?: boolean | number
+    /** When true, disables all customizations (plugins, CSS, JavaScript, locales) for troubleshooting */
+    disableCustomizations?: boolean | number
     /** Fields are true if creating via dropdown menus are disabled */
     disableDropdownCreate?: ConfigDisableDropdownCreateGenqlSelection
     /** Funscript Time Offset */
@@ -2540,6 +2626,18 @@ export interface DisableDLNAInput {
 /** Duration to enable, in minutes. 0 or null for indefinite. */
 duration?: (Scalars['Int'] | null)}
 
+export interface DuplicationCriterionInput {
+/** Currently unimplemented. Intended for phash distance matching. */
+distance?: (Scalars['Int'] | null),duplicated?: (Scalars['Boolean'] | null),
+/** Filter by phash duplication */
+phash?: (Scalars['Boolean'] | null),
+/** Filter by Stash ID duplication */
+stash_id?: (Scalars['Boolean'] | null),
+/** Filter by title duplication */
+title?: (Scalars['Boolean'] | null),
+/** Filter by URL duplication */
+url?: (Scalars['Boolean'] | null)}
+
 export interface EnableDLNAInput {
 /** Duration to enable, in minutes. 0 or null for indefinite. */
 duration?: (Scalars['Int'] | null)}
@@ -2548,11 +2646,17 @@ export interface ExportObjectTypeInput {all?: (Scalars['Boolean'] | null),ids?: 
 
 export interface ExportObjectsInput {galleries?: (ExportObjectTypeInput | null),groups?: (ExportObjectTypeInput | null),images?: (ExportObjectTypeInput | null),includeDependencies?: (Scalars['Boolean'] | null),movies?: (ExportObjectTypeInput | null),performers?: (ExportObjectTypeInput | null),scenes?: (ExportObjectTypeInput | null),studios?: (ExportObjectTypeInput | null),tags?: (ExportObjectTypeInput | null)}
 
+export interface FileDuplicationCriterionInput {
+/** Currently unimplemented. Intended for phash distance matching. */
+distance?: (Scalars['Int'] | null),duplicated?: (Scalars['Boolean'] | null),
+/** Filter by phash duplication */
+phash?: (Scalars['Boolean'] | null)}
+
 export interface FileFilterType {AND?: (FileFilterType | null),NOT?: (FileFilterType | null),OR?: (FileFilterType | null),basename?: (StringCriterionInput | null),
 /** Filter by creation time */
 created_at?: (TimestampCriterionInput | null),dir?: (StringCriterionInput | null),
-/** Filter files that have an exact match available */
-duplicated?: (PHashDuplicationCriterionInput | null),
+/** Filter files by duplication criteria (only phash applies to files) */
+duplicated?: (FileDuplicationCriterionInput | null),
 /** Filter by related galleries that meet this criteria */
 galleries_filter?: (GalleryFilterType | null),gallery_count?: (IntCriterionInput | null),
 /** find files based on hash */
@@ -2688,13 +2792,18 @@ distance?: (Scalars['Int'] | null),type: Scalars['String'],value: Scalars['Strin
 export interface FloatCriterionInput {modifier: CriterionModifier,value: Scalars['Float'],value2?: (Scalars['Float'] | null)}
 
 export interface FolderGenqlSelection{
+    basename?: boolean | number
     created_at?: boolean | number
     id?: boolean | number
     mod_time?: boolean | number
     parent_folder?: FolderGenqlSelection
     /** @deprecated Use parent_folder instead */
     parent_folder_id?: boolean | number
+    /** Returns all parent folders in order from immediate parent to top-level */
+    parent_folders?: FolderGenqlSelection
     path?: boolean | number
+    /** Returns direct sub-folders */
+    sub_folders?: FolderGenqlSelection
     updated_at?: boolean | number
     zip_file?: BasicFileGenqlSelection
     /** @deprecated Use zip_file instead */
@@ -2703,7 +2812,7 @@ export interface FolderGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface FolderFilterType {AND?: (FolderFilterType | null),NOT?: (FolderFilterType | null),OR?: (FolderFilterType | null),
+export interface FolderFilterType {AND?: (FolderFilterType | null),NOT?: (FolderFilterType | null),OR?: (FolderFilterType | null),basename?: (StringCriterionInput | null),
 /** Filter by creation time */
 created_at?: (TimestampCriterionInput | null),
 /** Filter by files that meet this criteria */
@@ -2722,6 +2831,7 @@ export interface GalleryGenqlSelection{
     code?: boolean | number
     cover?: ImageGenqlSelection
     created_at?: boolean | number
+    custom_fields?: boolean | number
     date?: boolean | number
     details?: boolean | number
     files?: GalleryFileGenqlSelection
@@ -2763,7 +2873,7 @@ export interface GalleryChapterCreateInput {gallery_id: Scalars['ID'],image_inde
 
 export interface GalleryChapterUpdateInput {gallery_id?: (Scalars['ID'] | null),id: Scalars['ID'],image_index?: (Scalars['Int'] | null),title?: (Scalars['String'] | null)}
 
-export interface GalleryCreateInput {code?: (Scalars['String'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),photographer?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),scene_ids?: (Scalars['ID'][] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (Scalars['ID'][] | null),title: Scalars['String'],url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
+export interface GalleryCreateInput {code?: (Scalars['String'] | null),custom_fields?: (Scalars['Map'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),photographer?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),scene_ids?: (Scalars['ID'][] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (Scalars['ID'][] | null),title: Scalars['String'],url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
 
 export interface GalleryDestroyInput {
 /**
@@ -2771,7 +2881,9 @@ export interface GalleryDestroyInput {
  * If gallery is folder-based, then any files not associated with other
  * galleries will be deleted, along with the folder, if it is not empty.
  */
-delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),ids: Scalars['ID'][]}
+delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),
+/** If true, delete the file entry from the database if the file is not assigned to any other objects */
+destroy_file_entry?: (Scalars['Boolean'] | null),ids: Scalars['ID'][]}
 
 export interface GalleryFileGenqlSelection{
     basename?: boolean | number
@@ -2801,7 +2913,7 @@ checksum?: (StringCriterionInput | null),
 /** Filter by studio code */
 code?: (StringCriterionInput | null),
 /** Filter by creation time */
-created_at?: (TimestampCriterionInput | null),
+created_at?: (TimestampCriterionInput | null),custom_fields?: (CustomFieldCriterionInput[] | null),
 /** Filter by date */
 date?: (DateCriterionInput | null),details?: (StringCriterionInput | null),
 /** Filter by zip-file count */
@@ -2822,6 +2934,8 @@ is_missing?: (Scalars['String'] | null),
 is_zip?: (Scalars['Boolean'] | null),
 /** Filter by organized */
 organized?: (Scalars['Boolean'] | null),
+/** Filter by parent folder of the zip or folder the gallery is in */
+parent_folder?: (HierarchicalMultiCriterionInput | null),
 /** Filter by path */
 path?: (StringCriterionInput | null),
 /** Filter galleries by performer age at time of gallery */
@@ -2870,7 +2984,7 @@ export interface GalleryResetCoverInput {gallery_id: Scalars['ID']}
 
 export interface GallerySetCoverInput {cover_image_id: Scalars['ID'],gallery_id: Scalars['ID']}
 
-export interface GalleryUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),id: Scalars['ID'],organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),photographer?: (Scalars['String'] | null),primary_file_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),scene_ids?: (Scalars['ID'][] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (Scalars['ID'][] | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
+export interface GalleryUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),id: Scalars['ID'],organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),photographer?: (Scalars['String'] | null),primary_file_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),scene_ids?: (Scalars['ID'][] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (Scalars['ID'][] | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
 
 export interface GenderCriterionInput {modifier: CriterionModifier,value?: (GenderEnum | null),value_list?: (GenderEnum[] | null)}
 
@@ -2878,11 +2992,21 @@ export interface GenerateAPIKeyInput {clear?: (Scalars['Boolean'] | null)}
 
 export interface GenerateMetadataInput {clipPreviews?: (Scalars['Boolean'] | null),covers?: (Scalars['Boolean'] | null),
 /** Generate transcodes even if not required */
-forceTranscodes?: (Scalars['Boolean'] | null),imagePreviews?: (Scalars['Boolean'] | null),imageThumbnails?: (Scalars['Boolean'] | null),interactiveHeatmapsSpeeds?: (Scalars['Boolean'] | null),
+forceTranscodes?: (Scalars['Boolean'] | null),
+/** gallery ids to generate for */
+galleryIDs?: (Scalars['ID'][] | null),
+/** image ids to generate for */
+imageIDs?: (Scalars['ID'][] | null),
+/** Generate image phashes during scan */
+imagePhashes?: (Scalars['Boolean'] | null),imagePreviews?: (Scalars['Boolean'] | null),imageThumbnails?: (Scalars['Boolean'] | null),interactiveHeatmapsSpeeds?: (Scalars['Boolean'] | null),
 /** marker ids to generate for */
 markerIDs?: (Scalars['ID'][] | null),markerImagePreviews?: (Scalars['Boolean'] | null),markerScreenshots?: (Scalars['Boolean'] | null),markers?: (Scalars['Boolean'] | null),
 /** overwrite existing media */
-overwrite?: (Scalars['Boolean'] | null),phashes?: (Scalars['Boolean'] | null),previewOptions?: (GeneratePreviewOptionsInput | null),previews?: (Scalars['Boolean'] | null),
+overwrite?: (Scalars['Boolean'] | null),
+/** paths to run generate on, in addition to the other ID lists */
+paths?: (Scalars['String'][] | null),
+/** Generate video phashes during scan */
+phashes?: (Scalars['Boolean'] | null),previewOptions?: (GeneratePreviewOptionsInput | null),previews?: (Scalars['Boolean'] | null),
 /** scene ids to generate for */
 sceneIDs?: (Scalars['ID'][] | null),sprites?: (Scalars['Boolean'] | null),transcodes?: (Scalars['Boolean'] | null)}
 
@@ -2936,6 +3060,7 @@ export interface GroupGenqlSelection{
     back_image_path?: boolean | number
     containing_groups?: GroupDescriptionGenqlSelection
     created_at?: boolean | number
+    custom_fields?: boolean | number
     date?: boolean | number
     director?: boolean | number
     /** Duration in seconds */
@@ -2961,7 +3086,7 @@ export interface GroupGenqlSelection{
 
 export interface GroupCreateInput {aliases?: (Scalars['String'] | null),
 /** This should be a URL or a base64 encoded data URL */
-back_image?: (Scalars['String'] | null),containing_groups?: (GroupDescriptionInput[] | null),date?: (Scalars['String'] | null),director?: (Scalars['String'] | null),
+back_image?: (Scalars['String'] | null),containing_groups?: (GroupDescriptionInput[] | null),custom_fields?: (Scalars['Map'] | null),date?: (Scalars['String'] | null),director?: (Scalars['String'] | null),
 /** Duration in seconds */
 duration?: (Scalars['Int'] | null),
 /** This should be a URL or a base64 encoded data URL */
@@ -2987,6 +3112,8 @@ containing_group_count?: (IntCriterionInput | null),
 containing_groups?: (HierarchicalMultiCriterionInput | null),
 /** Filter by creation time */
 created_at?: (TimestampCriterionInput | null),
+/** Filter by custom fields */
+custom_fields?: (CustomFieldCriterionInput[] | null),
 /** Filter by date */
 date?: (DateCriterionInput | null),director?: (StringCriterionInput | null),
 /** Filter by duration (in seconds) */
@@ -2997,6 +3124,8 @@ is_missing?: (Scalars['String'] | null),name?: (StringCriterionInput | null),
 o_counter?: (IntCriterionInput | null),
 /** Filter to only include groups where performer appears in a scene */
 performers?: (MultiCriterionInput | null),rating100?: (IntCriterionInput | null),
+/** Filter by number of scenes the group has */
+scene_count?: (IntCriterionInput | null),
 /** Filter by related scenes that meet this criteria */
 scenes_filter?: (SceneFilterType | null),
 /** Filter to only include groups with this studio */
@@ -3024,7 +3153,7 @@ export interface GroupSubGroupRemoveInput {containing_group_id: Scalars['ID'],su
 
 export interface GroupUpdateInput {aliases?: (Scalars['String'] | null),
 /** This should be a URL or a base64 encoded data URL */
-back_image?: (Scalars['String'] | null),containing_groups?: (GroupDescriptionInput[] | null),date?: (Scalars['String'] | null),director?: (Scalars['String'] | null),duration?: (Scalars['Int'] | null),
+back_image?: (Scalars['String'] | null),containing_groups?: (GroupDescriptionInput[] | null),custom_fields?: (CustomFieldsInput | null),date?: (Scalars['String'] | null),director?: (Scalars['String'] | null),duration?: (Scalars['Int'] | null),
 /** This should be a URL or a base64 encoded data URL */
 front_image?: (Scalars['String'] | null),id: Scalars['ID'],name?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),sub_groups?: (GroupDescriptionInput[] | null),synopsis?: (Scalars['String'] | null),tag_ids?: (Scalars['ID'][] | null),urls?: (Scalars['String'][] | null)}
 
@@ -3063,8 +3192,13 @@ sources: IdentifySourceInput[]}
 export interface IdentifyMetadataOptionsGenqlSelection{
     /** any fields missing from here are defaulted to MERGE and createMissing false */
     fieldOptions?: IdentifyFieldOptionsGenqlSelection
-    /** defaults to true if not provided */
+    /**
+     * @deprecated Use performerGenders
+     * defaults to true if not provided
+     */
     includeMalePerformers?: boolean | number
+    /** Filter to only include performers with these genders. If not provided, all genders are included. */
+    performerGenders?: boolean | number
     /** defaults to true if not provided */
     setCoverImage?: boolean | number
     setOrganized?: boolean | number
@@ -3085,6 +3219,8 @@ export interface IdentifyMetadataOptionsInput {
 fieldOptions?: (IdentifyFieldOptionsInput[] | null),
 /** defaults to true if not provided */
 includeMalePerformers?: (Scalars['Boolean'] | null),
+/** Filter to only include performers with these genders. If not provided, all genders are included. */
+performerGenders?: (GenderEnum[] | null),
 /** defaults to true if not provided */
 setCoverImage?: (Scalars['Boolean'] | null),setOrganized?: (Scalars['Boolean'] | null),
 /** tag to tag skipped multiple matches with */
@@ -3120,6 +3256,7 @@ options?: (IdentifyMetadataOptionsInput | null),source: ScraperSourceInput}
 export interface ImageGenqlSelection{
     code?: boolean | number
     created_at?: boolean | number
+    custom_fields?: boolean | number
     date?: boolean | number
     details?: boolean | number
     /** @deprecated Use visual_files */
@@ -3144,7 +3281,9 @@ export interface ImageGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface ImageDestroyInput {delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),id: Scalars['ID']}
+export interface ImageDestroyInput {delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),
+/** If true, delete the file entry from the database if the file is not assigned to any other objects */
+destroy_file_entry?: (Scalars['Boolean'] | null),id: Scalars['ID']}
 
 export interface ImageFileGenqlSelection{
     basename?: boolean | number
@@ -3187,6 +3326,8 @@ checksum?: (StringCriterionInput | null),
 code?: (StringCriterionInput | null),
 /** Filter by creation time */
 created_at?: (TimestampCriterionInput | null),
+/** Filter by custom fields */
+custom_fields?: (CustomFieldCriterionInput[] | null),
 /** Filter by date */
 date?: (DateCriterionInput | null),details?: (StringCriterionInput | null),
 /** Filter by file count */
@@ -3221,6 +3362,8 @@ performer_tags?: (HierarchicalMultiCriterionInput | null),
 performers?: (MultiCriterionInput | null),
 /** Filter by related performers that meet this criteria */
 performers_filter?: (PerformerFilterType | null),
+/** Filter by file phash distance */
+phash_distance?: (PhashDistanceCriterionInput | null),
 /** Filter by photographer */
 photographer?: (StringCriterionInput | null),rating100?: (IntCriterionInput | null),
 /** Filter by resolution */
@@ -3248,9 +3391,11 @@ export interface ImagePathsTypeGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface ImageUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),gallery_ids?: (Scalars['ID'][] | null),id: Scalars['ID'],organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),photographer?: (Scalars['String'] | null),primary_file_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (Scalars['ID'][] | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
+export interface ImageUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),gallery_ids?: (Scalars['ID'][] | null),id: Scalars['ID'],organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),photographer?: (Scalars['String'] | null),primary_file_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (Scalars['ID'][] | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
 
-export interface ImagesDestroyInput {delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),ids: Scalars['ID'][]}
+export interface ImagesDestroyInput {delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),
+/** If true, delete the file entry from the database if the file is not assigned to any other objects */
+destroy_file_entry?: (Scalars['Boolean'] | null),ids: Scalars['ID'][]}
 
 export interface ImportObjectsInput {duplicateBehaviour: ImportDuplicateEnum,file: Scalars['Upload'],missingRefBehaviour: ImportMissingRefEnum}
 
@@ -3424,6 +3569,8 @@ export interface MutationGenqlSelection{
      */
     configureUISetting?: { __args: {key: Scalars['String'], value?: (Scalars['Any'] | null)} }
     deleteFiles?: { __args: {ids: Scalars['ID'][]} }
+    /** Deletes file entries from the database without deleting the files from the filesystem */
+    destroyFiles?: { __args: {ids: Scalars['ID'][]} }
     destroySavedFilter?: { __args: {input: DestroyFilterInput} }
     /** Disables DLNA for an optional duration. Has no effect if DLNA is disabled by default */
     disableDLNA?: { __args: {input: DisableDLNAInput} }
@@ -3514,6 +3661,7 @@ export interface MutationGenqlSelection{
     optimiseDatabase?: boolean | number
     performerCreate?: (PerformerGenqlSelection & { __args: {input: PerformerCreateInput} })
     performerDestroy?: { __args: {input: PerformerDestroyInput} }
+    performerMerge?: (PerformerGenqlSelection & { __args: {input: PerformerMergeInput} })
     performerUpdate?: (PerformerGenqlSelection & { __args: {input: PerformerUpdateInput} })
     performersDestroy?: { __args: {ids: Scalars['ID'][]} }
     /** DANGEROUS: Execute an arbitrary SQL statement that returns rows. */
@@ -3528,6 +3676,10 @@ export interface MutationGenqlSelection{
     /** Reorder sub groups within a group. Returns true if successful. */
     reorderSubGroups?: { __args: {input: ReorderSubGroupsInput} }
     resetGalleryCover?: { __args: {input: GalleryResetCoverInput} }
+    /** Reveal the file in the system file manager */
+    revealFileInFileManager?: { __args: {id: Scalars['ID']} }
+    /** Reveal the folder in the system file manager */
+    revealFolderInFileManager?: { __args: {id: Scalars['ID']} }
     /**
      * Runs a plugin operation. The operation is run immediately and does not use the job queue.
      * Returns a map of the result.
@@ -3603,6 +3755,8 @@ export interface MutationGenqlSelection{
     stashBoxBatchPerformerTag?: { __args: {input: StashBoxBatchTagInput} }
     /** Run batch studio tag task. Returns the job ID. */
     stashBoxBatchStudioTag?: { __args: {input: StashBoxBatchTagInput} }
+    /** Run batch tag tag task. Returns the job ID. */
+    stashBoxBatchTagTag?: { __args: {input: StashBoxBatchTagInput} }
     stopAllJobs?: boolean | number
     stopJob?: { __args: {job_id: Scalars['ID']} }
     studioCreate?: (StudioGenqlSelection & { __args: {input: StudioCreateInput} })
@@ -3641,10 +3795,6 @@ export interface MutationGenqlSelection{
 
 export interface OrientationCriterionInput {value: OrientationEnum[]}
 
-export interface PHashDuplicationCriterionInput {
-/** Currently unimplemented */
-distance?: (Scalars['Int'] | null),duplicated?: (Scalars['Boolean'] | null)}
-
 export interface PackageGenqlSelection{
     date?: boolean | number
     metadata?: boolean | number
@@ -3674,7 +3824,10 @@ export interface PackageSpecInput {id: Scalars['String'],sourceURL: Scalars['Str
 export interface PerformerGenqlSelection{
     alias_list?: boolean | number
     birthdate?: boolean | number
+    career_end?: boolean | number
+    /** @deprecated Use career_start and career_end */
     career_length?: boolean | number
+    career_start?: boolean | number
     circumcised?: boolean | number
     country?: boolean | number
     created_at?: boolean | number
@@ -3725,7 +3878,9 @@ export interface PerformerGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface PerformerCreateInput {alias_list?: (Scalars['String'][] | null),birthdate?: (Scalars['String'] | null),career_length?: (Scalars['String'] | null),circumcised?: (CircumisedEnum | null),country?: (Scalars['String'] | null),custom_fields?: (Scalars['Map'] | null),death_date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),disambiguation?: (Scalars['String'] | null),ethnicity?: (Scalars['String'] | null),eye_color?: (Scalars['String'] | null),fake_tits?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),gender?: (GenderEnum | null),hair_color?: (Scalars['String'] | null),height_cm?: (Scalars['Int'] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),
+export interface PerformerCreateInput {
+/** Duplicate aliases and those equal to name will be ignored (case-insensitive) */
+alias_list?: (Scalars['String'][] | null),birthdate?: (Scalars['String'] | null),career_end?: (Scalars['String'] | null),career_length?: (Scalars['String'] | null),career_start?: (Scalars['String'] | null),circumcised?: (CircumcisedEnum | null),country?: (Scalars['String'] | null),custom_fields?: (Scalars['Map'] | null),death_date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),disambiguation?: (Scalars['String'] | null),ethnicity?: (Scalars['String'] | null),eye_color?: (Scalars['String'] | null),fake_tits?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),gender?: (GenderEnum | null),hair_color?: (Scalars['String'] | null),height_cm?: (Scalars['Int'] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),
 /** This should be a URL or a base64 encoded data URL */
 image?: (Scalars['String'] | null),instagram?: (Scalars['String'] | null),measurements?: (Scalars['String'] | null),name: Scalars['String'],penis_length?: (Scalars['Float'] | null),piercings?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),stash_ids?: (StashIDInput[] | null),tag_ids?: (Scalars['ID'][] | null),tattoos?: (Scalars['String'] | null),twitter?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null),weight?: (Scalars['Int'] | null)}
 
@@ -3740,9 +3895,13 @@ aliases?: (StringCriterionInput | null),
 birth_year?: (IntCriterionInput | null),
 /** Filter by birthdate */
 birthdate?: (DateCriterionInput | null),
-/** Filter by career length */
+/** Filter by career end */
+career_end?: (DateCriterionInput | null),
+/** Deprecated: use career_start and career_end. This filter is non-functional. */
 career_length?: (StringCriterionInput | null),
-/** Filter by ciricumcision */
+/** Filter by career start */
+career_start?: (DateCriterionInput | null),
+/** Filter by circumcision */
 circumcised?: (CircumcisionCriterionInput | null),
 /** Filter by country */
 country?: (StringCriterionInput | null),
@@ -3780,6 +3939,10 @@ image_count?: (IntCriterionInput | null),
 images_filter?: (ImageFilterType | null),
 /** Filter to only include performers missing this property */
 is_missing?: (Scalars['String'] | null),
+/** Filter by marker count (via scene) */
+marker_count?: (IntCriterionInput | null),
+/** Filter by related scene markers (via scene) that meet this criteria */
+markers_filter?: (SceneMarkerFilterType | null),
 /** Filter by measurements */
 measurements?: (StringCriterionInput | null),name?: (StringCriterionInput | null),
 /** Filter by o count */
@@ -3798,6 +3961,8 @@ scene_count?: (IntCriterionInput | null),
 scenes_filter?: (SceneFilterType | null),
 /** Filter by StashID */
 stash_id_endpoint?: (StashIDCriterionInput | null),
+/** Filter by StashIDs */
+stash_ids_endpoint?: (StashIDsCriterionInput | null),
 /** Filter by studios where performer appears in scene/image/gallery */
 studios?: (HierarchicalMultiCriterionInput | null),
 /** Filter by tag count */
@@ -3815,7 +3980,11 @@ url?: (StringCriterionInput | null),
 /** Filter by weight */
 weight?: (IntCriterionInput | null)}
 
-export interface PerformerUpdateInput {alias_list?: (Scalars['String'][] | null),birthdate?: (Scalars['String'] | null),career_length?: (Scalars['String'] | null),circumcised?: (CircumisedEnum | null),country?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),death_date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),disambiguation?: (Scalars['String'] | null),ethnicity?: (Scalars['String'] | null),eye_color?: (Scalars['String'] | null),fake_tits?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),gender?: (GenderEnum | null),hair_color?: (Scalars['String'] | null),height_cm?: (Scalars['Int'] | null),id: Scalars['ID'],ignore_auto_tag?: (Scalars['Boolean'] | null),
+export interface PerformerMergeInput {destination: Scalars['ID'],source: Scalars['ID'][],values?: (PerformerUpdateInput | null)}
+
+export interface PerformerUpdateInput {
+/** Duplicate aliases and those equal to name will be ignored (case-insensitive) */
+alias_list?: (Scalars['String'][] | null),birthdate?: (Scalars['String'] | null),career_end?: (Scalars['String'] | null),career_length?: (Scalars['String'] | null),career_start?: (Scalars['String'] | null),circumcised?: (CircumcisedEnum | null),country?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),death_date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),disambiguation?: (Scalars['String'] | null),ethnicity?: (Scalars['String'] | null),eye_color?: (Scalars['String'] | null),fake_tits?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),gender?: (GenderEnum | null),hair_color?: (Scalars['String'] | null),height_cm?: (Scalars['Int'] | null),id: Scalars['ID'],ignore_auto_tag?: (Scalars['Boolean'] | null),
 /** This should be a URL or a base64 encoded data URL */
 image?: (Scalars['String'] | null),instagram?: (Scalars['String'] | null),measurements?: (Scalars['String'] | null),name?: (Scalars['String'] | null),penis_length?: (Scalars['Float'] | null),piercings?: (Scalars['String'] | null),rating100?: (Scalars['Int'] | null),stash_ids?: (StashIDInput[] | null),tag_ids?: (Scalars['ID'][] | null),tattoos?: (Scalars['String'] | null),twitter?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null),weight?: (Scalars['Int'] | null)}
 
@@ -4133,9 +4302,11 @@ rescan?: (Scalars['Boolean'] | null),
 scanGenerateClipPreviews?: (Scalars['Boolean'] | null),
 /** Generate covers during scan */
 scanGenerateCovers?: (Scalars['Boolean'] | null),
+/** Generate image phashes during scan */
+scanGenerateImagePhashes?: (Scalars['Boolean'] | null),
 /** Generate image previews during scan */
 scanGenerateImagePreviews?: (Scalars['Boolean'] | null),
-/** Generate phashes during scan */
+/** Generate video phashes during scan */
 scanGeneratePhashes?: (Scalars['Boolean'] | null),
 /** Generate previews during scan */
 scanGeneratePreviews?: (Scalars['Boolean'] | null),
@@ -4151,9 +4322,11 @@ export interface ScanMetadataOptionsGenqlSelection{
     scanGenerateClipPreviews?: boolean | number
     /** Generate covers during scan */
     scanGenerateCovers?: boolean | number
+    /** Generate image phashes during scan */
+    scanGenerateImagePhashes?: boolean | number
     /** Generate image previews during scan */
     scanGenerateImagePreviews?: boolean | number
-    /** Generate phashes during scan */
+    /** Generate video phashes during scan */
     scanGeneratePhashes?: boolean | number
     /** Generate previews during scan */
     scanGeneratePreviews?: boolean | number
@@ -4169,6 +4342,7 @@ export interface SceneGenqlSelection{
     captions?: VideoCaptionGenqlSelection
     code?: boolean | number
     created_at?: boolean | number
+    custom_fields?: boolean | number
     date?: boolean | number
     details?: boolean | number
     director?: boolean | number
@@ -4214,7 +4388,7 @@ export interface SceneGenqlSelection{
 
 export interface SceneCreateInput {code?: (Scalars['String'] | null),
 /** This should be a URL or a base64 encoded data URL */
-cover_image?: (Scalars['String'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),director?: (Scalars['String'] | null),
+cover_image?: (Scalars['String'] | null),custom_fields?: (Scalars['Map'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),director?: (Scalars['String'] | null),
 /**
  * The first id will be assigned as primary.
  * Files will be reassigned from existing scenes if applicable.
@@ -4222,7 +4396,9 @@ cover_image?: (Scalars['String'] | null),date?: (Scalars['String'] | null),detai
  */
 file_ids?: (Scalars['ID'][] | null),gallery_ids?: (Scalars['ID'][] | null),groups?: (SceneGroupInput[] | null),movies?: (SceneMovieInput[] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),rating100?: (Scalars['Int'] | null),stash_ids?: (StashIDInput[] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (Scalars['ID'][] | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
 
-export interface SceneDestroyInput {delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),id: Scalars['ID']}
+export interface SceneDestroyInput {delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),
+/** If true, delete the file entry from the database if the file is not assigned to any other objects */
+destroy_file_entry?: (Scalars['Boolean'] | null),id: Scalars['ID']}
 
 export interface SceneFileTypeGenqlSelection{
     audio_codec?: boolean | number
@@ -4247,11 +4423,11 @@ captions?: (StringCriterionInput | null),
 /** Filter by file checksum */
 checksum?: (StringCriterionInput | null),code?: (StringCriterionInput | null),
 /** Filter by creation time */
-created_at?: (TimestampCriterionInput | null),
+created_at?: (TimestampCriterionInput | null),custom_fields?: (CustomFieldCriterionInput[] | null),
 /** Filter by date */
 date?: (DateCriterionInput | null),details?: (StringCriterionInput | null),director?: (StringCriterionInput | null),
-/** Filter Scenes that have an exact phash match available */
-duplicated?: (PHashDuplicationCriterionInput | null),
+/** Filter Scenes by duplication criteria */
+duplicated?: (DuplicationCriterionInput | null),
 /** Filter by duration (in seconds) */
 duration?: (IntCriterionInput | null),
 /** Filter by file count */
@@ -4318,8 +4494,12 @@ play_duration?: (IntCriterionInput | null),rating100?: (IntCriterionInput | null
 resolution?: (ResolutionCriterionInput | null),
 /** Filter by resume time */
 resume_time?: (IntCriterionInput | null),
+/** Filter by StashID count */
+stash_id_count?: (IntCriterionInput | null),
 /** Filter by StashID */
 stash_id_endpoint?: (StashIDCriterionInput | null),
+/** Filter by StashIDs */
+stash_ids_endpoint?: (StashIDsCriterionInput | null),
 /** Filter to only include scenes with this studio */
 studios?: (HierarchicalMultiCriterionInput | null),
 /** Filter by related studios that meet this criteria */
@@ -4383,7 +4563,7 @@ created_at?: (TimestampCriterionInput | null),
 duration?: (FloatCriterionInput | null),
 /** Filter to only include scene markers with these performers */
 performers?: (MultiCriterionInput | null),
-/** Filter by cscene reation time */
+/** Filter by scene creation time */
 scene_created_at?: (TimestampCriterionInput | null),
 /** Filter by scene date */
 scene_date?: (DateCriterionInput | null),
@@ -4391,7 +4571,7 @@ scene_date?: (DateCriterionInput | null),
 scene_filter?: (SceneFilterType | null),
 /** Filter to only include scene markers attached to a scene with these tags */
 scene_tags?: (HierarchicalMultiCriterionInput | null),
-/** Filter by lscene ast update time */
+/** Filter by scene last update time */
 scene_updated_at?: (TimestampCriterionInput | null),
 /** Filter to only include scene markers from these scenes */
 scenes?: (MultiCriterionInput | null),
@@ -4489,7 +4669,7 @@ export interface SceneStreamEndpointGenqlSelection{
 
 export interface SceneUpdateInput {clientMutationId?: (Scalars['String'] | null),code?: (Scalars['String'] | null),
 /** This should be a URL or a base64 encoded data URL */
-cover_image?: (Scalars['String'] | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),director?: (Scalars['String'] | null),gallery_ids?: (Scalars['ID'][] | null),groups?: (SceneGroupInput[] | null),id: Scalars['ID'],movies?: (SceneMovieInput[] | null),o_counter?: (Scalars['Int'] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),
+cover_image?: (Scalars['String'] | null),custom_fields?: (CustomFieldsInput | null),date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),director?: (Scalars['String'] | null),gallery_ids?: (Scalars['ID'][] | null),groups?: (SceneGroupInput[] | null),id: Scalars['ID'],movies?: (SceneMovieInput[] | null),o_counter?: (Scalars['Int'] | null),organized?: (Scalars['Boolean'] | null),performer_ids?: (Scalars['ID'][] | null),
 /** The number ot times a scene has been played */
 play_count?: (Scalars['Int'] | null),
 /** The total time a scene has spent playing */
@@ -4497,7 +4677,9 @@ play_duration?: (Scalars['Float'] | null),primary_file_id?: (Scalars['ID'] | nul
 /** The time index a scene was left at */
 resume_time?: (Scalars['Float'] | null),stash_ids?: (StashIDInput[] | null),studio_id?: (Scalars['ID'] | null),tag_ids?: (Scalars['ID'][] | null),title?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
 
-export interface ScenesDestroyInput {delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),ids: Scalars['ID'][]}
+export interface ScenesDestroyInput {delete_file?: (Scalars['Boolean'] | null),delete_generated?: (Scalars['Boolean'] | null),
+/** If true, delete the file entry from the database if the file is not assigned to any other objects */
+destroy_file_entry?: (Scalars['Boolean'] | null),ids: Scalars['ID'][]}
 
 export interface ScrapeMultiPerformersInput {
 /** Instructs to query by scene fingerprints */
@@ -4666,7 +4848,10 @@ export interface ScrapedMovieInput {aliases?: (Scalars['String'] | null),date?: 
 export interface ScrapedPerformerGenqlSelection{
     aliases?: boolean | number
     birthdate?: boolean | number
+    career_end?: boolean | number
+    /** @deprecated Use career_start and career_end */
     career_length?: boolean | number
+    career_start?: boolean | number
     circumcised?: boolean | number
     country?: boolean | number
     death_date?: boolean | number
@@ -4705,7 +4890,7 @@ export interface ScrapedPerformerGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface ScrapedPerformerInput {aliases?: (Scalars['String'] | null),birthdate?: (Scalars['String'] | null),career_length?: (Scalars['String'] | null),circumcised?: (Scalars['String'] | null),country?: (Scalars['String'] | null),death_date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),disambiguation?: (Scalars['String'] | null),ethnicity?: (Scalars['String'] | null),eye_color?: (Scalars['String'] | null),fake_tits?: (Scalars['String'] | null),gender?: (Scalars['String'] | null),hair_color?: (Scalars['String'] | null),height?: (Scalars['String'] | null),instagram?: (Scalars['String'] | null),measurements?: (Scalars['String'] | null),name?: (Scalars['String'] | null),penis_length?: (Scalars['String'] | null),piercings?: (Scalars['String'] | null),remote_site_id?: (Scalars['String'] | null),
+export interface ScrapedPerformerInput {aliases?: (Scalars['String'] | null),birthdate?: (Scalars['String'] | null),career_end?: (Scalars['String'] | null),career_length?: (Scalars['String'] | null),career_start?: (Scalars['String'] | null),circumcised?: (Scalars['String'] | null),country?: (Scalars['String'] | null),death_date?: (Scalars['String'] | null),details?: (Scalars['String'] | null),disambiguation?: (Scalars['String'] | null),ethnicity?: (Scalars['String'] | null),eye_color?: (Scalars['String'] | null),fake_tits?: (Scalars['String'] | null),gender?: (Scalars['String'] | null),hair_color?: (Scalars['String'] | null),height?: (Scalars['String'] | null),instagram?: (Scalars['String'] | null),measurements?: (Scalars['String'] | null),name?: (Scalars['String'] | null),penis_length?: (Scalars['String'] | null),piercings?: (Scalars['String'] | null),remote_site_id?: (Scalars['String'] | null),
 /** Set if performer matched */
 stored_id?: (Scalars['ID'] | null),tattoos?: (Scalars['String'] | null),twitter?: (Scalars['String'] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null),weight?: (Scalars['String'] | null)}
 
@@ -4755,7 +4940,10 @@ export interface ScrapedStudioGenqlSelection{
 }
 
 export interface ScrapedTagGenqlSelection{
+    alias_list?: boolean | number
+    description?: boolean | number
     name?: boolean | number
+    parent?: ScrapedTagGenqlSelection
     /** Remote site ID, if applicable */
     remote_site_id?: boolean | number
     /** Set if tag matched */
@@ -4821,7 +5009,7 @@ export interface SetDefaultFilterInput {
 find_filter?: (FindFilterType | null),mode: FilterMode,object_filter?: (Scalars['Map'] | null),ui_options?: (Scalars['Map'] | null)}
 
 export interface SetFingerprintsInput {type: Scalars['String'],
-/** an null value will remove the fingerprint */
+/** a null value will remove the fingerprint */
 value?: (Scalars['String'] | null)}
 
 export interface SetupInput {
@@ -4948,11 +5136,18 @@ export interface StashIDGenqlSelection{
 export interface StashIDCriterionInput {
 /**
  * If present, this value is treated as a predicate.
- * That is, it will filter based on stash_ids with the matching endpoint
+ * That is, it will filter based on stash_id with the matching endpoint
  */
 endpoint?: (Scalars['String'] | null),modifier: CriterionModifier,stash_id?: (Scalars['String'] | null)}
 
 export interface StashIDInput {endpoint: Scalars['String'],stash_id: Scalars['String'],updated_at?: (Scalars['Time'] | null)}
+
+export interface StashIDsCriterionInput {
+/**
+ * If present, this value is treated as a predicate.
+ * That is, it will filter based on stash_ids with the matching endpoint
+ */
+endpoint?: (Scalars['String'] | null),modifier: CriterionModifier,stash_ids?: ((Scalars['String'] | null)[] | null)}
 
 export interface StatsResultTypeGenqlSelection{
     gallery_count?: boolean | number
@@ -4981,6 +5176,7 @@ export interface StudioGenqlSelection{
     aliases?: boolean | number
     child_studios?: StudioGenqlSelection
     created_at?: boolean | number
+    custom_fields?: boolean | number
     details?: boolean | number
     favorite?: boolean | number
     gallery_count?: { __args: {depth?: (Scalars['Int'] | null)} } | boolean | number
@@ -4996,6 +5192,7 @@ export interface StudioGenqlSelection{
     movies?: MovieGenqlSelection
     name?: boolean | number
     o_counter?: boolean | number
+    organized?: boolean | number
     parent_studio?: StudioGenqlSelection
     performer_count?: { __args: {depth?: (Scalars['Int'] | null)} } | boolean | number
     rating100?: boolean | number
@@ -5010,9 +5207,11 @@ export interface StudioGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface StudioCreateInput {aliases?: (Scalars['String'][] | null),details?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),
+export interface StudioCreateInput {
+/** Duplicate aliases and those equal to name will be ignored (case-insensitive) */
+aliases?: (Scalars['String'][] | null),custom_fields?: (Scalars['Map'] | null),details?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),
 /** This should be a URL or a base64 encoded data URL */
-image?: (Scalars['String'] | null),name: Scalars['String'],parent_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),stash_ids?: (StashIDInput[] | null),tag_ids?: (Scalars['ID'][] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
+image?: (Scalars['String'] | null),name: Scalars['String'],organized?: (Scalars['Boolean'] | null),parent_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),stash_ids?: (StashIDInput[] | null),tag_ids?: (Scalars['ID'][] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
 
 export interface StudioDestroyInput {id: Scalars['ID']}
 
@@ -5022,13 +5221,17 @@ aliases?: (StringCriterionInput | null),
 /** Filter by subsidiary studio count */
 child_count?: (IntCriterionInput | null),
 /** Filter by creation time */
-created_at?: (TimestampCriterionInput | null),details?: (StringCriterionInput | null),
+created_at?: (TimestampCriterionInput | null),custom_fields?: (CustomFieldCriterionInput[] | null),details?: (StringCriterionInput | null),
 /** Filter by favorite */
 favorite?: (Scalars['Boolean'] | null),
 /** Filter by related galleries that meet this criteria */
 galleries_filter?: (GalleryFilterType | null),
 /** Filter by gallery count */
 gallery_count?: (IntCriterionInput | null),
+/** Filter by group count */
+group_count?: (IntCriterionInput | null),
+/** Filter by related groups that meet this criteria */
+groups_filter?: (GroupFilterType | null),
 /** Filter by autotag ignore value */
 ignore_auto_tag?: (Scalars['Boolean'] | null),
 /** Filter by image count */
@@ -5037,6 +5240,8 @@ image_count?: (IntCriterionInput | null),
 images_filter?: (ImageFilterType | null),
 /** Filter to only include studios missing this property */
 is_missing?: (Scalars['String'] | null),name?: (StringCriterionInput | null),
+/** Filter by organized */
+organized?: (Scalars['Boolean'] | null),
 /** Filter to only include studios with this parent studio */
 parents?: (MultiCriterionInput | null),rating100?: (IntCriterionInput | null),
 /** Filter by scene count */
@@ -5045,6 +5250,8 @@ scene_count?: (IntCriterionInput | null),
 scenes_filter?: (SceneFilterType | null),
 /** Filter by StashID */
 stash_id_endpoint?: (StashIDCriterionInput | null),
+/** Filter by StashIDs */
+stash_ids_endpoint?: (StashIDsCriterionInput | null),
 /** Filter by tag count */
 tag_count?: (IntCriterionInput | null),
 /** Filter to only include studios with these tags */
@@ -5054,9 +5261,11 @@ updated_at?: (TimestampCriterionInput | null),
 /** Filter by url */
 url?: (StringCriterionInput | null)}
 
-export interface StudioUpdateInput {aliases?: (Scalars['String'][] | null),details?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),id: Scalars['ID'],ignore_auto_tag?: (Scalars['Boolean'] | null),
+export interface StudioUpdateInput {
+/** Duplicate aliases and those equal to name will be ignored (case-insensitive) */
+aliases?: (Scalars['String'][] | null),custom_fields?: (CustomFieldsInput | null),details?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),id: Scalars['ID'],ignore_auto_tag?: (Scalars['Boolean'] | null),
 /** This should be a URL or a base64 encoded data URL */
-image?: (Scalars['String'] | null),name?: (Scalars['String'] | null),parent_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),stash_ids?: (StashIDInput[] | null),tag_ids?: (Scalars['ID'][] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
+image?: (Scalars['String'] | null),name?: (Scalars['String'] | null),organized?: (Scalars['Boolean'] | null),parent_id?: (Scalars['ID'] | null),rating100?: (Scalars['Int'] | null),stash_ids?: (StashIDInput[] | null),tag_ids?: (Scalars['ID'][] | null),url?: (Scalars['String'] | null),urls?: (Scalars['String'][] | null)}
 
 export interface SubscriptionGenqlSelection{
     /** Update from the metadata manager */
@@ -5087,6 +5296,7 @@ export interface TagGenqlSelection{
     child_count?: boolean | number
     children?: TagGenqlSelection
     created_at?: boolean | number
+    custom_fields?: boolean | number
     description?: boolean | number
     favorite?: boolean | number
     gallery_count?: { __args: {depth?: (Scalars['Int'] | null)} } | boolean | number
@@ -5112,7 +5322,9 @@ export interface TagGenqlSelection{
     __scalar?: boolean | number
 }
 
-export interface TagCreateInput {aliases?: (Scalars['String'][] | null),child_ids?: (Scalars['ID'][] | null),description?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),
+export interface TagCreateInput {
+/** Duplicate aliases and those equal to name will be ignored (case-insensitive) */
+aliases?: (Scalars['String'][] | null),child_ids?: (Scalars['ID'][] | null),custom_fields?: (Scalars['Map'] | null),description?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),ignore_auto_tag?: (Scalars['Boolean'] | null),
 /** This should be a URL or a base64 encoded data URL */
 image?: (Scalars['String'] | null),name: Scalars['String'],parent_ids?: (Scalars['ID'][] | null),
 /** Value that does not appear in the UI but overrides name for sorting */
@@ -5123,12 +5335,12 @@ export interface TagDestroyInput {id: Scalars['ID']}
 export interface TagFilterType {AND?: (TagFilterType | null),NOT?: (TagFilterType | null),OR?: (TagFilterType | null),
 /** Filter by tag aliases */
 aliases?: (StringCriterionInput | null),
-/** Filter by number f child tags the tag has */
+/** Filter by number of child tags the tag has */
 child_count?: (IntCriterionInput | null),
 /** Filter by child tags */
 children?: (HierarchicalMultiCriterionInput | null),
 /** Filter by creation time */
-created_at?: (TimestampCriterionInput | null),
+created_at?: (TimestampCriterionInput | null),custom_fields?: (CustomFieldCriterionInput[] | null),
 /** Filter by tag description */
 description?: (StringCriterionInput | null),
 /** Filter by favorite */
@@ -5139,6 +5351,8 @@ galleries_filter?: (GalleryFilterType | null),
 gallery_count?: (IntCriterionInput | null),
 /** Filter by number of group with this tag */
 group_count?: (IntCriterionInput | null),
+/** Filter by related groups that meet this criteria */
+groups_filter?: (GroupFilterType | null),
 /** Filter by autotag ignore value */
 ignore_auto_tag?: (Scalars['Boolean'] | null),
 /** Filter by number of images with this tag */
@@ -5149,6 +5363,8 @@ images_filter?: (ImageFilterType | null),
 is_missing?: (Scalars['String'] | null),
 /** Filter by number of markers with this tag */
 marker_count?: (IntCriterionInput | null),
+/** Filter by related scene markers that meet this criteria */
+markers_filter?: (SceneMarkerFilterType | null),
 /** Filter by number of movies with this tag */
 movie_count?: (IntCriterionInput | null),
 /** Filter by tag name */
@@ -5159,6 +5375,8 @@ parent_count?: (IntCriterionInput | null),
 parents?: (HierarchicalMultiCriterionInput | null),
 /** Filter by number of performers with this tag */
 performer_count?: (IntCriterionInput | null),
+/** Filter by related performers that meet this criteria */
+performers_filter?: (PerformerFilterType | null),
 /** Filter by number of scenes with this tag */
 scene_count?: (IntCriterionInput | null),
 /** Filter by related scenes that meet this criteria */
@@ -5167,18 +5385,24 @@ scenes_filter?: (SceneFilterType | null),
 sort_name?: (StringCriterionInput | null),
 /** Filter by StashID */
 stash_id_endpoint?: (StashIDCriterionInput | null),
+/** Filter by StashID */
+stash_ids_endpoint?: (StashIDsCriterionInput | null),
 /** Filter by number of studios with this tag */
 studio_count?: (IntCriterionInput | null),
+/** Filter by related studios that meet this criteria */
+studios_filter?: (StudioFilterType | null),
 /** Filter by last update time */
 updated_at?: (TimestampCriterionInput | null)}
 
-export interface TagUpdateInput {aliases?: (Scalars['String'][] | null),child_ids?: (Scalars['ID'][] | null),description?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),id: Scalars['ID'],ignore_auto_tag?: (Scalars['Boolean'] | null),
+export interface TagUpdateInput {
+/** Duplicate aliases and those equal to name will be ignored (case-insensitive) */
+aliases?: (Scalars['String'][] | null),child_ids?: (Scalars['ID'][] | null),custom_fields?: (CustomFieldsInput | null),description?: (Scalars['String'] | null),favorite?: (Scalars['Boolean'] | null),id: Scalars['ID'],ignore_auto_tag?: (Scalars['Boolean'] | null),
 /** This should be a URL or a base64 encoded data URL */
 image?: (Scalars['String'] | null),name?: (Scalars['String'] | null),parent_ids?: (Scalars['ID'][] | null),
 /** Value that does not appear in the UI but overrides name for sorting */
 sort_name?: (Scalars['String'] | null),stash_ids?: (StashIDInput[] | null)}
 
-export interface TagsMergeInput {destination: Scalars['ID'],source: Scalars['ID'][]}
+export interface TagsMergeInput {destination: Scalars['ID'],source: Scalars['ID'][],values?: (TagUpdateInput | null)}
 
 export interface TimestampCriterionInput {modifier: CriterionModifier,value: Scalars['String'],value2?: (Scalars['String'] | null)}
 
@@ -6087,7 +6311,7 @@ export const enumBulkUpdateIdMode = {
    SET: 'SET' as const
 }
 
-export const enumCircumisedEnum = {
+export const enumCircumcisedEnum = {
    CUT: 'CUT' as const,
    UNCUT: 'UNCUT' as const
 }
