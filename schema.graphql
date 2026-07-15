@@ -54,6 +54,11 @@ type AutoTagMetadataOptions {
 
 input BackupDatabaseInput {
   download: Boolean
+
+  """
+  If true, blob files will be included in the backup. This can significantly increase the size of the backup and the time it takes to create it, but allows for a complete backup of the system that can be restored without needing access to the original media files.
+  """
+  includeBlobs: Boolean
 }
 
 interface BaseFile {
@@ -114,18 +119,22 @@ input BulkGalleryUpdateInput {
   studio_id: ID
   tag_ids: BulkUpdateIds
   performer_ids: BulkUpdateIds
+  custom_fields: CustomFieldsInput
 }
 
 input BulkGroupUpdateInput {
   clientMutationId: String
   ids: [ID!]
   rating100: Int
+  date: String
+  synopsis: String
   studio_id: ID
   director: String
   urls: BulkUpdateStrings
   tag_ids: BulkUpdateIds
   containing_groups: BulkUpdateGroupDescriptionsInput
   sub_groups: BulkUpdateGroupDescriptionsInput
+  custom_fields: CustomFieldsInput
 }
 
 input BulkImageUpdateInput {
@@ -144,6 +153,7 @@ input BulkImageUpdateInput {
   performer_ids: BulkUpdateIds
   tag_ids: BulkUpdateIds
   gallery_ids: BulkUpdateIds
+  custom_fields: CustomFieldsInput
 }
 
 input BulkMovieUpdateInput {
@@ -171,10 +181,16 @@ input BulkPerformerUpdateInput {
   measurements: String
   fake_tits: String
   penis_length: Float
-  circumcised: CircumisedEnum
+  circumcised: CircumcisedEnum
   career_length: String
+  career_start: String
+  career_end: String
   tattoos: String
   piercings: String
+
+  """
+  Duplicate aliases and those equal to name will result in an error (case-insensitive)
+  """
   alias_list: BulkUpdateStrings
   twitter: String
   instagram: String
@@ -214,6 +230,7 @@ input BulkSceneUpdateInput {
   tag_ids: BulkUpdateIds
   group_ids: BulkUpdateIds
   movie_ids: BulkUpdateIds
+  custom_fields: CustomFieldsInput
 }
 
 input BulkStudioUpdateInput {
@@ -226,11 +243,16 @@ input BulkStudioUpdateInput {
   details: String
   tag_ids: BulkUpdateIds
   ignore_auto_tag: Boolean
+  organized: Boolean
 }
 
 input BulkTagUpdateInput {
   ids: [ID!]
   description: String
+
+  """
+  Duplicate aliases and those equal to name will result in an error (case-insensitive)
+  """
   aliases: BulkUpdateStrings
   ignore_auto_tag: Boolean
   favorite: Boolean
@@ -259,14 +281,14 @@ input BulkUpdateStrings {
   mode: BulkUpdateIdMode!
 }
 
-input CircumcisionCriterionInput {
-  value: [CircumisedEnum!]
-  modifier: CriterionModifier!
-}
-
-enum CircumisedEnum {
+enum CircumcisedEnum {
   CUT
   UNCUT
+}
+
+input CircumcisionCriterionInput {
+  value: [CircumcisedEnum!]
+  modifier: CriterionModifier!
 }
 
 input CleanGeneratedInput {
@@ -294,6 +316,14 @@ input CleanGeneratedInput {
 
 input CleanMetadataInput {
   paths: [String!]
+
+  """
+  Don't check zip file contents when determining whether to clean a file.
+  This can significantly speed up the clean process, but will potentially miss removed files within zip files.
+  Where users do not modify zip files contents directly, this should be safe to use.
+  Defaults to false.
+  """
+  ignoreZipFileContents: Boolean
 
   """Do a dry run. Don't delete any files"""
   dryRun: Boolean!
@@ -557,6 +587,29 @@ input ConfigGeneralInput {
 
   """Source of plugin packages"""
   pluginPackageSources: [PackageSourceInput!]
+
+  """Size of the longest dimension for each sprite in pixels"""
+  spriteScreenshotSize: Int
+
+  """
+  True if sprite generation should use the sprite interval and min/max sprites settings instead of the default
+  """
+  useCustomSpriteInterval: Boolean
+
+  """
+  Time between two different scrubber sprites in seconds - only used if useCustomSpriteInterval is true
+  """
+  spriteInterval: Float
+
+  """
+  Minimum number of sprites to be generated - only used if useCustomSpriteInterval is true
+  """
+  minimumSprites: Int
+
+  """
+  Minimum number of sprites to be generated - only used if useCustomSpriteInterval is true
+  """
+  maximumSprites: Int
 }
 
 type ConfigGeneralResult {
@@ -706,6 +759,29 @@ type ConfigGeneralResult {
   """Maximum log size"""
   logFileMaxSize: Int!
 
+  """
+  True if sprite generation should use the sprite interval and min/max sprites settings instead of the default
+  """
+  useCustomSpriteInterval: Boolean!
+
+  """
+  Time between two different scrubber sprites in seconds - only used if useCustomSpriteInterval is true
+  """
+  spriteInterval: Float!
+
+  """
+  Minimum number of sprites to be generated - only used if useCustomSpriteInterval is true
+  """
+  minimumSprites: Int!
+
+  """
+  Maximum number of sprites to be generated - only used if useCustomSpriteInterval is true
+  """
+  maximumSprites: Int!
+
+  """Size of the longest dimension for each sprite in pixels"""
+  spriteScreenshotSize: Int!
+
   """Array of video file extensions"""
   videoExtensions: [String!]!
 
@@ -813,6 +889,11 @@ input ConfigInterfaceInput {
   customLocales: String
   customLocalesEnabled: Boolean
 
+  """
+  When true, disables all customizations (plugins, CSS, JavaScript, locales) for troubleshooting
+  """
+  disableCustomizations: Boolean
+
   """Interface language"""
   language: String
   imageLightbox: ConfigImageLightboxInput
@@ -891,6 +972,11 @@ type ConfigInterfaceResult {
   """Custom Locales"""
   customLocales: String
   customLocalesEnabled: Boolean
+
+  """
+  When true, disables all customizations (plugins, CSS, JavaScript, locales) for troubleshooting
+  """
+  disableCustomizations: Boolean
 
   """Interface language"""
   language: String
@@ -1044,6 +1130,25 @@ input DisableDLNAInput {
   duration: Int
 }
 
+input DuplicationCriterionInput {
+  duplicated: Boolean
+
+  """Currently unimplemented. Intended for phash distance matching."""
+  distance: Int
+
+  """Filter by phash duplication"""
+  phash: Boolean
+
+  """Filter by URL duplication"""
+  url: Boolean
+
+  """Filter by Stash ID duplication"""
+  stash_id: Boolean
+
+  """Filter by title duplication"""
+  title: Boolean
+}
+
 input EnableDLNAInput {
   """Duration to enable, in minutes. 0 or null for indefinite."""
   duration: Int
@@ -1066,6 +1171,16 @@ input ExportObjectsInput {
   includeDependencies: Boolean
 }
 
+input FileDuplicationCriterionInput {
+  duplicated: Boolean
+
+  """Currently unimplemented. Intended for phash distance matching."""
+  distance: Int
+
+  """Filter by phash duplication"""
+  phash: Boolean
+}
+
 input FileFilterType {
   AND: FileFilterType
   OR: FileFilterType
@@ -1079,8 +1194,8 @@ input FileFilterType {
   """Filter by modification time"""
   mod_time: TimestampCriterionInput
 
-  """Filter files that have an exact match available"""
-  duplicated: PHashDuplicationCriterionInput
+  """Filter files by duplication criteria (only phash applies to files)"""
+  duplicated: FileDuplicationCriterionInput
 
   """find files based on hash"""
   hashes: [FingerprintFilterInput!]
@@ -1242,10 +1357,17 @@ input FloatCriterionInput {
 type Folder {
   id: ID!
   path: String!
+  basename: String!
   parent_folder_id: ID @deprecated(reason: "Use parent_folder instead")
   zip_file_id: ID @deprecated(reason: "Use zip_file instead")
   parent_folder: Folder
+
+  """Returns all parent folders in order from immediate parent to top-level"""
+  parent_folders: [Folder!]!
   zip_file: BasicFile
+
+  """Returns direct sub-folders"""
+  sub_folders: [Folder!]!
   mod_time: Time!
   created_at: Time!
   updated_at: Time!
@@ -1256,6 +1378,7 @@ input FolderFilterType {
   OR: FolderFilterType
   NOT: FolderFilterType
   path: StringCriterionInput
+  basename: StringCriterionInput
   parent_folder: HierarchicalMultiCriterionInput
   zip_file: MultiCriterionInput
 
@@ -1300,6 +1423,7 @@ type Gallery {
   performers: [Performer!]!
   cover: Image
   paths: GalleryPathsType!
+  custom_fields: Map!
   image(index: Int!): Image!
 }
 
@@ -1344,6 +1468,7 @@ input GalleryCreateInput {
   studio_id: ID
   tag_ids: [ID!]
   performer_ids: [ID!]
+  custom_fields: Map
 }
 
 input GalleryDestroyInput {
@@ -1356,6 +1481,11 @@ input GalleryDestroyInput {
   """
   delete_file: Boolean
   delete_generated: Boolean
+
+  """
+  If true, delete the file entry from the database if the file is not assigned to any other objects
+  """
+  destroy_file_entry: Boolean
 }
 
 type GalleryFile implements BaseFile {
@@ -1475,6 +1605,10 @@ input GalleryFilterType {
 
   """Filter by related folders that meet this criteria"""
   folders_filter: FolderFilterType
+
+  """Filter by parent folder of the zip or folder the gallery is in"""
+  parent_folder: HierarchicalMultiCriterionInput
+  custom_fields: [CustomFieldCriterionInput!]
 }
 
 type GalleryPathsType {
@@ -1513,6 +1647,7 @@ input GalleryUpdateInput {
   tag_ids: [ID!]
   performer_ids: [ID!]
   primary_file_id: ID
+  custom_fields: CustomFieldsInput
 }
 
 input GenderCriterionInput {
@@ -1547,8 +1682,13 @@ input GenerateMetadataInput {
 
   """Generate transcodes even if not required"""
   forceTranscodes: Boolean
+
+  """Generate video phashes during scan"""
   phashes: Boolean
   interactiveHeatmapsSpeeds: Boolean
+
+  """Generate image phashes during scan"""
+  imagePhashes: Boolean
   imageThumbnails: Boolean
   clipPreviews: Boolean
 
@@ -1557,6 +1697,15 @@ input GenerateMetadataInput {
 
   """marker ids to generate for"""
   markerIDs: [ID!]
+
+  """image ids to generate for"""
+  imageIDs: [ID!]
+
+  """gallery ids to generate for"""
+  galleryIDs: [ID!]
+
+  """paths to run generate on, in addition to the other ID lists"""
+  paths: [String!]
 
   """overwrite existing media"""
   overwrite: Boolean
@@ -1637,6 +1786,7 @@ type Group {
   sub_group_count(depth: Int): Int!
   scenes: [Scene!]!
   o_counter: Int
+  custom_fields: Map!
 }
 
 input GroupCreateInput {
@@ -1660,6 +1810,7 @@ input GroupCreateInput {
 
   """This should be a URL or a base64 encoded data URL"""
   back_image: String
+  custom_fields: Map
 }
 
 """
@@ -1733,11 +1884,17 @@ input GroupFilterType {
   """Filter by number of sub-groups the group has"""
   sub_group_count: IntCriterionInput
 
+  """Filter by number of scenes the group has"""
+  scene_count: IntCriterionInput
+
   """Filter by related scenes that meet this criteria"""
   scenes_filter: SceneFilterType
 
   """Filter by related studios that meet this criteria"""
   studios_filter: StudioFilterType
+
+  """Filter by custom fields"""
+  custom_fields: [CustomFieldCriterionInput!]
 }
 
 input GroupSubGroupAddInput {
@@ -1775,6 +1932,7 @@ input GroupUpdateInput {
 
   """This should be a URL or a base64 encoded data URL"""
   back_image: String
+  custom_fields: CustomFieldsInput
 }
 
 enum HashAlgorithm {
@@ -1861,7 +2019,12 @@ type IdentifyMetadataOptions {
   setOrganized: Boolean
 
   """defaults to true if not provided"""
-  includeMalePerformers: Boolean
+  includeMalePerformers: Boolean @deprecated(reason: "Use performerGenders")
+
+  """
+  Filter to only include performers with these genders. If not provided, all genders are included.
+  """
+  performerGenders: [GenderEnum!]
 
   """defaults to true if not provided"""
   skipMultipleMatches: Boolean
@@ -1888,6 +2051,11 @@ input IdentifyMetadataOptionsInput {
 
   """defaults to true if not provided"""
   includeMalePerformers: Boolean
+
+  """
+  Filter to only include performers with these genders. If not provided, all genders are included.
+  """
+  performerGenders: [GenderEnum!]
 
   """defaults to true if not provided"""
   skipMultipleMatches: Boolean
@@ -1947,12 +2115,18 @@ type Image {
   studio: Studio
   tags: [Tag!]!
   performers: [Performer!]!
+  custom_fields: Map!
 }
 
 input ImageDestroyInput {
   id: ID!
   delete_file: Boolean
   delete_generated: Boolean
+
+  """
+  If true, delete the file entry from the database if the file is not assigned to any other objects
+  """
+  destroy_file_entry: Boolean
 }
 
 type ImageFile implements BaseFile {
@@ -1999,6 +2173,9 @@ input ImageFilterType {
 
   """Filter by file checksum"""
   checksum: StringCriterionInput
+
+  """Filter by file phash distance"""
+  phash_distance: PhashDistanceCriterionInput
 
   """Filter by path"""
   path: StringCriterionInput
@@ -2081,6 +2258,9 @@ input ImageFilterType {
 
   """Filter by related files that meet this criteria"""
   files_filter: FileFilterType
+
+  """Filter by custom fields"""
+  custom_fields: [CustomFieldCriterionInput!]
 }
 
 enum ImageLightboxDisplayMode {
@@ -2117,12 +2297,18 @@ input ImageUpdateInput {
   tag_ids: [ID!]
   gallery_ids: [ID!]
   primary_file_id: ID
+  custom_fields: CustomFieldsInput
 }
 
 input ImagesDestroyInput {
   ids: [ID!]!
   delete_file: Boolean
   delete_generated: Boolean
+
+  """
+  If true, delete the file entry from the database if the file is not assigned to any other objects
+  """
+  destroy_file_entry: Boolean
 }
 
 enum ImportDuplicateEnum {
@@ -2468,6 +2654,7 @@ type Mutation {
   performerDestroy(input: PerformerDestroyInput!): Boolean!
   performersDestroy(ids: [ID!]!): Boolean!
   bulkPerformerUpdate(input: BulkPerformerUpdateInput!): [Performer!]
+  performerMerge(input: PerformerMergeInput!): Performer!
   studioCreate(input: StudioCreateInput!): Studio
   studioUpdate(input: StudioUpdateInput!): Studio
   studioDestroy(input: StudioDestroyInput!): Boolean!
@@ -2506,7 +2693,18 @@ type Mutation {
   """
   moveFiles(input: MoveFilesInput!): Boolean!
   deleteFiles(ids: [ID!]!): Boolean!
+
+  """
+  Deletes file entries from the database without deleting the files from the filesystem
+  """
+  destroyFiles(ids: [ID!]!): Boolean!
   fileSetFingerprints(input: FileSetFingerprintsInput!): Boolean!
+
+  """Reveal the file in the system file manager"""
+  revealFileInFileManager(id: ID!): Boolean!
+
+  """Reveal the folder in the system file manager"""
+  revealFolderInFileManager(id: ID!): Boolean!
   saveFilter(input: SaveFilterInput!): SavedFilter!
   destroySavedFilter(input: DestroyFilterInput!): Boolean!
   setDefaultFilter(input: SetDefaultFilterInput!): Boolean! @deprecated(reason: "now uses UI config")
@@ -2678,6 +2876,9 @@ type Mutation {
   """Run batch studio tag task. Returns the job ID."""
   stashBoxBatchStudioTag(input: StashBoxBatchTagInput!): String!
 
+  """Run batch tag tag task. Returns the job ID."""
+  stashBoxBatchTagTag(input: StashBoxBatchTagInput!): String!
+
   """
   Enables DLNA for an optional duration. Has no effect if DLNA is enabled by default
   """
@@ -2708,13 +2909,6 @@ enum OrientationEnum {
 
   """Square"""
   SQUARE
-}
-
-input PHashDuplicationCriterionInput {
-  duplicated: Boolean
-
-  """Currently unimplemented"""
-  distance: Int
 }
 
 type Package {
@@ -2769,8 +2963,10 @@ type Performer {
   measurements: String
   fake_tits: String
   penis_length: Float
-  circumcised: CircumisedEnum
-  career_length: String
+  circumcised: CircumcisedEnum
+  career_length: String @deprecated(reason: "Use career_start and career_end")
+  career_start: String
+  career_end: String
   tattoos: String
   piercings: String
   alias_list: [String!]!
@@ -2813,10 +3009,16 @@ input PerformerCreateInput {
   measurements: String
   fake_tits: String
   penis_length: Float
-  circumcised: CircumisedEnum
+  circumcised: CircumcisedEnum
   career_length: String
+  career_start: String
+  career_end: String
   tattoos: String
   piercings: String
+
+  """
+  Duplicate aliases and those equal to name will be ignored (case-insensitive)
+  """
   alias_list: [String!]
   twitter: String
   instagram: String
@@ -2877,11 +3079,19 @@ input PerformerFilterType {
   """Filter by penis length value"""
   penis_length: FloatCriterionInput
 
-  """Filter by ciricumcision"""
+  """Filter by circumcision"""
   circumcised: CircumcisionCriterionInput
 
-  """Filter by career length"""
+  """
+  Deprecated: use career_start and career_end. This filter is non-functional.
+  """
   career_length: StringCriterionInput
+
+  """Filter by career start"""
+  career_start: DateCriterionInput
+
+  """Filter by career end"""
+  career_end: DateCriterionInput
 
   """Filter by tattoos"""
   tattoos: StringCriterionInput
@@ -2907,6 +3117,9 @@ input PerformerFilterType {
   """Filter by scene count"""
   scene_count: IntCriterionInput
 
+  """Filter by marker count (via scene)"""
+  marker_count: IntCriterionInput
+
   """Filter by image count"""
   image_count: IntCriterionInput
 
@@ -2921,6 +3134,9 @@ input PerformerFilterType {
 
   """Filter by StashID"""
   stash_id_endpoint: StashIDCriterionInput
+
+  """Filter by StashIDs"""
+  stash_ids_endpoint: StashIDsCriterionInput
   rating100: IntCriterionInput
 
   """Filter by url"""
@@ -2967,12 +3183,21 @@ input PerformerFilterType {
   """Filter by related tags that meet this criteria"""
   tags_filter: TagFilterType
 
+  """Filter by related scene markers (via scene) that meet this criteria"""
+  markers_filter: SceneMarkerFilterType
+
   """Filter by creation time"""
   created_at: TimestampCriterionInput
 
   """Filter by last update time"""
   updated_at: TimestampCriterionInput
   custom_fields: [CustomFieldCriterionInput!]
+}
+
+input PerformerMergeInput {
+  source: [ID!]!
+  destination: ID!
+  values: PerformerUpdateInput
 }
 
 input PerformerUpdateInput {
@@ -2990,10 +3215,16 @@ input PerformerUpdateInput {
   measurements: String
   fake_tits: String
   penis_length: Float
-  circumcised: CircumisedEnum
+  circumcised: CircumcisedEnum
   career_length: String
+  career_start: String
+  career_end: String
   tattoos: String
   piercings: String
+
+  """
+  Duplicate aliases and those equal to name will be ignored (case-insensitive)
+  """
   alias_list: [String!]
   twitter: String
   instagram: String
@@ -3460,8 +3691,11 @@ input ScanMetadataInput {
   """Generate sprites during scan"""
   scanGenerateSprites: Boolean
 
-  """Generate phashes during scan"""
+  """Generate video phashes during scan"""
   scanGeneratePhashes: Boolean
+
+  """Generate image phashes during scan"""
+  scanGenerateImagePhashes: Boolean
 
   """Generate image thumbnails during scan"""
   scanGenerateThumbnails: Boolean
@@ -3489,8 +3723,11 @@ type ScanMetadataOptions {
   """Generate sprites during scan"""
   scanGenerateSprites: Boolean!
 
-  """Generate phashes during scan"""
+  """Generate video phashes during scan"""
   scanGeneratePhashes: Boolean!
+
+  """Generate image phashes during scan"""
+  scanGenerateImagePhashes: Boolean
 
   """Generate image thumbnails during scan"""
   scanGenerateThumbnails: Boolean!
@@ -3544,6 +3781,7 @@ type Scene {
   tags: [Tag!]!
   performers: [Performer!]!
   stash_ids: [StashID!]!
+  custom_fields: Map!
 
   """Return valid stream paths"""
   sceneStreams: [SceneStreamEndpoint!]!
@@ -3576,12 +3814,18 @@ input SceneCreateInput {
   Files must not already be primary for another scene.
   """
   file_ids: [ID!]
+  custom_fields: Map
 }
 
 input SceneDestroyInput {
   id: ID!
   delete_file: Boolean
   delete_generated: Boolean
+
+  """
+  If true, delete the file entry from the database if the file is not assigned to any other objects
+  """
+  destroy_file_entry: Boolean
 }
 
 type SceneFileType {
@@ -3630,8 +3874,8 @@ input SceneFilterType {
   """Filter by o-counter"""
   o_counter: IntCriterionInput
 
-  """Filter Scenes that have an exact phash match available"""
-  duplicated: PHashDuplicationCriterionInput
+  """Filter Scenes by duplication criteria"""
+  duplicated: DuplicationCriterionInput
 
   """Filter by resolution"""
   resolution: ResolutionCriterionInput
@@ -3696,6 +3940,12 @@ input SceneFilterType {
   """Filter by StashID"""
   stash_id_endpoint: StashIDCriterionInput
 
+  """Filter by StashIDs"""
+  stash_ids_endpoint: StashIDsCriterionInput
+
+  """Filter by StashID count"""
+  stash_id_count: IntCriterionInput
+
   """Filter by url"""
   url: StringCriterionInput
 
@@ -3752,6 +4002,7 @@ input SceneFilterType {
 
   """Filter by related files that meet this criteria"""
   files_filter: FileFilterType
+  custom_fields: [CustomFieldCriterionInput!]
 }
 
 type SceneGroup {
@@ -3834,10 +4085,10 @@ input SceneMarkerFilterType {
   """Filter by scene date"""
   scene_date: DateCriterionInput
 
-  """Filter by cscene reation time"""
+  """Filter by scene creation time"""
   scene_created_at: TimestampCriterionInput
 
-  """Filter by lscene ast update time"""
+  """Filter by scene last update time"""
   scene_updated_at: TimestampCriterionInput
 
   """Filter by related scenes that meet this criteria"""
@@ -3970,12 +4221,18 @@ input SceneUpdateInput {
   """The number ot times a scene has been played"""
   play_count: Int
   primary_file_id: ID
+  custom_fields: CustomFieldsInput
 }
 
 input ScenesDestroyInput {
   ids: [ID!]!
   delete_file: Boolean
   delete_generated: Boolean
+
+  """
+  If true, delete the file entry from the database if the file is not assigned to any other objects
+  """
+  destroy_file_entry: Boolean
 }
 
 """Type of the content a scraper generates"""
@@ -4217,7 +4474,9 @@ type ScrapedPerformer {
   fake_tits: String
   penis_length: String
   circumcised: String
-  career_length: String
+  career_length: String @deprecated(reason: "Use career_start and career_end")
+  career_start: String
+  career_end: String
   tattoos: String
   piercings: String
   aliases: String
@@ -4253,6 +4512,8 @@ input ScrapedPerformerInput {
   penis_length: String
   circumcised: String
   career_length: String
+  career_start: String
+  career_end: String
   tattoos: String
   piercings: String
   aliases: String
@@ -4316,6 +4577,9 @@ type ScrapedTag {
   """Set if tag matched"""
   stored_id: ID
   name: String!
+  description: String
+  alias_list: [String!]
+  parent: ScrapedTag
 
   """Remote site ID, if applicable"""
   remote_site_id: String
@@ -4392,7 +4656,7 @@ input SetDefaultFilterInput {
 input SetFingerprintsInput {
   type: String!
 
-  """an null value will remove the fingerprint"""
+  """a null value will remove the fingerprint"""
   value: String
 }
 
@@ -4562,7 +4826,7 @@ type StashID {
 input StashIDCriterionInput {
   """
   If present, this value is treated as a predicate.
-  That is, it will filter based on stash_ids with the matching endpoint
+  That is, it will filter based on stash_id with the matching endpoint
   """
   endpoint: String
   stash_id: String
@@ -4573,6 +4837,16 @@ input StashIDInput {
   endpoint: String!
   stash_id: String!
   updated_at: Time
+}
+
+input StashIDsCriterionInput {
+  """
+  If present, this value is treated as a predicate.
+  That is, it will filter based on stash_ids with the matching endpoint
+  """
+  endpoint: String
+  stash_ids: [String]
+  modifier: CriterionModifier!
 }
 
 type StatsResultType {
@@ -4628,6 +4902,7 @@ type Studio {
   aliases: [String!]!
   tags: [Tag!]!
   ignore_auto_tag: Boolean!
+  organized: Boolean!
   image_path: String
   scene_count(depth: Int): Int!
   image_count(depth: Int): Int!
@@ -4644,6 +4919,7 @@ type Studio {
   groups: [Group!]!
   movies: [Movie!]! @deprecated(reason: "use groups instead")
   o_counter: Int
+  custom_fields: Map!
 }
 
 input StudioCreateInput {
@@ -4658,9 +4934,15 @@ input StudioCreateInput {
   rating100: Int
   favorite: Boolean
   details: String
+
+  """
+  Duplicate aliases and those equal to name will be ignored (case-insensitive)
+  """
   aliases: [String!]
   tag_ids: [ID!]
   ignore_auto_tag: Boolean
+  organized: Boolean
+  custom_fields: Map
 }
 
 input StudioDestroyInput {
@@ -4679,6 +4961,9 @@ input StudioFilterType {
 
   """Filter by StashID"""
   stash_id_endpoint: StashIDCriterionInput
+
+  """Filter by StashIDs"""
+  stash_ids_endpoint: StashIDsCriterionInput
 
   """Filter to only include studios with these tags"""
   tags: HierarchicalMultiCriterionInput
@@ -4699,6 +4984,9 @@ input StudioFilterType {
   """Filter by gallery count"""
   gallery_count: IntCriterionInput
 
+  """Filter by group count"""
+  group_count: IntCriterionInput
+
   """Filter by tag count"""
   tag_count: IntCriterionInput
 
@@ -4714,6 +5002,9 @@ input StudioFilterType {
   """Filter by autotag ignore value"""
   ignore_auto_tag: Boolean
 
+  """Filter by organized"""
+  organized: Boolean
+
   """Filter by related scenes that meet this criteria"""
   scenes_filter: SceneFilterType
 
@@ -4723,11 +5014,15 @@ input StudioFilterType {
   """Filter by related galleries that meet this criteria"""
   galleries_filter: GalleryFilterType
 
+  """Filter by related groups that meet this criteria"""
+  groups_filter: GroupFilterType
+
   """Filter by creation time"""
   created_at: TimestampCriterionInput
 
   """Filter by last update time"""
   updated_at: TimestampCriterionInput
+  custom_fields: [CustomFieldCriterionInput!]
 }
 
 input StudioUpdateInput {
@@ -4743,9 +5038,15 @@ input StudioUpdateInput {
   rating100: Int
   favorite: Boolean
   details: String
+
+  """
+  Duplicate aliases and those equal to name will be ignored (case-insensitive)
+  """
   aliases: [String!]
   tag_ids: [ID!]
   ignore_auto_tag: Boolean
+  organized: Boolean
+  custom_fields: CustomFieldsInput
 }
 
 type Subscription {
@@ -4800,6 +5101,7 @@ type Tag {
   children: [Tag!]!
   parent_count: Int!
   child_count: Int!
+  custom_fields: Map!
 }
 
 input TagCreateInput {
@@ -4808,6 +5110,10 @@ input TagCreateInput {
   """Value that does not appear in the UI but overrides name for sorting"""
   sort_name: String
   description: String
+
+  """
+  Duplicate aliases and those equal to name will be ignored (case-insensitive)
+  """
   aliases: [String!]
   ignore_auto_tag: Boolean
   favorite: Boolean
@@ -4817,6 +5123,7 @@ input TagCreateInput {
   stash_ids: [StashIDInput!]
   parent_ids: [ID!]
   child_ids: [ID!]
+  custom_fields: Map
 }
 
 input TagDestroyInput {
@@ -4879,7 +5186,7 @@ input TagFilterType {
   """Filter by number of parent tags the tag has"""
   parent_count: IntCriterionInput
 
-  """Filter by number f child tags the tag has"""
+  """Filter by number of child tags the tag has"""
   child_count: IntCriterionInput
 
   """Filter by autotag ignore value"""
@@ -4887,6 +5194,9 @@ input TagFilterType {
 
   """Filter by StashID"""
   stash_id_endpoint: StashIDCriterionInput
+
+  """Filter by StashID"""
+  stash_ids_endpoint: StashIDsCriterionInput
 
   """Filter by related scenes that meet this criteria"""
   scenes_filter: SceneFilterType
@@ -4897,11 +5207,24 @@ input TagFilterType {
   """Filter by related galleries that meet this criteria"""
   galleries_filter: GalleryFilterType
 
+  """Filter by related groups that meet this criteria"""
+  groups_filter: GroupFilterType
+
+  """Filter by related performers that meet this criteria"""
+  performers_filter: PerformerFilterType
+
+  """Filter by related studios that meet this criteria"""
+  studios_filter: StudioFilterType
+
+  """Filter by related scene markers that meet this criteria"""
+  markers_filter: SceneMarkerFilterType
+
   """Filter by creation time"""
   created_at: TimestampCriterionInput
 
   """Filter by last update time"""
   updated_at: TimestampCriterionInput
+  custom_fields: [CustomFieldCriterionInput!]
 }
 
 input TagUpdateInput {
@@ -4911,6 +5234,10 @@ input TagUpdateInput {
   """Value that does not appear in the UI but overrides name for sorting"""
   sort_name: String
   description: String
+
+  """
+  Duplicate aliases and those equal to name will be ignored (case-insensitive)
+  """
   aliases: [String!]
   ignore_auto_tag: Boolean
   favorite: Boolean
@@ -4920,11 +5247,13 @@ input TagUpdateInput {
   stash_ids: [StashIDInput!]
   parent_ids: [ID!]
   child_ids: [ID!]
+  custom_fields: CustomFieldsInput
 }
 
 input TagsMergeInput {
   source: [ID!]!
   destination: ID!
+  values: TagUpdateInput
 }
 
 """An RFC3339 timestamp"""
