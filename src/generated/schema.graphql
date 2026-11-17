@@ -224,6 +224,7 @@ input BulkSceneUpdateInput {
   movie_ids: BulkUpdateIds
   organized: Boolean
   performer_ids: BulkUpdateIds
+  production_date: String
   rating100: Int
   studio_id: ID
   tag_ids: BulkUpdateIds
@@ -437,6 +438,11 @@ input ConfigGeneralInput {
   databasePath: String
 
   """
+  Duration (in seconds) for marker preview videos without an explicit end time. Must be positive.
+  """
+  defaultMarkerPreviewDuration: Int
+
+  """
   Path to trash directory - if set, deleted files will be moved here instead of being permanently deleted
   """
   deleteTrashPath: String
@@ -498,6 +504,11 @@ input ConfigGeneralInput {
 
   """Whether to also output to stderr"""
   logOut: Boolean
+
+  """
+  Maximum duration (in seconds) for generated marker preview videos. 0 disables the ceiling.
+  """
+  maxMarkerPreviewDuration: Int
 
   """Maximum session cookie age"""
   maxSessionAge: Int
@@ -644,6 +655,11 @@ type ConfigGeneralResult {
   databasePath: String!
 
   """
+  Duration (in seconds) for marker preview videos without an explicit end time. Must be positive.
+  """
+  defaultMarkerPreviewDuration: Int!
+
+  """
   Path to trash directory - if set, deleted files will be moved here instead of being permanently deleted
   """
   deleteTrashPath: String!
@@ -705,6 +721,11 @@ type ConfigGeneralResult {
 
   """Whether to also output to stderr"""
   logOut: Boolean!
+
+  """
+  Maximum duration (in seconds) for generated marker preview videos. 0 disables the ceiling.
+  """
+  maxMarkerPreviewDuration: Int!
 
   """Maximum session cookie age"""
   maxSessionAge: Int!
@@ -1483,6 +1504,7 @@ type GalleryFile implements BaseFile {
   created_at: Time!
   fingerprint(type: String!): String
   fingerprints: [Fingerprint!]!
+  galleries: [Gallery!]!
   id: ID!
   mod_time: Time!
   parent_folder: Folder!
@@ -1932,6 +1954,16 @@ enum HashAlgorithm {
   OSHASH
 }
 
+input HierarchicalCountInput {
+  """
+  Number of descendant levels to include. Negative values include all descendants.
+  """
+  depth: Int
+  modifier: CriterionModifier!
+  value: Int!
+  value2: Int
+}
+
 input HierarchicalMultiCriterionInput {
   depth: Int
   excludes: [ID!]
@@ -2123,6 +2155,7 @@ type ImageFile implements BaseFile {
   format: String!
   height: Int!
   id: ID!
+  images: [Image!]!
   mod_time: Time!
   parent_folder: Folder!
   parent_folder_id: ID! @deprecated(reason: "Use parent_folder instead")
@@ -2791,7 +2824,7 @@ type Mutation {
   """
   Generates screenshot at specified time in seconds. Leave empty to generate default screenshot
   """
-  sceneGenerateScreenshot(at: Float, id: ID!): String!
+  sceneGenerateScreenshot(at: Float, id: ID!): ID!
 
   """Increments the o-counter for a scene. Returns the new value"""
   sceneIncrementO(id: ID!): Int! @deprecated(reason: "Use sceneAddO instead")
@@ -3369,6 +3402,7 @@ type Query {
     Fractional seconds are ok: 0.5 will mean only files that have durations within 0.5 seconds between them will be matched based on PHash distance.
     """
     duration_diff: Float
+    scene_filter: SceneFilterType
   ): [[Scene!]!]!
 
   """Find a file by its id or path"""
@@ -3752,6 +3786,7 @@ type Scene {
 
   """Times a scene was played"""
   play_history: [Time!]!
+  production_date: String
   rating100: Int
 
   """The time index a scene was left at"""
@@ -3790,6 +3825,7 @@ input SceneCreateInput {
   movies: [SceneMovieInput!]
   organized: Boolean
   performer_ids: [ID!]
+  production_date: String
   rating100: Int
   stash_ids: [StashIDInput!]
   studio_id: ID
@@ -3944,6 +3980,9 @@ input SceneFilterType {
 
   """Filter by play duration (in seconds)"""
   play_duration: IntCriterionInput
+
+  """Filter by production date"""
+  production_date: DateCriterionInput
   rating100: IntCriterionInput
 
   """Filter by resolution"""
@@ -4193,6 +4232,7 @@ input SceneUpdateInput {
   """The total time a scene has spent playing"""
   play_duration: Float
   primary_file_id: ID
+  production_date: String
   rating100: Int
 
   """The time index a scene was left at"""
@@ -4521,6 +4561,7 @@ type ScrapedScene {
   image: String
   movies: [ScrapedMovie!] @deprecated(reason: "use groups")
   performers: [ScrapedPerformer!]
+  production_date: String
   remote_site_id: String
   studio: ScrapedStudio
   tags: [ScrapedTag!]
@@ -4534,6 +4575,7 @@ input ScrapedSceneInput {
   date: String
   details: String
   director: String
+  production_date: String
   remote_site_id: String
   title: String
   url: String
@@ -4660,6 +4702,8 @@ input SetupInput {
 
   """Empty to indicate default"""
   generatedLocation: String!
+  initialPassword: String
+  initialUsername: String
 
   """True if SFW content mode is enabled"""
   sfwContentMode: Boolean
@@ -4699,6 +4743,11 @@ input StashBoxBatchTagInput {
   """
   ids: [ID!]
 
+  """
+  Collection fields to merge (add to existing) instead of overwriting when executing the tagging
+  """
+  merge_fields: [String!]
+
   """Names of the items in the stash-box instance to search for and create"""
   names: [String!]
 
@@ -4734,6 +4783,7 @@ type StashBoxFingerprint {
   algorithm: String!
   duration: Int!
   hash: String!
+  submissions: Int!
 }
 
 input StashBoxFingerprintSubmissionInput {
@@ -4892,12 +4942,13 @@ type Studio {
   movie_count(depth: Int): Int! @deprecated(reason: "use group_count instead")
   movies: [Movie!]! @deprecated(reason: "use groups instead")
   name: String!
-  o_counter: Int
+  o_counter(depth: Int): Int!
   organized: Boolean!
   parent_studio: Studio
   performer_count(depth: Int): Int!
   rating100: Int
   scene_count(depth: Int): Int!
+  scene_marker_count(depth: Int): Int!
   stash_ids: [StashID!]!
   tags: [Tag!]!
   updated_at: Time!
@@ -4910,6 +4961,7 @@ input StudioCreateInput {
   Duplicate aliases and those equal to name will be ignored (case-insensitive)
   """
   aliases: [String!]
+  child_ids: [ID!]
   custom_fields: Map
   details: String
   favorite: Boolean
@@ -5012,6 +5064,7 @@ input StudioUpdateInput {
   Duplicate aliases and those equal to name will be ignored (case-insensitive)
   """
   aliases: [String!]
+  child_ids: [ID!]
   custom_fields: CustomFieldsInput
   details: String
   favorite: Boolean
@@ -5138,10 +5191,10 @@ input TagFilterType {
   galleries_filter: GalleryFilterType
 
   """Filter by number of galleries with this tag"""
-  gallery_count: IntCriterionInput
+  gallery_count: HierarchicalCountInput
 
   """Filter by number of group with this tag"""
-  group_count: IntCriterionInput
+  group_count: HierarchicalCountInput
 
   """Filter by related groups that meet this criteria"""
   groups_filter: GroupFilterType
@@ -5150,7 +5203,7 @@ input TagFilterType {
   ignore_auto_tag: Boolean
 
   """Filter by number of images with this tag"""
-  image_count: IntCriterionInput
+  image_count: HierarchicalCountInput
 
   """Filter by related images that meet this criteria"""
   images_filter: ImageFilterType
@@ -5159,13 +5212,13 @@ input TagFilterType {
   is_missing: String
 
   """Filter by number of markers with this tag"""
-  marker_count: IntCriterionInput
+  marker_count: HierarchicalCountInput
 
   """Filter by related scene markers that meet this criteria"""
   markers_filter: SceneMarkerFilterType
 
   """Filter by number of movies with this tag"""
-  movie_count: IntCriterionInput
+  movie_count: HierarchicalCountInput
 
   """Filter by tag name"""
   name: StringCriterionInput
@@ -5177,13 +5230,13 @@ input TagFilterType {
   parents: HierarchicalMultiCriterionInput
 
   """Filter by number of performers with this tag"""
-  performer_count: IntCriterionInput
+  performer_count: HierarchicalCountInput
 
   """Filter by related performers that meet this criteria"""
   performers_filter: PerformerFilterType
 
   """Filter by number of scenes with this tag"""
-  scene_count: IntCriterionInput
+  scene_count: HierarchicalCountInput
 
   """Filter by related scenes that meet this criteria"""
   scenes_filter: SceneFilterType
@@ -5198,7 +5251,7 @@ input TagFilterType {
   stash_ids_endpoint: StashIDsCriterionInput
 
   """Filter by number of studios with this tag"""
-  studio_count: IntCriterionInput
+  studio_count: HierarchicalCountInput
 
   """Filter by related studios that meet this criteria"""
   studios_filter: StudioFilterType
@@ -5281,6 +5334,7 @@ type VideoFile implements BaseFile {
   parent_folder: Folder!
   parent_folder_id: ID! @deprecated(reason: "Use parent_folder instead")
   path: String!
+  scenes: [Scene!]!
   size: Int64!
   updated_at: Time!
   video_codec: String!
