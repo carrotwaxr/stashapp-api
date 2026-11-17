@@ -11,44 +11,44 @@ export default {
         77,
         96,
         111,
-        114,
-        117,
-        130,
+        115,
+        118,
         131,
-        135,
+        132,
         136,
-        138,
+        137,
         139,
-        142,
-        144,
-        147,
+        140,
+        143,
+        145,
         148,
-        162,
-        167,
-        177,
-        182,
-        185,
-        190,
-        223,
-        234,
-        257,
-        275,
+        149,
+        163,
+        168,
+        178,
+        183,
+        186,
+        191,
+        224,
+        235,
+        258,
         276,
-        285,
-        292,
+        277,
+        286,
         293,
-        295
+        294,
+        296
     ],
     "types": {
         "AddTempDLNAIPInput": {
             "address": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "AnonymiseDatabaseInput": {
@@ -56,50 +56,50 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Any": {},
         "AssignSceneFileInput": {
             "file_id": [
-                114
+                115
             ],
             "scene_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "AutoTagMetadataInput": {
             "paths": [
-                276
+                277
             ],
             "performers": [
-                276
+                277
             ],
             "studios": [
-                276
+                277
             ],
             "tags": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "AutoTagMetadataOptions": {
             "performers": [
-                276
+                277
             ],
             "studios": [
-                276
+                277
             ],
             "tags": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BackupDatabaseInput": {
@@ -110,21 +110,21 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BaseFile": {
             "basename": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "fingerprint": [
-                276,
+                277,
                 {
                     "type": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
@@ -133,31 +133,31 @@ export default {
                 75
             ],
             "id": [
-                114
+                115
             ],
             "mod_time": [
-                292
+                293
             ],
             "parent_folder": [
                 79
             ],
             "parent_folder_id": [
-                114
+                115
             ],
             "path": [
-                276
+                277
             ],
             "size": [
-                139
+                140
             ],
             "updated_at": [
-                292
+                293
             ],
             "zip_file": [
                 8
             ],
             "zip_file_id": [
-                114
+                115
             ],
             "on_BasicFile": [
                 8
@@ -166,27 +166,27 @@ export default {
                 88
             ],
             "on_ImageFile": [
-                126
+                127
             ],
             "on_VideoFile": [
-                298
+                299
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BasicFile": {
             "basename": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "fingerprint": [
-                276,
+                277,
                 {
                     "type": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
@@ -195,34 +195,34 @@ export default {
                 75
             ],
             "id": [
-                114
+                115
             ],
             "mod_time": [
-                292
+                293
             ],
             "parent_folder": [
                 79
             ],
             "parent_folder_id": [
-                114
+                115
             ],
             "path": [
-                276
+                277
             ],
             "size": [
-                139
+                140
             ],
             "updated_at": [
-                292
+                293
             ],
             "zip_file": [
                 8
             ],
             "zip_file_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BlobsStorageType": {},
@@ -230,22 +230,22 @@ export default {
         "Boolean": {},
         "BulkGalleryUpdateInput": {
             "clientMutationId": [
-                276
+                277
             ],
             "code": [
-                276
+                277
             ],
             "custom_fields": [
                 46
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "ids": [
-                114
+                115
             ],
             "organized": [
                 11
@@ -254,33 +254,33 @@ export default {
                 23
             ],
             "photographer": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "scene_ids": [
                 23
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
                 23
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
                 24
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkGroupUpdateInput": {
             "clientMutationId": [
-                276
+                277
             ],
             "containing_groups": [
                 21
@@ -289,25 +289,25 @@ export default {
                 46
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "ids": [
-                114
+                115
             ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "sub_groups": [
                 21
             ],
             "synopsis": [
-                276
+                277
             ],
             "tag_ids": [
                 23
@@ -316,30 +316,30 @@ export default {
                 24
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkImageUpdateInput": {
             "clientMutationId": [
-                276
+                277
             ],
             "code": [
-                276
+                277
             ],
             "custom_fields": [
                 46
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "gallery_ids": [
                 23
             ],
             "ids": [
-                114
+                115
             ],
             "organized": [
                 11
@@ -348,45 +348,45 @@ export default {
                 23
             ],
             "photographer": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
                 23
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
                 24
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkMovieUpdateInput": {
             "clientMutationId": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "ids": [
-                114
+                115
             ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
                 23
@@ -395,7 +395,7 @@ export default {
                 24
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkPerformerUpdateInput": {
@@ -403,46 +403,46 @@ export default {
                 24
             ],
             "birthdate": [
-                276
+                277
             ],
             "career_end": [
-                276
+                277
             ],
             "career_length": [
-                276
+                277
             ],
             "career_start": [
-                276
+                277
             ],
             "circumcised": [
                 25
             ],
             "clientMutationId": [
-                276
+                277
             ],
             "country": [
-                276
+                277
             ],
             "custom_fields": [
                 46
             ],
             "death_date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "disambiguation": [
-                276
+                277
             ],
             "ethnicity": [
-                276
+                277
             ],
             "eye_color": [
-                276
+                277
             ],
             "fake_tits": [
-                276
+                277
             ],
             "favorite": [
                 11
@@ -451,89 +451,89 @@ export default {
                 96
             ],
             "hair_color": [
-                276
+                277
             ],
             "height_cm": [
-                138
+                139
             ],
             "ids": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
             ],
             "instagram": [
-                276
+                277
             ],
             "measurements": [
-                276
+                277
             ],
             "penis_length": [
                 77
             ],
             "piercings": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "tag_ids": [
                 23
             ],
             "tattoos": [
-                276
+                277
             ],
             "twitter": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
                 24
             ],
             "weight": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkSceneMarkerUpdateInput": {
             "ids": [
-                114
+                115
             ],
             "primary_tag_id": [
-                114
+                115
             ],
             "tag_ids": [
                 23
             ],
             "title": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkSceneUpdateInput": {
             "clientMutationId": [
-                276
+                277
             ],
             "code": [
-                276
+                277
             ],
             "custom_fields": [
                 46
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "gallery_ids": [
                 23
@@ -542,7 +542,7 @@ export default {
                 23
             ],
             "ids": [
-                114
+                115
             ],
             "movie_ids": [
                 23
@@ -553,37 +553,40 @@ export default {
             "performer_ids": [
                 23
             ],
+            "production_date": [
+                277
+            ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
                 23
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
                 24
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkStudioUpdateInput": {
             "details": [
-                276
+                277
             ],
             "favorite": [
                 11
             ],
             "ids": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
@@ -592,22 +595,22 @@ export default {
                 11
             ],
             "parent_id": [
-                114
+                115
             ],
             "rating100": [
-                138
+                139
             ],
             "tag_ids": [
                 23
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
                 24
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkTagUpdateInput": {
@@ -618,13 +621,13 @@ export default {
                 23
             ],
             "description": [
-                276
+                277
             ],
             "favorite": [
                 11
             ],
             "ids": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
@@ -633,7 +636,7 @@ export default {
                 23
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkUpdateGroupDescriptionsInput": {
@@ -644,19 +647,19 @@ export default {
                 22
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkUpdateIdMode": {},
         "BulkUpdateIds": {
             "ids": [
-                114
+                115
             ],
             "mode": [
                 22
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "BulkUpdateStrings": {
@@ -664,10 +667,10 @@ export default {
                 22
             ],
             "values": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "CircumcisedEnum": {},
@@ -679,7 +682,7 @@ export default {
                 25
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "CleanGeneratedInput": {
@@ -705,7 +708,7 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "CleanMetadataInput": {
@@ -716,10 +719,10 @@ export default {
                 11
             ],
             "paths": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigDLNAInput": {
@@ -727,22 +730,22 @@ export default {
                 11
             ],
             "interfaces": [
-                276
+                277
             ],
             "port": [
-                138
+                139
             ],
             "serverName": [
-                276
+                277
             ],
             "videoSortOrder": [
-                276
+                277
             ],
             "whitelistedIPs": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigDLNAResult": {
@@ -750,22 +753,22 @@ export default {
                 11
             ],
             "interfaces": [
-                276
+                277
             ],
             "port": [
-                138
+                139
             ],
             "serverName": [
-                276
+                277
             ],
             "videoSortOrder": [
-                276
+                277
             ],
             "whitelistedIPs": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigDefaultSettingsInput": {
@@ -782,13 +785,13 @@ export default {
                 98
             ],
             "identify": [
-                118
+                119
             ],
             "scan": [
-                197
+                198
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigDefaultSettingsResult": {
@@ -805,13 +808,13 @@ export default {
                 99
             ],
             "identify": [
-                121
+                122
             ],
             "scan": [
-                198
+                199
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigDisableDropdownCreate": {
@@ -831,7 +834,7 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigDisableDropdownCreateInput": {
@@ -851,21 +854,21 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigGeneralInput": {
             "backupDirectoryPath": [
-                276
+                277
             ],
             "blobsPath": [
-                276
+                277
             ],
             "blobsStorage": [
                 9
             ],
             "cachePath": [
-                276
+                277
             ],
             "calculateMD5": [
                 11
@@ -877,127 +880,321 @@ export default {
                 11
             ],
             "customPerformerImageLocation": [
-                276
+                277
             ],
             "databasePath": [
-                276
+                277
+            ],
+            "defaultMarkerPreviewDuration": [
+                139
             ],
             "deleteTrashPath": [
-                276
+                277
             ],
             "drawFunscriptHeatmapRange": [
                 11
             ],
             "excludes": [
-                276
+                277
             ],
             "ffmpegPath": [
-                276
+                277
             ],
             "ffprobePath": [
-                276
+                277
             ],
             "galleryCoverRegex": [
-                276
+                277
             ],
             "galleryExtensions": [
-                276
+                277
             ],
             "generatedPath": [
-                276
+                277
             ],
             "imageExcludes": [
-                276
+                277
             ],
             "imageExtensions": [
-                276
+                277
             ],
             "liveTranscodeInputArgs": [
-                276
+                277
             ],
             "liveTranscodeOutputArgs": [
-                276
+                277
             ],
             "logAccess": [
                 11
             ],
             "logFile": [
-                276
+                277
             ],
             "logFileMaxSize": [
-                138
+                139
             ],
             "logLevel": [
-                276
+                277
             ],
             "logOut": [
                 11
             ],
+            "maxMarkerPreviewDuration": [
+                139
+            ],
             "maxSessionAge": [
-                138
+                139
             ],
             "maxStreamingTranscodeSize": [
-                275
+                276
             ],
             "maxTranscodeSize": [
-                275
+                276
             ],
             "maximumSprites": [
-                138
+                139
             ],
             "metadataPath": [
-                276
+                277
             ],
             "minimumSprites": [
-                138
+                139
             ],
             "parallelTasks": [
-                138
+                139
             ],
             "password": [
-                276
+                277
             ],
             "pluginPackageSources": [
-                165
+                166
             ],
             "pluginsPath": [
-                276
+                277
             ],
             "previewAudio": [
                 11
             ],
             "previewExcludeEnd": [
-                276
+                277
             ],
             "previewExcludeStart": [
-                276
+                277
             ],
             "previewPreset": [
-                185
+                186
             ],
             "previewSegmentDuration": [
                 77
             ],
             "previewSegments": [
-                138
+                139
             ],
             "pythonPath": [
-                276
+                277
             ],
             "scraperPackageSources": [
-                165
+                166
             ],
             "scrapersPath": [
-                276
+                277
             ],
             "spriteInterval": [
                 77
             ],
             "spriteScreenshotSize": [
-                138
+                139
             ],
             "stashBoxes": [
-                263
+                264
+            ],
+            "stashes": [
+                270
+            ],
+            "transcodeHardwareAcceleration": [
+                11
+            ],
+            "transcodeInputArgs": [
+                277
+            ],
+            "transcodeOutputArgs": [
+                277
+            ],
+            "useCustomSpriteInterval": [
+                11
+            ],
+            "username": [
+                277
+            ],
+            "videoExtensions": [
+                277
+            ],
+            "videoFileNamingAlgorithm": [
+                111
+            ],
+            "writeImageThumbnails": [
+                11
+            ],
+            "__typename": [
+                277
+            ]
+        },
+        "ConfigGeneralResult": {
+            "apiKey": [
+                277
+            ],
+            "backupDirectoryPath": [
+                277
+            ],
+            "blobsPath": [
+                277
+            ],
+            "blobsStorage": [
+                9
+            ],
+            "cachePath": [
+                277
+            ],
+            "calculateMD5": [
+                11
+            ],
+            "configFilePath": [
+                277
+            ],
+            "createGalleriesFromFolders": [
+                11
+            ],
+            "createImageClipsFromVideos": [
+                11
+            ],
+            "customPerformerImageLocation": [
+                277
+            ],
+            "databasePath": [
+                277
+            ],
+            "defaultMarkerPreviewDuration": [
+                139
+            ],
+            "deleteTrashPath": [
+                277
+            ],
+            "drawFunscriptHeatmapRange": [
+                11
+            ],
+            "excludes": [
+                277
+            ],
+            "ffmpegPath": [
+                277
+            ],
+            "ffprobePath": [
+                277
+            ],
+            "galleryCoverRegex": [
+                277
+            ],
+            "galleryExtensions": [
+                277
+            ],
+            "generatedPath": [
+                277
+            ],
+            "imageExcludes": [
+                277
+            ],
+            "imageExtensions": [
+                277
+            ],
+            "liveTranscodeInputArgs": [
+                277
+            ],
+            "liveTranscodeOutputArgs": [
+                277
+            ],
+            "logAccess": [
+                11
+            ],
+            "logFile": [
+                277
+            ],
+            "logFileMaxSize": [
+                139
+            ],
+            "logLevel": [
+                277
+            ],
+            "logOut": [
+                11
+            ],
+            "maxMarkerPreviewDuration": [
+                139
+            ],
+            "maxSessionAge": [
+                139
+            ],
+            "maxStreamingTranscodeSize": [
+                276
+            ],
+            "maxTranscodeSize": [
+                276
+            ],
+            "maximumSprites": [
+                139
+            ],
+            "metadataPath": [
+                277
+            ],
+            "minimumSprites": [
+                139
+            ],
+            "parallelTasks": [
+                139
+            ],
+            "password": [
+                277
+            ],
+            "pluginPackageSources": [
+                165
+            ],
+            "pluginsPath": [
+                277
+            ],
+            "previewAudio": [
+                11
+            ],
+            "previewExcludeEnd": [
+                277
+            ],
+            "previewExcludeStart": [
+                277
+            ],
+            "previewPreset": [
+                186
+            ],
+            "previewSegmentDuration": [
+                77
+            ],
+            "previewSegments": [
+                139
+            ],
+            "pythonPath": [
+                277
+            ],
+            "scraperPackageSources": [
+                165
+            ],
+            "scrapersPath": [
+                277
+            ],
+            "spriteInterval": [
+                77
+            ],
+            "spriteScreenshotSize": [
+                139
+            ],
+            "stashBoxes": [
+                259
             ],
             "stashes": [
                 269
@@ -1006,19 +1203,19 @@ export default {
                 11
             ],
             "transcodeInputArgs": [
-                276
+                277
             ],
             "transcodeOutputArgs": [
-                276
+                277
             ],
             "useCustomSpriteInterval": [
                 11
             ],
             "username": [
-                276
+                277
             ],
             "videoExtensions": [
-                276
+                277
             ],
             "videoFileNamingAlgorithm": [
                 111
@@ -1027,189 +1224,7 @@ export default {
                 11
             ],
             "__typename": [
-                276
-            ]
-        },
-        "ConfigGeneralResult": {
-            "apiKey": [
-                276
-            ],
-            "backupDirectoryPath": [
-                276
-            ],
-            "blobsPath": [
-                276
-            ],
-            "blobsStorage": [
-                9
-            ],
-            "cachePath": [
-                276
-            ],
-            "calculateMD5": [
-                11
-            ],
-            "configFilePath": [
-                276
-            ],
-            "createGalleriesFromFolders": [
-                11
-            ],
-            "createImageClipsFromVideos": [
-                11
-            ],
-            "customPerformerImageLocation": [
-                276
-            ],
-            "databasePath": [
-                276
-            ],
-            "deleteTrashPath": [
-                276
-            ],
-            "drawFunscriptHeatmapRange": [
-                11
-            ],
-            "excludes": [
-                276
-            ],
-            "ffmpegPath": [
-                276
-            ],
-            "ffprobePath": [
-                276
-            ],
-            "galleryCoverRegex": [
-                276
-            ],
-            "galleryExtensions": [
-                276
-            ],
-            "generatedPath": [
-                276
-            ],
-            "imageExcludes": [
-                276
-            ],
-            "imageExtensions": [
-                276
-            ],
-            "liveTranscodeInputArgs": [
-                276
-            ],
-            "liveTranscodeOutputArgs": [
-                276
-            ],
-            "logAccess": [
-                11
-            ],
-            "logFile": [
-                276
-            ],
-            "logFileMaxSize": [
-                138
-            ],
-            "logLevel": [
-                276
-            ],
-            "logOut": [
-                11
-            ],
-            "maxSessionAge": [
-                138
-            ],
-            "maxStreamingTranscodeSize": [
-                275
-            ],
-            "maxTranscodeSize": [
-                275
-            ],
-            "maximumSprites": [
-                138
-            ],
-            "metadataPath": [
-                276
-            ],
-            "minimumSprites": [
-                138
-            ],
-            "parallelTasks": [
-                138
-            ],
-            "password": [
-                276
-            ],
-            "pluginPackageSources": [
-                164
-            ],
-            "pluginsPath": [
-                276
-            ],
-            "previewAudio": [
-                11
-            ],
-            "previewExcludeEnd": [
-                276
-            ],
-            "previewExcludeStart": [
-                276
-            ],
-            "previewPreset": [
-                185
-            ],
-            "previewSegmentDuration": [
-                77
-            ],
-            "previewSegments": [
-                138
-            ],
-            "pythonPath": [
-                276
-            ],
-            "scraperPackageSources": [
-                164
-            ],
-            "scrapersPath": [
-                276
-            ],
-            "spriteInterval": [
-                77
-            ],
-            "spriteScreenshotSize": [
-                138
-            ],
-            "stashBoxes": [
-                258
-            ],
-            "stashes": [
-                268
-            ],
-            "transcodeHardwareAcceleration": [
-                11
-            ],
-            "transcodeInputArgs": [
-                276
-            ],
-            "transcodeOutputArgs": [
-                276
-            ],
-            "useCustomSpriteInterval": [
-                11
-            ],
-            "username": [
-                276
-            ],
-            "videoExtensions": [
-                276
-            ],
-            "videoFileNamingAlgorithm": [
-                111
-            ],
-            "writeImageThumbnails": [
-                11
-            ],
-            "__typename": [
-                276
+                277
             ]
         },
         "ConfigImageLightboxInput": {
@@ -1217,7 +1232,7 @@ export default {
                 11
             ],
             "displayMode": [
-                130
+                131
             ],
             "resetZoomOnNav": [
                 11
@@ -1226,16 +1241,16 @@ export default {
                 11
             ],
             "scrollAttemptsBeforeChange": [
-                138
+                139
             ],
             "scrollMode": [
-                131
+                132
             ],
             "slideshowDelay": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigImageLightboxResult": {
@@ -1243,7 +1258,7 @@ export default {
                 11
             ],
             "displayMode": [
-                130
+                131
             ],
             "resetZoomOnNav": [
                 11
@@ -1252,16 +1267,16 @@ export default {
                 11
             ],
             "scrollAttemptsBeforeChange": [
-                138
+                139
             ],
             "scrollMode": [
-                131
+                132
             ],
             "slideshowDelay": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigInterfaceInput": {
@@ -1275,13 +1290,13 @@ export default {
                 11
             ],
             "css": [
-                276
+                277
             ],
             "cssEnabled": [
                 11
             ],
             "customLocales": [
-                276
+                277
             ],
             "customLocalesEnabled": [
                 11
@@ -1293,28 +1308,28 @@ export default {
                 34
             ],
             "funscriptOffset": [
-                138
+                139
             ],
             "handyKey": [
-                276
+                277
             ],
             "imageLightbox": [
                 37
             ],
             "javascript": [
-                276
+                277
             ],
             "javascriptEnabled": [
                 11
             ],
             "language": [
-                276
+                277
             ],
             "maximumLoopDuration": [
-                138
+                139
             ],
             "menuItems": [
-                276
+                277
             ],
             "noBrowser": [
                 11
@@ -1338,13 +1353,13 @@ export default {
                 11
             ],
             "wallPlayback": [
-                276
+                277
             ],
             "wallShowTitle": [
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigInterfaceResult": {
@@ -1358,13 +1373,13 @@ export default {
                 11
             ],
             "css": [
-                276
+                277
             ],
             "cssEnabled": [
                 11
             ],
             "customLocales": [
-                276
+                277
             ],
             "customLocalesEnabled": [
                 11
@@ -1376,28 +1391,28 @@ export default {
                 33
             ],
             "funscriptOffset": [
-                138
+                139
             ],
             "handyKey": [
-                276
+                277
             ],
             "imageLightbox": [
                 38
             ],
             "javascript": [
-                276
+                277
             ],
             "javascriptEnabled": [
                 11
             ],
             "language": [
-                276
+                277
             ],
             "maximumLoopDuration": [
-                138
+                139
             ],
             "menuItems": [
-                276
+                277
             ],
             "noBrowser": [
                 11
@@ -1421,13 +1436,13 @@ export default {
                 11
             ],
             "wallPlayback": [
-                276
+                277
             ],
             "wallShowTitle": [
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigResult": {
@@ -1444,10 +1459,10 @@ export default {
                 40
             ],
             "plugins": [
-                177,
+                178,
                 {
                     "include": [
-                        114,
+                        115,
                         "[ID!]"
                     ]
                 }
@@ -1456,50 +1471,50 @@ export default {
                 43
             ],
             "ui": [
-                148
+                149
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigScrapingInput": {
             "excludeTagPatterns": [
-                276
+                277
             ],
             "scraperCDPPath": [
-                276
+                277
             ],
             "scraperCertCheck": [
                 11
             ],
             "scraperUserAgent": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ConfigScrapingResult": {
             "excludeTagPatterns": [
-                276
+                277
             ],
             "scraperCDPPath": [
-                276
+                277
             ],
             "scraperCertCheck": [
                 11
             ],
             "scraperUserAgent": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "CriterionModifier": {},
         "CustomFieldCriterionInput": {
             "field": [
-                276
+                277
             ],
             "modifier": [
                 44
@@ -1508,32 +1523,32 @@ export default {
                 2
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "CustomFieldsInput": {
             "full": [
-                148
+                149
             ],
             "partial": [
-                148
+                149
             ],
             "remove": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "DLNAIP": {
             "ipAddress": [
-                276
+                277
             ],
             "until": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "DLNAStatus": {
@@ -1541,16 +1556,16 @@ export default {
                 47
             ],
             "recentIPAddresses": [
-                276
+                277
             ],
             "running": [
                 11
             ],
             "until": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "DateCriterionInput": {
@@ -1558,48 +1573,48 @@ export default {
                 44
             ],
             "value": [
-                276
+                277
             ],
             "value2": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "DestroyFilterInput": {
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Directory": {
             "directories": [
-                276
+                277
             ],
             "parent": [
-                276
+                277
             ],
             "path": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "DisableDLNAInput": {
             "duration": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "DuplicationCriterionInput": {
             "distance": [
-                138
+                139
             ],
             "duplicated": [
                 11
@@ -1617,15 +1632,15 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "EnableDLNAInput": {
             "duration": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ExportObjectTypeInput": {
@@ -1633,10 +1648,10 @@ export default {
                 11
             ],
             "ids": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ExportObjectsInput": {
@@ -1668,12 +1683,12 @@ export default {
                 55
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FileDuplicationCriterionInput": {
             "distance": [
-                138
+                139
             ],
             "duplicated": [
                 11
@@ -1682,7 +1697,7 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FileFilterType": {
@@ -1696,13 +1711,13 @@ export default {
                 58
             ],
             "basename": [
-                277
+                278
             ],
             "created_at": [
-                294
+                295
             ],
             "dir": [
-                277
+                278
             ],
             "duplicated": [
                 57
@@ -1711,63 +1726,63 @@ export default {
                 89
             ],
             "gallery_count": [
-                140
+                141
             ],
             "hashes": [
                 76
             ],
             "image_count": [
-                140
+                141
             ],
             "image_file_filter": [
-                127
+                128
             ],
             "images_filter": [
-                129
+                130
             ],
             "mod_time": [
-                294
+                295
             ],
             "parent_folder": [
-                112
+                113
             ],
             "path": [
-                277
+                278
             ],
             "scene_count": [
-                140
+                141
             ],
             "scenes_filter": [
-                203
+                204
             ],
             "updated_at": [
-                294
+                295
             ],
             "video_file_filter": [
-                299
+                300
             ],
             "zip_file": [
-                159
+                160
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FileSetFingerprintsInput": {
             "fingerprints": [
-                255
+                256
             ],
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FilterMode": {},
         "FindFilesResultType": {
             "count": [
-                138
+                139
             ],
             "duration": [
                 77
@@ -1779,52 +1794,52 @@ export default {
                 77
             ],
             "size": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindFilterType": {
             "direction": [
-                257
+                258
             ],
             "page": [
-                138
+                139
             ],
             "per_page": [
-                138
+                139
             ],
             "q": [
-                276
+                277
             ],
             "sort": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindFoldersResultType": {
             "count": [
-                138
+                139
             ],
             "folders": [
                 79
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindGalleriesResultType": {
             "count": [
-                138
+                139
             ],
             "galleries": [
                 81
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindGalleryChaptersResultType": {
@@ -1832,84 +1847,84 @@ export default {
                 83
             ],
             "count": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindGroupsResultType": {
             "count": [
-                138
+                139
             ],
             "groups": [
                 102
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindImagesResultType": {
             "count": [
-                138
+                139
             ],
             "filesize": [
                 77
             ],
             "images": [
-                124
+                125
             ],
             "megapixels": [
                 77
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindJobInput": {
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindMoviesResultType": {
             "count": [
-                138
+                139
             ],
             "movies": [
-                154
+                155
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindPerformersResultType": {
             "count": [
-                138
+                139
             ],
             "performers": [
-                168
+                169
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindSceneMarkersResultType": {
             "count": [
-                138
+                139
             ],
             "scene_markers": [
-                207
+                208
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindScenesResultType": {
             "count": [
-                138
+                139
             ],
             "duration": [
                 77
@@ -1918,57 +1933,57 @@ export default {
                 77
             ],
             "scenes": [
-                199
+                200
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindStudiosResultType": {
             "count": [
-                138
+                139
             ],
             "studios": [
-                278
+                279
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FindTagsResultType": {
             "count": [
-                138
+                139
             ],
             "tags": [
-                286
+                287
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Fingerprint": {
             "type": [
-                276
+                277
             ],
             "value": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FingerprintFilterInput": {
             "distance": [
-                138
+                139
             ],
             "type": [
-                276
+                277
             ],
             "value": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Float": {},
@@ -1983,48 +1998,48 @@ export default {
                 77
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Folder": {
             "basename": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "id": [
-                114
+                115
             ],
             "mod_time": [
-                292
+                293
             ],
             "parent_folder": [
                 79
             ],
             "parent_folder_id": [
-                114
+                115
             ],
             "parent_folders": [
                 79
             ],
             "path": [
-                276
+                277
             ],
             "sub_folders": [
                 79
             ],
             "updated_at": [
-                292
+                293
             ],
             "zip_file": [
                 8
             ],
             "zip_file_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "FolderFilterType": {
@@ -2038,10 +2053,10 @@ export default {
                 80
             ],
             "basename": [
-                277
+                278
             ],
             "created_at": [
-                294
+                295
             ],
             "files_filter": [
                 58
@@ -2050,25 +2065,25 @@ export default {
                 89
             ],
             "gallery_count": [
-                140
+                141
             ],
             "mod_time": [
-                294
+                295
             ],
             "parent_folder": [
-                112
+                113
             ],
             "path": [
-                277
+                278
             ],
             "updated_at": [
-                294
+                295
             ],
             "zip_file": [
-                159
+                160
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Gallery": {
@@ -2076,22 +2091,22 @@ export default {
                 83
             ],
             "code": [
-                276
+                277
             ],
             "cover": [
-                124
+                125
             ],
             "created_at": [
-                292
+                293
             ],
             "custom_fields": [
-                148
+                149
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "files": [
                 88
@@ -2100,19 +2115,19 @@ export default {
                 79
             ],
             "id": [
-                114
+                115
             ],
             "image": [
-                124,
+                125,
                 {
                     "index": [
-                        138,
+                        139,
                         "Int!"
                     ]
                 }
             ],
             "image_count": [
-                138
+                139
             ],
             "organized": [
                 11
@@ -2121,149 +2136,149 @@ export default {
                 90
             ],
             "performers": [
-                168
+                169
             ],
             "photographer": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "scenes": [
-                199
+                200
             ],
             "studio": [
-                278
+                279
             ],
             "tags": [
-                286
+                287
             ],
             "title": [
-                276
+                277
             ],
             "updated_at": [
-                292
+                293
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryAddInput": {
             "gallery_id": [
-                114
+                115
             ],
             "image_ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryChapter": {
             "created_at": [
-                292
+                293
             ],
             "gallery": [
                 81
             ],
             "id": [
-                114
+                115
             ],
             "image_index": [
-                138
+                139
             ],
             "title": [
-                276
+                277
             ],
             "updated_at": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryChapterCreateInput": {
             "gallery_id": [
-                114
+                115
             ],
             "image_index": [
-                138
+                139
             ],
             "title": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryChapterUpdateInput": {
             "gallery_id": [
-                114
+                115
             ],
             "id": [
-                114
+                115
             ],
             "image_index": [
-                138
+                139
             ],
             "title": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryCreateInput": {
             "code": [
-                276
+                277
             ],
             "custom_fields": [
-                148
+                149
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "organized": [
                 11
             ],
             "performer_ids": [
-                114
+                115
             ],
             "photographer": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "scene_ids": [
-                114
+                115
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryDestroyInput": {
@@ -2277,24 +2292,24 @@ export default {
                 11
             ],
             "ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryFile": {
             "basename": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "fingerprint": [
-                276,
+                277,
                 {
                     "type": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
@@ -2302,35 +2317,38 @@ export default {
             "fingerprints": [
                 75
             ],
+            "galleries": [
+                81
+            ],
             "id": [
-                114
+                115
             ],
             "mod_time": [
-                292
+                293
             ],
             "parent_folder": [
                 79
             ],
             "parent_folder_id": [
-                114
+                115
             ],
             "path": [
-                276
+                277
             ],
             "size": [
-                139
+                140
             ],
             "updated_at": [
-                292
+                293
             ],
             "zip_file": [
                 8
             ],
             "zip_file_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryFilterType": {
@@ -2344,16 +2362,16 @@ export default {
                 89
             ],
             "average_resolution": [
-                189
+                190
             ],
             "checksum": [
-                277
+                278
             ],
             "code": [
-                277
+                278
             ],
             "created_at": [
-                294
+                295
             ],
             "custom_fields": [
                 45
@@ -2362,10 +2380,10 @@ export default {
                 49
             ],
             "details": [
-                277
+                278
             ],
             "file_count": [
-                140
+                141
             ],
             "files_filter": [
                 58
@@ -2374,19 +2392,19 @@ export default {
                 80
             ],
             "has_chapters": [
-                276
+                277
             ],
             "id": [
-                140
+                141
             ],
             "image_count": [
-                140
+                141
             ],
             "images_filter": [
-                129
+                130
             ],
             "is_missing": [
-                276
+                277
             ],
             "is_zip": [
                 11
@@ -2395,164 +2413,164 @@ export default {
                 11
             ],
             "parent_folder": [
-                112
+                113
             ],
             "path": [
-                277
+                278
             ],
             "performer_age": [
-                140
+                141
             ],
             "performer_count": [
-                140
+                141
             ],
             "performer_favorite": [
                 11
             ],
             "performer_tags": [
-                112
+                113
             ],
             "performers": [
-                159
+                160
             ],
             "performers_filter": [
-                171
+                172
             ],
             "photographer": [
-                277
+                278
             ],
             "rating100": [
-                140
+                141
             ],
             "scenes": [
-                159
+                160
             ],
             "scenes_filter": [
-                203
+                204
             ],
             "studios": [
-                112
+                113
             ],
             "studios_filter": [
-                281
+                282
             ],
             "tag_count": [
-                140
+                141
             ],
             "tags": [
-                112
+                113
             ],
             "tags_filter": [
-                289
+                290
             ],
             "title": [
-                277
+                278
             ],
             "updated_at": [
-                294
+                295
             ],
             "url": [
-                277
+                278
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryPathsType": {
             "cover": [
-                276
+                277
             ],
             "preview": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryRemoveInput": {
             "gallery_id": [
-                114
+                115
             ],
             "image_ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryResetCoverInput": {
             "gallery_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GallerySetCoverInput": {
             "cover_image_id": [
-                114
+                115
             ],
             "gallery_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GalleryUpdateInput": {
             "clientMutationId": [
-                276
+                277
             ],
             "code": [
-                276
+                277
             ],
             "custom_fields": [
                 46
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "id": [
-                114
+                115
             ],
             "organized": [
                 11
             ],
             "performer_ids": [
-                114
+                115
             ],
             "photographer": [
-                276
+                277
             ],
             "primary_file_id": [
-                114
+                115
             ],
             "rating100": [
-                138
+                139
             ],
             "scene_ids": [
-                114
+                115
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GenderCriterionInput": {
@@ -2566,7 +2584,7 @@ export default {
                 96
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GenderEnum": {},
@@ -2575,7 +2593,7 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GenerateMetadataInput": {
@@ -2589,10 +2607,10 @@ export default {
                 11
             ],
             "galleryIDs": [
-                114
+                115
             ],
             "imageIDs": [
-                114
+                115
             ],
             "imagePhashes": [
                 11
@@ -2607,7 +2625,7 @@ export default {
                 11
             ],
             "markerIDs": [
-                114
+                115
             ],
             "markerImagePreviews": [
                 11
@@ -2622,7 +2640,7 @@ export default {
                 11
             ],
             "paths": [
-                276
+                277
             ],
             "phashes": [
                 11
@@ -2634,7 +2652,7 @@ export default {
                 11
             ],
             "sceneIDs": [
-                114
+                115
             ],
             "sprites": [
                 11
@@ -2643,7 +2661,7 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GenerateMetadataOptions": {
@@ -2687,116 +2705,116 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GeneratePreviewOptions": {
             "previewExcludeEnd": [
-                276
+                277
             ],
             "previewExcludeStart": [
-                276
+                277
             ],
             "previewPreset": [
-                185
+                186
             ],
             "previewSegmentDuration": [
                 77
             ],
             "previewSegments": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GeneratePreviewOptionsInput": {
             "previewExcludeEnd": [
-                276
+                277
             ],
             "previewExcludeStart": [
-                276
+                277
             ],
             "previewPreset": [
-                185
+                186
             ],
             "previewSegmentDuration": [
                 77
             ],
             "previewSegments": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Group": {
             "aliases": [
-                276
+                277
             ],
             "back_image_path": [
-                276
+                277
             ],
             "containing_groups": [
                 104
             ],
             "created_at": [
-                292
+                293
             ],
             "custom_fields": [
-                148
+                149
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "front_image_path": [
-                276
+                277
             ],
             "id": [
-                114
+                115
             ],
             "name": [
-                276
+                277
             ],
             "o_counter": [
-                138
+                139
             ],
             "performer_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "rating100": [
-                138
+                139
             ],
             "scene_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "scenes": [
-                199
+                200
             ],
             "studio": [
-                278
+                279
             ],
             "sub_group_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
@@ -2804,99 +2822,99 @@ export default {
                 104
             ],
             "synopsis": [
-                276
+                277
             ],
             "tags": [
-                286
+                287
             ],
             "updated_at": [
-                292
+                293
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GroupCreateInput": {
             "aliases": [
-                276
+                277
             ],
             "back_image": [
-                276
+                277
             ],
             "containing_groups": [
                 105
             ],
             "custom_fields": [
-                148
+                149
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "front_image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "sub_groups": [
                 105
             ],
             "synopsis": [
-                276
+                277
             ],
             "tag_ids": [
-                114
+                115
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GroupDescription": {
             "description": [
-                276
+                277
             ],
             "group": [
                 102
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GroupDescriptionInput": {
             "description": [
-                276
+                277
             ],
             "group_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GroupDestroyInput": {
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GroupFilterType": {
@@ -2910,13 +2928,13 @@ export default {
                 107
             ],
             "containing_group_count": [
-                140
+                141
             ],
             "containing_groups": [
-                112
+                113
             ],
             "created_at": [
-                294
+                295
             ],
             "custom_fields": [
                 45
@@ -2925,94 +2943,94 @@ export default {
                 49
             ],
             "director": [
-                277
+                278
             ],
             "duration": [
-                140
+                141
             ],
             "is_missing": [
-                276
+                277
             ],
             "name": [
-                277
+                278
             ],
             "o_counter": [
-                140
+                141
             ],
             "performers": [
-                159
+                160
             ],
             "rating100": [
-                140
+                141
             ],
             "scene_count": [
-                140
+                141
             ],
             "scenes_filter": [
-                203
+                204
             ],
             "studios": [
-                112
+                113
             ],
             "studios_filter": [
-                281
+                282
             ],
             "sub_group_count": [
-                140
+                141
             ],
             "sub_groups": [
-                112
+                113
             ],
             "synopsis": [
-                277
+                278
             ],
             "tag_count": [
-                140
+                141
             ],
             "tags": [
-                112
+                113
             ],
             "updated_at": [
-                294
+                295
             ],
             "url": [
-                277
+                278
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GroupSubGroupAddInput": {
             "containing_group_id": [
-                114
+                115
             ],
             "insert_index": [
-                138
+                139
             ],
             "sub_groups": [
                 105
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GroupSubGroupRemoveInput": {
             "containing_group_id": [
-                114
+                115
             ],
             "sub_group_ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "GroupUpdateInput": {
             "aliases": [
-                276
+                277
             ],
             "back_image": [
-                276
+                277
             ],
             "containing_groups": [
                 105
@@ -3021,72 +3039,89 @@ export default {
                 46
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "front_image": [
-                276
+                277
             ],
             "id": [
-                114
+                115
             ],
             "name": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "sub_groups": [
                 105
             ],
             "synopsis": [
-                276
+                277
             ],
             "tag_ids": [
-                114
+                115
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "HashAlgorithm": {},
-        "HierarchicalMultiCriterionInput": {
+        "HierarchicalCountInput": {
             "depth": [
-                138
-            ],
-            "excludes": [
-                114
+                139
             ],
             "modifier": [
                 44
             ],
             "value": [
-                114
+                139
+            ],
+            "value2": [
+                139
             ],
             "__typename": [
-                276
+                277
+            ]
+        },
+        "HierarchicalMultiCriterionInput": {
+            "depth": [
+                139
+            ],
+            "excludes": [
+                115
+            ],
+            "modifier": [
+                44
+            ],
+            "value": [
+                115
+            ],
+            "__typename": [
+                277
             ]
         },
         "HistoryMutationResult": {
             "count": [
-                138
+                139
             ],
             "history": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ID": {},
@@ -3095,13 +3130,13 @@ export default {
                 11
             ],
             "field": [
-                276
+                277
             ],
             "strategy": [
-                117
+                118
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "IdentifyFieldOptionsInput": {
@@ -3109,66 +3144,34 @@ export default {
                 11
             ],
             "field": [
-                276
+                277
             ],
             "strategy": [
-                117
+                118
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "IdentifyFieldStrategy": {},
         "IdentifyMetadataInput": {
             "options": [
-                120
+                121
             ],
             "paths": [
-                276
+                277
             ],
             "sceneIDs": [
-                114
+                115
             ],
             "sources": [
-                123
+                124
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "IdentifyMetadataOptions": {
-            "fieldOptions": [
-                115
-            ],
-            "includeMalePerformers": [
-                11
-            ],
-            "performerGenders": [
-                96
-            ],
-            "setCoverImage": [
-                11
-            ],
-            "setOrganized": [
-                11
-            ],
-            "skipMultipleMatchTag": [
-                276
-            ],
-            "skipMultipleMatches": [
-                11
-            ],
-            "skipSingleNamePerformerTag": [
-                276
-            ],
-            "skipSingleNamePerformers": [
-                11
-            ],
-            "__typename": [
-                276
-            ]
-        },
-        "IdentifyMetadataOptionsInput": {
             "fieldOptions": [
                 116
             ],
@@ -3185,44 +3188,65 @@ export default {
                 11
             ],
             "skipMultipleMatchTag": [
-                276
+                277
             ],
             "skipMultipleMatches": [
                 11
             ],
             "skipSingleNamePerformerTag": [
-                276
+                277
             ],
             "skipSingleNamePerformers": [
                 11
             ],
             "__typename": [
-                276
+                277
+            ]
+        },
+        "IdentifyMetadataOptionsInput": {
+            "fieldOptions": [
+                117
+            ],
+            "includeMalePerformers": [
+                11
+            ],
+            "performerGenders": [
+                96
+            ],
+            "setCoverImage": [
+                11
+            ],
+            "setOrganized": [
+                11
+            ],
+            "skipMultipleMatchTag": [
+                277
+            ],
+            "skipMultipleMatches": [
+                11
+            ],
+            "skipSingleNamePerformerTag": [
+                277
+            ],
+            "skipSingleNamePerformers": [
+                11
+            ],
+            "__typename": [
+                277
             ]
         },
         "IdentifyMetadataTaskOptions": {
             "options": [
-                119
+                120
             ],
             "sources": [
-                122
+                123
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "IdentifySource": {
-            "options": [
-                119
-            ],
-            "source": [
-                251
-            ],
-            "__typename": [
-                276
-            ]
-        },
-        "IdentifySourceInput": {
             "options": [
                 120
             ],
@@ -3230,75 +3254,86 @@ export default {
                 252
             ],
             "__typename": [
-                276
+                277
+            ]
+        },
+        "IdentifySourceInput": {
+            "options": [
+                121
+            ],
+            "source": [
+                253
+            ],
+            "__typename": [
+                277
             ]
         },
         "Image": {
             "code": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "custom_fields": [
-                148
+                149
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "files": [
-                126
+                127
             ],
             "galleries": [
                 81
             ],
             "id": [
-                114
+                115
             ],
             "o_counter": [
-                138
+                139
             ],
             "organized": [
                 11
             ],
             "paths": [
-                132
+                133
             ],
             "performers": [
-                168
+                169
             ],
             "photographer": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "studio": [
-                278
+                279
             ],
             "tags": [
-                286
+                287
             ],
             "title": [
-                276
+                277
             ],
             "updated_at": [
-                292
+                293
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "visual_files": [
-                300
+                301
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImageDestroyInput": {
@@ -3312,24 +3347,24 @@ export default {
                 11
             ],
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImageFile": {
             "basename": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "fingerprint": [
-                276,
+                277,
                 {
                     "type": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
@@ -3338,94 +3373,97 @@ export default {
                 75
             ],
             "format": [
-                276
+                277
             ],
             "height": [
-                138
+                139
             ],
             "id": [
-                114
+                115
+            ],
+            "images": [
+                125
             ],
             "mod_time": [
-                292
+                293
             ],
             "parent_folder": [
                 79
             ],
             "parent_folder_id": [
-                114
+                115
             ],
             "path": [
-                276
+                277
             ],
             "size": [
-                139
+                140
             ],
             "updated_at": [
-                292
+                293
             ],
             "width": [
-                138
+                139
             ],
             "zip_file": [
                 8
             ],
             "zip_file_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImageFileFilterInput": {
             "format": [
-                277
+                278
             ],
             "orientation": [
-                161
+                162
             ],
             "resolution": [
-                189
+                190
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImageFileType": {
             "height": [
-                138
+                139
             ],
             "mod_time": [
-                292
+                293
             ],
             "size": [
-                138
+                139
             ],
             "width": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImageFilterType": {
             "AND": [
-                129
+                130
             ],
             "NOT": [
-                129
+                130
             ],
             "OR": [
-                129
+                130
             ],
             "checksum": [
-                277
+                278
             ],
             "code": [
-                277
+                278
             ],
             "created_at": [
-                294
+                295
             ],
             "custom_fields": [
                 45
@@ -3434,166 +3472,166 @@ export default {
                 49
             ],
             "details": [
-                277
+                278
             ],
             "file_count": [
-                140
+                141
             ],
             "files_filter": [
                 58
             ],
             "galleries": [
-                159
+                160
             ],
             "galleries_filter": [
                 89
             ],
             "id": [
-                140
+                141
             ],
             "is_missing": [
-                276
+                277
             ],
             "o_counter": [
-                140
+                141
             ],
             "organized": [
                 11
             ],
             "orientation": [
-                161
+                162
             ],
             "path": [
-                277
+                278
             ],
             "performer_age": [
-                140
+                141
             ],
             "performer_count": [
-                140
+                141
             ],
             "performer_favorite": [
                 11
             ],
             "performer_tags": [
-                112
+                113
             ],
             "performers": [
-                159
+                160
             ],
             "performers_filter": [
-                171
+                172
             ],
             "phash_distance": [
-                174
+                175
             ],
             "photographer": [
-                277
+                278
             ],
             "rating100": [
-                140
+                141
             ],
             "resolution": [
-                189
+                190
             ],
             "studios": [
-                112
+                113
             ],
             "studios_filter": [
-                281
+                282
             ],
             "tag_count": [
-                140
+                141
             ],
             "tags": [
-                112
+                113
             ],
             "tags_filter": [
-                289
+                290
             ],
             "title": [
-                277
+                278
             ],
             "updated_at": [
-                294
+                295
             ],
             "url": [
-                277
+                278
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImageLightboxDisplayMode": {},
         "ImageLightboxScrollMode": {},
         "ImagePathsType": {
             "image": [
-                276
+                277
             ],
             "preview": [
-                276
+                277
             ],
             "thumbnail": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImageUpdateInput": {
             "clientMutationId": [
-                276
+                277
             ],
             "code": [
-                276
+                277
             ],
             "custom_fields": [
                 46
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "gallery_ids": [
-                114
+                115
             ],
             "id": [
-                114
+                115
             ],
             "organized": [
                 11
             ],
             "performer_ids": [
-                114
+                115
             ],
             "photographer": [
-                276
+                277
             ],
             "primary_file_id": [
-                114
+                115
             ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImagesDestroyInput": {
@@ -3607,26 +3645,26 @@ export default {
                 11
             ],
             "ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ImportDuplicateEnum": {},
         "ImportMissingRefEnum": {},
         "ImportObjectsInput": {
             "duplicateBehaviour": [
-                135
-            ],
-            "file": [
-                295
-            ],
-            "missingRefBehaviour": [
                 136
             ],
+            "file": [
+                296
+            ],
+            "missingRefBehaviour": [
+                137
+            ],
             "__typename": [
-                276
+                277
             ]
         },
         "Int": {},
@@ -3636,105 +3674,105 @@ export default {
                 44
             ],
             "value": [
-                138
+                139
             ],
             "value2": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Job": {
             "addTime": [
-                292
+                293
             ],
             "description": [
-                276
+                277
             ],
             "endTime": [
-                292
+                293
             ],
             "error": [
-                276
+                277
             ],
             "id": [
-                114
+                115
             ],
             "progress": [
                 77
             ],
             "startTime": [
-                292
+                293
             ],
             "status": [
-                142
+                143
             ],
             "subTasks": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "JobStatus": {},
         "JobStatusUpdate": {
             "job": [
-                141
+                142
             ],
             "type": [
-                144
+                145
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "JobStatusUpdateType": {},
         "LatestVersion": {
             "release_date": [
-                276
+                277
             ],
             "shorthash": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "version": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "LogEntry": {
             "level": [
-                147
+                148
             ],
             "message": [
-                276
+                277
             ],
             "time": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "LogLevel": {},
         "Map": {},
         "MarkerStringsResultType": {
             "count": [
-                138
+                139
             ],
             "id": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MigrateBlobsInput": {
@@ -3742,15 +3780,15 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MigrateInput": {
             "backupPath": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MigrateSceneScreenshotsInput": {
@@ -3761,263 +3799,263 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MoveFilesInput": {
             "destination_basename": [
-                276
+                277
             ],
             "destination_folder": [
-                276
+                277
             ],
             "destination_folder_id": [
-                114
+                115
             ],
             "ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Movie": {
             "aliases": [
-                276
+                277
             ],
             "back_image_path": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "front_image_path": [
-                276
+                277
             ],
             "id": [
-                114
+                115
             ],
             "name": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "scene_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "scenes": [
-                199
+                200
             ],
             "studio": [
-                278
+                279
             ],
             "synopsis": [
-                276
+                277
             ],
             "tags": [
-                286
+                287
             ],
             "updated_at": [
-                292
+                293
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MovieCreateInput": {
             "aliases": [
-                276
+                277
             ],
             "back_image": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "front_image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "synopsis": [
-                276
+                277
             ],
             "tag_ids": [
-                114
+                115
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MovieDestroyInput": {
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MovieFilterType": {
             "AND": [
-                157
+                158
             ],
             "NOT": [
-                157
+                158
             ],
             "OR": [
-                157
+                158
             ],
             "created_at": [
-                294
+                295
             ],
             "date": [
                 49
             ],
             "director": [
-                277
+                278
             ],
             "duration": [
-                140
+                141
             ],
             "is_missing": [
-                276
+                277
             ],
             "name": [
-                277
+                278
             ],
             "performers": [
-                159
+                160
             ],
             "rating100": [
-                140
+                141
             ],
             "scenes_filter": [
-                203
+                204
             ],
             "studios": [
-                112
+                113
             ],
             "studios_filter": [
-                281
+                282
             ],
             "synopsis": [
-                277
+                278
             ],
             "tag_count": [
-                140
+                141
             ],
             "tags": [
-                112
+                113
             ],
             "updated_at": [
-                294
+                295
             ],
             "url": [
-                277
+                278
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MovieUpdateInput": {
             "aliases": [
-                276
+                277
             ],
             "back_image": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "front_image": [
-                276
+                277
             ],
             "id": [
-                114
+                115
             ],
             "name": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "studio_id": [
-                114
+                115
             ],
             "synopsis": [
-                276
+                277
             ],
             "tag_ids": [
-                114
+                115
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "MultiCriterionInput": {
             "excludes": [
-                114
+                115
             ],
             "modifier": [
                 44
             ],
             "value": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Mutation": {
@@ -4049,7 +4087,7 @@ export default {
                 }
             ],
             "anonymiseDatabase": [
-                276,
+                277,
                 {
                     "input": [
                         1,
@@ -4058,7 +4096,7 @@ export default {
                 }
             ],
             "backupDatabase": [
-                276,
+                277,
                 {
                     "input": [
                         6,
@@ -4085,7 +4123,7 @@ export default {
                 }
             ],
             "bulkImageUpdate": [
-                124,
+                125,
                 {
                     "input": [
                         14,
@@ -4094,7 +4132,7 @@ export default {
                 }
             ],
             "bulkMovieUpdate": [
-                154,
+                155,
                 {
                     "input": [
                         15,
@@ -4103,7 +4141,7 @@ export default {
                 }
             ],
             "bulkPerformerUpdate": [
-                168,
+                169,
                 {
                     "input": [
                         16,
@@ -4112,7 +4150,7 @@ export default {
                 }
             ],
             "bulkSceneMarkerUpdate": [
-                207,
+                208,
                 {
                     "input": [
                         17,
@@ -4121,7 +4159,7 @@ export default {
                 }
             ],
             "bulkSceneUpdate": [
-                199,
+                200,
                 {
                     "input": [
                         18,
@@ -4130,7 +4168,7 @@ export default {
                 }
             ],
             "bulkStudioUpdate": [
-                278,
+                279,
                 {
                     "input": [
                         19,
@@ -4139,7 +4177,7 @@ export default {
                 }
             ],
             "bulkTagUpdate": [
-                286,
+                287,
                 {
                     "input": [
                         20,
@@ -4184,14 +4222,14 @@ export default {
                 }
             ],
             "configurePlugin": [
-                148,
+                149,
                 {
                     "input": [
-                        148,
+                        149,
                         "Map!"
                     ],
                     "plugin_id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -4206,21 +4244,21 @@ export default {
                 }
             ],
             "configureUI": [
-                148,
+                149,
                 {
                     "input": [
-                        148
+                        149
                     ],
                     "partial": [
-                        148
+                        149
                     ]
                 }
             ],
             "configureUISetting": [
-                148,
+                149,
                 {
                     "key": [
-                        276,
+                        277,
                         "String!"
                     ],
                     "value": [
@@ -4232,7 +4270,7 @@ export default {
                 11,
                 {
                     "ids": [
-                        114,
+                        115,
                         "[ID!]!"
                     ]
                 }
@@ -4241,7 +4279,7 @@ export default {
                 11,
                 {
                     "ids": [
-                        114,
+                        115,
                         "[ID!]!"
                     ]
                 }
@@ -4265,7 +4303,7 @@ export default {
                 }
             ],
             "downloadFFMpeg": [
-                114
+                115
             ],
             "enableDLNA": [
                 11,
@@ -4277,20 +4315,20 @@ export default {
                 }
             ],
             "execSQL": [
-                191,
+                192,
                 {
                     "args": [
                         2,
                         "[Any]"
                     ],
                     "sql": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
             ],
             "exportObjects": [
-                276,
+                277,
                 {
                     "input": [
                         56,
@@ -4329,7 +4367,7 @@ export default {
                 11,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -4371,7 +4409,7 @@ export default {
                 }
             ],
             "generateAPIKey": [
-                276,
+                277,
                 {
                     "input": [
                         97,
@@ -4410,16 +4448,16 @@ export default {
                 11,
                 {
                     "ids": [
-                        114,
+                        115,
                         "[ID!]!"
                     ]
                 }
             ],
             "imageDecrementO": [
-                138,
+                139,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -4428,34 +4466,34 @@ export default {
                 11,
                 {
                     "input": [
-                        125,
+                        126,
                         "ImageDestroyInput!"
                     ]
                 }
             ],
             "imageIncrementO": [
-                138,
+                139,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "imageResetO": [
-                138,
+                139,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "imageUpdate": [
-                124,
+                125,
                 {
                     "input": [
-                        133,
+                        134,
                         "ImageUpdateInput!"
                     ]
                 }
@@ -4464,44 +4502,44 @@ export default {
                 11,
                 {
                     "input": [
-                        134,
+                        135,
                         "ImagesDestroyInput!"
                     ]
                 }
             ],
             "imagesUpdate": [
-                124,
+                125,
                 {
                     "input": [
-                        133,
+                        134,
                         "[ImageUpdateInput!]!"
                     ]
                 }
             ],
             "importObjects": [
-                114,
+                115,
                 {
                     "input": [
-                        137,
+                        138,
                         "ImportObjectsInput!"
                     ]
                 }
             ],
             "installPackages": [
-                114,
+                115,
                 {
                     "packages": [
-                        166,
+                        167,
                         "[PackageSpecInput!]!"
                     ],
                     "type": [
-                        167,
+                        168,
                         "PackageType!"
                     ]
                 }
             ],
             "metadataAutoTag": [
-                114,
+                115,
                 {
                     "input": [
                         4,
@@ -4510,7 +4548,7 @@ export default {
                 }
             ],
             "metadataClean": [
-                114,
+                115,
                 {
                     "input": [
                         28,
@@ -4519,7 +4557,7 @@ export default {
                 }
             ],
             "metadataCleanGenerated": [
-                114,
+                115,
                 {
                     "input": [
                         27,
@@ -4528,10 +4566,10 @@ export default {
                 }
             ],
             "metadataExport": [
-                114
+                115
             ],
             "metadataGenerate": [
-                114,
+                115,
                 {
                     "input": [
                         98,
@@ -4540,52 +4578,52 @@ export default {
                 }
             ],
             "metadataIdentify": [
-                114,
+                115,
                 {
                     "input": [
-                        118,
+                        119,
                         "IdentifyMetadataInput!"
                     ]
                 }
             ],
             "metadataImport": [
-                114
+                115
             ],
             "metadataScan": [
-                114,
+                115,
                 {
                     "input": [
-                        197,
+                        198,
                         "ScanMetadataInput!"
                     ]
                 }
             ],
             "migrate": [
-                114,
+                115,
                 {
                     "input": [
-                        151,
+                        152,
                         "MigrateInput!"
                     ]
                 }
             ],
             "migrateBlobs": [
-                114,
+                115,
                 {
                     "input": [
-                        150,
+                        151,
                         "MigrateBlobsInput!"
                     ]
                 }
             ],
             "migrateHashNaming": [
-                114
+                115
             ],
             "migrateSceneScreenshots": [
-                114,
+                115,
                 {
                     "input": [
-                        152,
+                        153,
                         "MigrateSceneScreenshotsInput!"
                     ]
                 }
@@ -4594,16 +4632,16 @@ export default {
                 11,
                 {
                     "input": [
-                        153,
+                        154,
                         "MoveFilesInput!"
                     ]
                 }
             ],
             "movieCreate": [
-                154,
+                155,
                 {
                     "input": [
-                        155,
+                        156,
                         "MovieCreateInput!"
                     ]
                 }
@@ -4612,16 +4650,16 @@ export default {
                 11,
                 {
                     "input": [
-                        156,
+                        157,
                         "MovieDestroyInput!"
                     ]
                 }
             ],
             "movieUpdate": [
-                154,
+                155,
                 {
                     "input": [
-                        158,
+                        159,
                         "MovieUpdateInput!"
                     ]
                 }
@@ -4630,19 +4668,19 @@ export default {
                 11,
                 {
                     "ids": [
-                        114,
+                        115,
                         "[ID!]!"
                     ]
                 }
             ],
             "optimiseDatabase": [
-                114
+                115
             ],
             "performerCreate": [
-                168,
+                169,
                 {
                     "input": [
-                        169,
+                        170,
                         "PerformerCreateInput!"
                     ]
                 }
@@ -4651,25 +4689,25 @@ export default {
                 11,
                 {
                     "input": [
-                        170,
+                        171,
                         "PerformerDestroyInput!"
                     ]
                 }
             ],
             "performerMerge": [
-                168,
+                169,
                 {
                     "input": [
-                        172,
+                        173,
                         "PerformerMergeInput!"
                     ]
                 }
             ],
             "performerUpdate": [
-                168,
+                169,
                 {
                     "input": [
-                        173,
+                        174,
                         "PerformerUpdateInput!"
                     ]
                 }
@@ -4678,20 +4716,20 @@ export default {
                 11,
                 {
                     "ids": [
-                        114,
+                        115,
                         "[ID!]!"
                     ]
                 }
             ],
             "querySQL": [
-                192,
+                193,
                 {
                     "args": [
                         2,
                         "[Any]"
                     ],
                     "sql": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
@@ -4724,7 +4762,7 @@ export default {
                 11,
                 {
                     "input": [
-                        187,
+                        188,
                         "RemoveTempDLNAIPInput!"
                     ]
                 }
@@ -4733,7 +4771,7 @@ export default {
                 11,
                 {
                     "input": [
-                        188,
+                        189,
                         "ReorderSubGroupsInput!"
                     ]
                 }
@@ -4751,7 +4789,7 @@ export default {
                 11,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -4760,7 +4798,7 @@ export default {
                 11,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -4769,67 +4807,67 @@ export default {
                 2,
                 {
                     "args": [
-                        148
+                        149
                     ],
                     "plugin_id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "runPluginTask": [
-                114,
+                115,
                 {
                     "args": [
-                        176,
+                        177,
                         "[PluginArgInput!]"
                     ],
                     "args_map": [
-                        148
+                        149
                     ],
                     "description": [
-                        276
+                        277
                     ],
                     "plugin_id": [
-                        114,
+                        115,
                         "ID!"
                     ],
                     "task_name": [
-                        276
+                        277
                     ]
                 }
             ],
             "saveFilter": [
-                194,
+                195,
                 {
                     "input": [
-                        193,
+                        194,
                         "SaveFilterInput!"
                     ]
                 }
             ],
             "sceneAddO": [
-                113,
+                114,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ],
                     "times": [
-                        293,
+                        294,
                         "[Timestamp!]"
                     ]
                 }
             ],
             "sceneAddPlay": [
-                113,
+                114,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ],
                     "times": [
-                        293,
+                        294,
                         "[Timestamp!]"
                     ]
                 }
@@ -4844,45 +4882,45 @@ export default {
                 }
             ],
             "sceneCreate": [
-                199,
+                200,
                 {
                     "input": [
-                        200,
+                        201,
                         "SceneCreateInput!"
                     ]
                 }
             ],
             "sceneDecrementO": [
-                138,
+                139,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "sceneDeleteO": [
-                113,
+                114,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ],
                     "times": [
-                        293,
+                        294,
                         "[Timestamp!]"
                     ]
                 }
             ],
             "sceneDeletePlay": [
-                113,
+                114,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ],
                     "times": [
-                        293,
+                        294,
                         "[Timestamp!]"
                     ]
                 }
@@ -4891,46 +4929,46 @@ export default {
                 11,
                 {
                     "input": [
-                        201,
+                        202,
                         "SceneDestroyInput!"
                     ]
                 }
             ],
             "sceneGenerateScreenshot": [
-                276,
+                115,
                 {
                     "at": [
                         77
                     ],
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "sceneIncrementO": [
-                138,
+                139,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "sceneIncrementPlayCount": [
-                138,
+                139,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "sceneMarkerCreate": [
-                207,
+                208,
                 {
                     "input": [
-                        208,
+                        209,
                         "SceneMarkerCreateInput!"
                     ]
                 }
@@ -4939,16 +4977,16 @@ export default {
                 11,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "sceneMarkerUpdate": [
-                207,
+                208,
                 {
                     "input": [
-                        211,
+                        212,
                         "SceneMarkerUpdateInput!"
                     ]
                 }
@@ -4957,16 +4995,16 @@ export default {
                 11,
                 {
                     "ids": [
-                        114,
+                        115,
                         "[ID!]!"
                     ]
                 }
             ],
             "sceneMerge": [
-                199,
+                200,
                 {
                     "input": [
-                        212,
+                        213,
                         "SceneMergeInput!"
                     ]
                 }
@@ -4975,7 +5013,7 @@ export default {
                 11,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ],
                     "reset_duration": [
@@ -4987,19 +5025,19 @@ export default {
                 }
             ],
             "sceneResetO": [
-                138,
+                139,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "sceneResetPlayCount": [
-                138,
+                139,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -5008,7 +5046,7 @@ export default {
                 11,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ],
                     "playDuration": [
@@ -5020,10 +5058,10 @@ export default {
                 }
             ],
             "sceneUpdate": [
-                199,
+                200,
                 {
                     "input": [
-                        221,
+                        222,
                         "SceneUpdateInput!"
                     ]
                 }
@@ -5032,16 +5070,16 @@ export default {
                 11,
                 {
                     "input": [
-                        222,
+                        223,
                         "ScenesDestroyInput!"
                     ]
                 }
             ],
             "scenesUpdate": [
-                199,
+                200,
                 {
                     "input": [
-                        221,
+                        222,
                         "[SceneUpdateInput!]!"
                     ]
                 }
@@ -5050,7 +5088,7 @@ export default {
                 11,
                 {
                     "input": [
-                        254,
+                        255,
                         "SetDefaultFilterInput!"
                     ]
                 }
@@ -5077,34 +5115,34 @@ export default {
                 11,
                 {
                     "input": [
-                        256,
+                        257,
                         "SetupInput!"
                     ]
                 }
             ],
             "stashBoxBatchPerformerTag": [
-                276,
+                277,
                 {
                     "input": [
-                        259,
+                        260,
                         "StashBoxBatchTagInput!"
                     ]
                 }
             ],
             "stashBoxBatchStudioTag": [
-                276,
+                277,
                 {
                     "input": [
-                        259,
+                        260,
                         "StashBoxBatchTagInput!"
                     ]
                 }
             ],
             "stashBoxBatchTagTag": [
-                276,
+                277,
                 {
                     "input": [
-                        259,
+                        260,
                         "StashBoxBatchTagInput!"
                     ]
                 }
@@ -5116,16 +5154,16 @@ export default {
                 11,
                 {
                     "job_id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "studioCreate": [
-                278,
+                279,
                 {
                     "input": [
-                        279,
+                        280,
                         "StudioCreateInput!"
                     ]
                 }
@@ -5134,16 +5172,16 @@ export default {
                 11,
                 {
                     "input": [
-                        280,
+                        281,
                         "StudioDestroyInput!"
                     ]
                 }
             ],
             "studioUpdate": [
-                278,
+                279,
                 {
                     "input": [
-                        282,
+                        283,
                         "StudioUpdateInput!"
                     ]
                 }
@@ -5152,7 +5190,7 @@ export default {
                 11,
                 {
                     "ids": [
-                        114,
+                        115,
                         "[ID!]!"
                     ]
                 }
@@ -5161,34 +5199,34 @@ export default {
                 11,
                 {
                     "input": [
-                        262,
+                        263,
                         "StashBoxFingerprintSubmissionInput!"
                     ]
                 }
             ],
             "submitStashBoxPerformerDraft": [
-                114,
+                115,
                 {
                     "input": [
-                        260,
+                        261,
                         "StashBoxDraftSubmissionInput!"
                     ]
                 }
             ],
             "submitStashBoxSceneDraft": [
-                114,
+                115,
                 {
                     "input": [
-                        260,
+                        261,
                         "StashBoxDraftSubmissionInput!"
                     ]
                 }
             ],
             "tagCreate": [
-                286,
+                287,
                 {
                     "input": [
-                        287,
+                        288,
                         "TagCreateInput!"
                     ]
                 }
@@ -5197,16 +5235,16 @@ export default {
                 11,
                 {
                     "input": [
-                        288,
+                        289,
                         "TagDestroyInput!"
                     ]
                 }
             ],
             "tagUpdate": [
-                286,
+                287,
                 {
                     "input": [
-                        290,
+                        291,
                         "TagUpdateInput!"
                     ]
                 }
@@ -5215,313 +5253,313 @@ export default {
                 11,
                 {
                     "ids": [
-                        114,
+                        115,
                         "[ID!]!"
                     ]
                 }
             ],
             "tagsMerge": [
-                286,
+                287,
                 {
                     "input": [
-                        291,
+                        292,
                         "TagsMergeInput!"
                     ]
                 }
             ],
             "uninstallPackages": [
-                114,
+                115,
                 {
                     "packages": [
-                        166,
+                        167,
                         "[PackageSpecInput!]!"
                     ],
                     "type": [
-                        167,
+                        168,
                         "PackageType!"
                     ]
                 }
             ],
             "updatePackages": [
-                114,
+                115,
                 {
                     "packages": [
-                        166,
+                        167,
                         "[PackageSpecInput!]"
                     ],
                     "type": [
-                        167,
+                        168,
                         "PackageType!"
                     ]
                 }
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "OrientationCriterionInput": {
             "value": [
-                162
+                163
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "OrientationEnum": {},
         "Package": {
             "date": [
-                293
+                294
             ],
             "metadata": [
-                148
+                149
             ],
             "name": [
-                276
+                277
             ],
             "package_id": [
-                276
+                277
             ],
             "requires": [
-                163
+                164
             ],
             "sourceURL": [
-                276
+                277
             ],
             "source_package": [
-                163
+                164
             ],
             "version": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PackageSource": {
             "local_path": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PackageSourceInput": {
             "local_path": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PackageSpecInput": {
             "id": [
-                276
+                277
             ],
             "sourceURL": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PackageType": {},
         "Performer": {
             "alias_list": [
-                276
+                277
             ],
             "birthdate": [
-                276
+                277
             ],
             "career_end": [
-                276
+                277
             ],
             "career_length": [
-                276
+                277
             ],
             "career_start": [
-                276
+                277
             ],
             "circumcised": [
                 25
             ],
             "country": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "custom_fields": [
-                148
+                149
             ],
             "death_date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "disambiguation": [
-                276
+                277
             ],
             "ethnicity": [
-                276
+                277
             ],
             "eye_color": [
-                276
+                277
             ],
             "fake_tits": [
-                276
+                277
             ],
             "favorite": [
                 11
             ],
             "gallery_count": [
-                138
+                139
             ],
             "gender": [
                 96
             ],
             "group_count": [
-                138
+                139
             ],
             "groups": [
                 102
             ],
             "hair_color": [
-                276
+                277
             ],
             "height_cm": [
-                138
+                139
             ],
             "id": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
             ],
             "image_count": [
-                138
+                139
             ],
             "image_path": [
-                276
+                277
             ],
             "instagram": [
-                276
+                277
             ],
             "measurements": [
-                276
+                277
             ],
             "movie_count": [
-                138
+                139
             ],
             "movies": [
-                154
+                155
             ],
             "name": [
-                276
+                277
             ],
             "o_counter": [
-                138
+                139
             ],
             "penis_length": [
                 77
             ],
             "performer_count": [
-                138
+                139
             ],
             "piercings": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "scene_count": [
-                138
+                139
             ],
             "scenes": [
-                199
+                200
             ],
             "stash_ids": [
-                270
+                271
             ],
             "tags": [
-                286
+                287
             ],
             "tattoos": [
-                276
+                277
             ],
             "twitter": [
-                276
+                277
             ],
             "updated_at": [
-                292
+                293
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "weight": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PerformerCreateInput": {
             "alias_list": [
-                276
+                277
             ],
             "birthdate": [
-                276
+                277
             ],
             "career_end": [
-                276
+                277
             ],
             "career_length": [
-                276
+                277
             ],
             "career_start": [
-                276
+                277
             ],
             "circumcised": [
                 25
             ],
             "country": [
-                276
+                277
             ],
             "custom_fields": [
-                148
+                149
             ],
             "death_date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "disambiguation": [
-                276
+                277
             ],
             "ethnicity": [
-                276
+                277
             ],
             "eye_color": [
-                276
+                277
             ],
             "fake_tits": [
-                276
+                277
             ],
             "favorite": [
                 11
@@ -5530,86 +5568,86 @@ export default {
                 96
             ],
             "hair_color": [
-                276
+                277
             ],
             "height_cm": [
-                138
+                139
             ],
             "ignore_auto_tag": [
                 11
             ],
             "image": [
-                276
+                277
             ],
             "instagram": [
-                276
+                277
             ],
             "measurements": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "penis_length": [
                 77
             ],
             "piercings": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "stash_ids": [
-                272
+                273
             ],
             "tag_ids": [
-                114
+                115
             ],
             "tattoos": [
-                276
+                277
             ],
             "twitter": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "weight": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PerformerDestroyInput": {
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PerformerFilterType": {
             "AND": [
-                171
+                172
             ],
             "NOT": [
-                171
+                172
             ],
             "OR": [
-                171
+                172
             ],
             "age": [
-                140
+                141
             ],
             "aliases": [
-                277
+                278
             ],
             "birth_year": [
-                140
+                141
             ],
             "birthdate": [
                 49
@@ -5618,7 +5656,7 @@ export default {
                 49
             ],
             "career_length": [
-                277
+                278
             ],
             "career_start": [
                 49
@@ -5627,10 +5665,10 @@ export default {
                 26
             ],
             "country": [
-                277
+                278
             ],
             "created_at": [
-                294
+                295
             ],
             "custom_fields": [
                 45
@@ -5639,22 +5677,22 @@ export default {
                 49
             ],
             "death_year": [
-                140
+                141
             ],
             "details": [
-                277
+                278
             ],
             "disambiguation": [
-                277
+                278
             ],
             "ethnicity": [
-                277
+                278
             ],
             "eye_color": [
-                277
+                278
             ],
             "fake_tits": [
-                277
+                278
             ],
             "filter_favorites": [
                 11
@@ -5663,158 +5701,158 @@ export default {
                 89
             ],
             "gallery_count": [
-                140
+                141
             ],
             "gender": [
                 95
             ],
             "groups": [
-                112
+                113
             ],
             "hair_color": [
-                277
+                278
             ],
             "height_cm": [
-                140
+                141
             ],
             "ignore_auto_tag": [
                 11
             ],
             "image_count": [
-                140
+                141
             ],
             "images_filter": [
-                129
+                130
             ],
             "is_missing": [
-                276
+                277
             ],
             "marker_count": [
-                140
+                141
             ],
             "markers_filter": [
-                209
+                210
             ],
             "measurements": [
-                277
+                278
             ],
             "name": [
-                277
+                278
             ],
             "o_counter": [
-                140
+                141
             ],
             "penis_length": [
                 78
             ],
             "performers": [
-                159
+                160
             ],
             "piercings": [
-                277
+                278
             ],
             "play_count": [
-                140
+                141
             ],
             "rating100": [
-                140
+                141
             ],
             "scene_count": [
-                140
+                141
             ],
             "scenes_filter": [
-                203
+                204
             ],
             "stash_id_endpoint": [
-                271
+                272
             ],
             "stash_ids_endpoint": [
-                273
+                274
             ],
             "studios": [
-                112
+                113
             ],
             "tag_count": [
-                140
+                141
             ],
             "tags": [
-                112
+                113
             ],
             "tags_filter": [
-                289
+                290
             ],
             "tattoos": [
-                277
+                278
             ],
             "updated_at": [
-                294
+                295
             ],
             "url": [
-                277
+                278
             ],
             "weight": [
-                140
+                141
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PerformerMergeInput": {
             "destination": [
-                114
+                115
             ],
             "source": [
-                114
+                115
             ],
             "values": [
-                173
+                174
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PerformerUpdateInput": {
             "alias_list": [
-                276
+                277
             ],
             "birthdate": [
-                276
+                277
             ],
             "career_end": [
-                276
+                277
             ],
             "career_length": [
-                276
+                277
             ],
             "career_start": [
-                276
+                277
             ],
             "circumcised": [
                 25
             ],
             "country": [
-                276
+                277
             ],
             "custom_fields": [
                 46
             ],
             "death_date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "disambiguation": [
-                276
+                277
             ],
             "ethnicity": [
-                276
+                277
             ],
             "eye_color": [
-                276
+                277
             ],
             "fake_tits": [
-                276
+                277
             ],
             "favorite": [
                 11
@@ -5823,201 +5861,201 @@ export default {
                 96
             ],
             "hair_color": [
-                276
+                277
             ],
             "height_cm": [
-                138
+                139
             ],
             "id": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
             ],
             "image": [
-                276
+                277
             ],
             "instagram": [
-                276
+                277
             ],
             "measurements": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "penis_length": [
                 77
             ],
             "piercings": [
-                276
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "stash_ids": [
-                272
+                273
             ],
             "tag_ids": [
-                114
+                115
             ],
             "tattoos": [
-                276
+                277
             ],
             "twitter": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "weight": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PhashDistanceCriterionInput": {
             "distance": [
-                138
+                139
             ],
             "modifier": [
                 44
             ],
             "value": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Plugin": {
             "description": [
-                276
+                277
             ],
             "enabled": [
                 11
             ],
             "hooks": [
-                178
-            ],
-            "id": [
-                114
-            ],
-            "name": [
-                276
-            ],
-            "paths": [
                 179
             ],
+            "id": [
+                115
+            ],
+            "name": [
+                277
+            ],
+            "paths": [
+                180
+            ],
             "requires": [
-                114
+                115
             ],
             "settings": [
-                181
+                182
             ],
             "tasks": [
-                183
+                184
             ],
             "url": [
-                276
+                277
             ],
             "version": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PluginArgInput": {
             "key": [
-                276
+                277
             ],
             "value": [
-                184
+                185
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PluginConfigMap": {},
         "PluginHook": {
             "description": [
-                276
+                277
             ],
             "hooks": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "plugin": [
-                175
+                176
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PluginPaths": {
             "css": [
-                276
+                277
             ],
             "javascript": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PluginResult": {
             "error": [
-                276
+                277
             ],
             "result": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PluginSetting": {
             "description": [
-                276
+                277
             ],
             "display_name": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "type": [
-                182
+                183
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PluginSettingTypeEnum": {},
         "PluginTask": {
             "description": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "plugin": [
-                175
+                176
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PluginValueInput": {
             "a": [
-                184
+                185
             ],
             "b": [
                 11
@@ -6026,16 +6064,16 @@ export default {
                 77
             ],
             "i": [
-                138
+                139
             ],
             "o": [
-                176
+                177
             ],
             "str": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "PreviewPreset": {},
@@ -6044,35 +6082,35 @@ export default {
                 81
             ],
             "allImages": [
-                124
+                125
             ],
             "allMovies": [
-                154
+                155
             ],
             "allPerformers": [
-                168
+                169
             ],
             "allSceneMarkers": [
-                207
+                208
             ],
             "allScenes": [
-                199
+                200
             ],
             "allStudios": [
-                278
+                279
             ],
             "allTags": [
-                286
+                287
             ],
             "availablePackages": [
-                163,
+                164,
                 {
                     "source": [
-                        276,
+                        277,
                         "String!"
                     ],
                     "type": [
-                        167,
+                        168,
                         "PackageType!"
                     ]
                 }
@@ -6084,10 +6122,10 @@ export default {
                 51,
                 {
                     "locale": [
-                        276
+                        277
                     ],
                     "path": [
-                        276
+                        277
                     ]
                 }
             ],
@@ -6095,7 +6133,7 @@ export default {
                 48
             ],
             "findDefaultFilter": [
-                194,
+                195,
                 {
                     "mode": [
                         60,
@@ -6104,13 +6142,16 @@ export default {
                 }
             ],
             "findDuplicateScenes": [
-                199,
+                200,
                 {
                     "distance": [
-                        138
+                        139
                     ],
                     "duration_diff": [
                         77
+                    ],
+                    "scene_filter": [
+                        204
                     ]
                 }
             ],
@@ -6118,10 +6159,10 @@ export default {
                 7,
                 {
                     "id": [
-                        114
+                        115
                     ],
                     "path": [
-                        276
+                        277
                     ]
                 }
             ],
@@ -6135,7 +6176,7 @@ export default {
                         62
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ]
                 }
@@ -6144,10 +6185,10 @@ export default {
                 79,
                 {
                     "id": [
-                        114
+                        115
                     ],
                     "path": [
-                        276
+                        277
                     ]
                 }
             ],
@@ -6161,7 +6202,7 @@ export default {
                         80
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ]
                 }
@@ -6176,7 +6217,7 @@ export default {
                         89
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ]
                 }
@@ -6185,7 +6226,7 @@ export default {
                 81,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -6194,7 +6235,7 @@ export default {
                 102,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -6209,19 +6250,19 @@ export default {
                         107
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ]
                 }
             ],
             "findImage": [
-                124,
+                125,
                 {
                     "checksum": [
-                        276
+                        277
                     ],
                     "id": [
-                        114
+                        115
                     ]
                 }
             ],
@@ -6232,20 +6273,20 @@ export default {
                         62
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ],
                     "image_filter": [
-                        129
+                        130
                     ],
                     "image_ids": [
-                        138,
+                        139,
                         "[Int!]"
                     ]
                 }
             ],
             "findJob": [
-                141,
+                142,
                 {
                     "input": [
                         68,
@@ -6254,10 +6295,10 @@ export default {
                 }
             ],
             "findMovie": [
-                154,
+                155,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -6269,19 +6310,19 @@ export default {
                         62
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ],
                     "movie_filter": [
-                        157
+                        158
                     ]
                 }
             ],
             "findPerformer": [
-                168,
+                169,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -6293,29 +6334,29 @@ export default {
                         62
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ],
                     "performer_filter": [
-                        171
+                        172
                     ],
                     "performer_ids": [
-                        138,
+                        139,
                         "[Int!]"
                     ]
                 }
             ],
             "findSavedFilter": [
-                194,
+                195,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "findSavedFilters": [
-                194,
+                195,
                 {
                     "mode": [
                         60
@@ -6323,21 +6364,21 @@ export default {
                 }
             ],
             "findScene": [
-                199,
+                200,
                 {
                     "checksum": [
-                        276
+                        277
                     ],
                     "id": [
-                        114
+                        115
                     ]
                 }
             ],
             "findSceneByHash": [
-                199,
+                200,
                 {
                     "input": [
-                        206,
+                        207,
                         "SceneHashInput!"
                     ]
                 }
@@ -6349,11 +6390,11 @@ export default {
                         62
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ],
                     "scene_marker_filter": [
-                        209
+                        210
                     ]
                 }
             ],
@@ -6364,14 +6405,14 @@ export default {
                         62
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ],
                     "scene_filter": [
-                        203
+                        204
                     ],
                     "scene_ids": [
-                        138,
+                        139,
                         "[Int!]"
                     ]
                 }
@@ -6385,10 +6426,10 @@ export default {
                 }
             ],
             "findStudio": [
-                278,
+                279,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -6400,19 +6441,19 @@ export default {
                         62
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ],
                     "studio_filter": [
-                        281
+                        282
                     ]
                 }
             ],
             "findTag": [
-                286,
+                287,
                 {
                     "id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
@@ -6424,65 +6465,65 @@ export default {
                         62
                     ],
                     "ids": [
-                        114,
+                        115,
                         "[ID!]"
                     ],
                     "tag_filter": [
-                        289
+                        290
                     ]
                 }
             ],
             "installedPackages": [
-                163,
+                164,
                 {
                     "type": [
-                        167,
+                        168,
                         "PackageType!"
                     ]
                 }
             ],
             "jobQueue": [
-                141
+                142
             ],
             "latestversion": [
-                145
+                146
             ],
             "listScrapers": [
-                250,
+                251,
                 {
                     "types": [
-                        223,
+                        224,
                         "[ScrapeContentType!]!"
                     ]
                 }
             ],
             "logs": [
-                146
+                147
             ],
             "markerStrings": [
-                149,
+                150,
                 {
                     "q": [
-                        276
+                        277
                     ],
                     "sort": [
-                        276
+                        277
                     ]
                 }
             ],
             "markerWall": [
-                207,
+                208,
                 {
                     "q": [
-                        276
+                        277
                     ]
                 }
             ],
             "parseSceneFilenames": [
-                218,
+                219,
                 {
                     "config": [
-                        216,
+                        217,
                         "SceneParserInput!"
                     ],
                     "filter": [
@@ -6491,278 +6532,278 @@ export default {
                 }
             ],
             "pluginTasks": [
-                183
+                184
             ],
             "plugins": [
-                175
+                176
             ],
             "sceneMarkerTags": [
-                210,
+                211,
                 {
                     "scene_id": [
-                        114,
+                        115,
                         "ID!"
                     ]
                 }
             ],
             "sceneStreams": [
-                220,
+                221,
                 {
                     "id": [
-                        114
+                        115
                     ]
                 }
             ],
             "sceneWall": [
-                199,
+                200,
                 {
                     "q": [
-                        276
+                        277
                     ]
                 }
             ],
             "scrapeGalleryURL": [
-                236,
+                237,
                 {
                     "url": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
             ],
             "scrapeGroupURL": [
-                238,
+                239,
                 {
                     "url": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
             ],
             "scrapeImageURL": [
-                240,
+                241,
                 {
                     "url": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
             ],
             "scrapeMovieURL": [
-                242,
+                243,
                 {
                     "url": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
             ],
             "scrapeMultiPerformers": [
-                244,
+                245,
                 {
                     "input": [
-                        224,
+                        225,
                         "ScrapeMultiPerformersInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeMultiScenes": [
-                246,
+                247,
                 {
                     "input": [
-                        225,
+                        226,
                         "ScrapeMultiScenesInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapePerformerURL": [
-                244,
+                245,
                 {
                     "url": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
             ],
             "scrapeSceneURL": [
-                246,
+                247,
                 {
                     "url": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
             ],
             "scrapeSingleGallery": [
-                236,
+                237,
                 {
                     "input": [
-                        226,
+                        227,
                         "ScrapeSingleGalleryInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeSingleGroup": [
-                238,
+                239,
                 {
                     "input": [
-                        227,
+                        228,
                         "ScrapeSingleGroupInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeSingleImage": [
-                240,
+                241,
                 {
                     "input": [
-                        228,
+                        229,
                         "ScrapeSingleImageInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeSingleMovie": [
-                242,
+                243,
                 {
                     "input": [
-                        229,
+                        230,
                         "ScrapeSingleMovieInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeSinglePerformer": [
-                244,
+                245,
                 {
                     "input": [
-                        230,
+                        231,
                         "ScrapeSinglePerformerInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeSingleScene": [
-                246,
+                247,
                 {
                     "input": [
-                        231,
+                        232,
                         "ScrapeSingleSceneInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeSingleStudio": [
-                248,
+                249,
                 {
                     "input": [
-                        232,
+                        233,
                         "ScrapeSingleStudioInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeSingleTag": [
-                249,
+                250,
                 {
                     "input": [
-                        233,
+                        234,
                         "ScrapeSingleTagInput!"
                     ],
                     "source": [
-                        252,
+                        253,
                         "ScraperSourceInput!"
                     ]
                 }
             ],
             "scrapeURL": [
-                235,
+                236,
                 {
                     "ty": [
-                        223,
+                        224,
                         "ScrapeContentType!"
                     ],
                     "url": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
             ],
             "stats": [
-                274
+                275
             ],
             "systemStatus": [
-                284
+                285
             ],
             "validateStashBoxCredentials": [
-                267,
+                268,
                 {
                     "input": [
-                        263,
+                        264,
                         "StashBoxInput!"
                     ]
                 }
             ],
             "version": [
-                296
+                297
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "RemoveTempDLNAIPInput": {
             "address": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ReorderSubGroupsInput": {
             "group_id": [
-                114
+                115
             ],
             "insert_after": [
                 11
             ],
             "insert_at_id": [
-                114
+                115
             ],
             "sub_group_ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ResolutionCriterionInput": {
@@ -6770,33 +6811,33 @@ export default {
                 44
             ],
             "value": [
-                190
+                191
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ResolutionEnum": {},
         "SQLExecResult": {
             "last_insert_id": [
-                139
+                140
             ],
             "rows_affected": [
-                139
+                140
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SQLQueryResult": {
             "columns": [
-                276
+                277
             ],
             "rows": [
                 2
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SaveFilterInput": {
@@ -6804,84 +6845,84 @@ export default {
                 62
             ],
             "id": [
-                114
+                115
             ],
             "mode": [
                 60
             ],
             "name": [
-                276
+                277
             ],
             "object_filter": [
-                148
+                149
             ],
             "ui_options": [
-                148
+                149
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SavedFilter": {
             "filter": [
-                276
+                277
             ],
             "find_filter": [
-                195
+                196
             ],
             "id": [
-                114
+                115
             ],
             "mode": [
                 60
             ],
             "name": [
-                276
+                277
             ],
             "object_filter": [
-                148
+                149
             ],
             "ui_options": [
-                148
+                149
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SavedFindFilterType": {
             "direction": [
-                257
+                258
             ],
             "page": [
-                138
+                139
             ],
             "per_page": [
-                138
+                139
             ],
             "q": [
-                276
+                277
             ],
             "sort": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScanMetaDataFilterInput": {
             "minModTime": [
-                293
+                294
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScanMetadataInput": {
             "filter": [
-                196
+                197
             ],
             "paths": [
-                276
+                277
             ],
             "rescan": [
                 11
@@ -6911,7 +6952,7 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScanMetadataOptions": {
@@ -6943,176 +6984,182 @@ export default {
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Scene": {
             "captions": [
-                297
+                298
             ],
             "code": [
-                276
+                277
             ],
             "created_at": [
-                292
+                293
             ],
             "custom_fields": [
-                148
+                149
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "files": [
-                298
+                299
             ],
             "galleries": [
                 81
             ],
             "groups": [
-                204
+                205
             ],
             "id": [
-                114
+                115
             ],
             "interactive": [
                 11
             ],
             "interactive_speed": [
-                138
+                139
             ],
             "last_played_at": [
-                292
+                293
             ],
             "movies": [
-                213
+                214
             ],
             "o_counter": [
-                138
+                139
             ],
             "o_history": [
-                292
+                293
             ],
             "organized": [
                 11
             ],
             "paths": [
-                219
+                220
             ],
             "performers": [
-                168
+                169
             ],
             "play_count": [
-                138
+                139
             ],
             "play_duration": [
                 77
             ],
             "play_history": [
-                292
+                293
+            ],
+            "production_date": [
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "resume_time": [
                 77
             ],
             "sceneStreams": [
-                220
+                221
             ],
             "scene_markers": [
-                207
+                208
             ],
             "stash_ids": [
-                270
+                271
             ],
             "studio": [
-                278
+                279
             ],
             "tags": [
-                286
+                287
             ],
             "title": [
-                276
+                277
             ],
             "updated_at": [
-                292
+                293
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneCreateInput": {
             "code": [
-                276
+                277
             ],
             "cover_image": [
-                276
+                277
             ],
             "custom_fields": [
-                148
+                149
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "file_ids": [
-                114
+                115
             ],
             "gallery_ids": [
-                114
+                115
             ],
             "groups": [
-                205
+                206
             ],
             "movies": [
-                215
+                216
             ],
             "organized": [
                 11
             ],
             "performer_ids": [
-                114
+                115
+            ],
+            "production_date": [
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "stash_ids": [
-                272
+                273
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneDestroyInput": {
@@ -7126,18 +7173,18 @@ export default {
                 11
             ],
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneFileType": {
             "audio_codec": [
-                276
+                277
             ],
             "bitrate": [
-                138
+                139
             ],
             "duration": [
                 77
@@ -7146,48 +7193,48 @@ export default {
                 77
             ],
             "height": [
-                138
+                139
             ],
             "size": [
-                276
+                277
             ],
             "video_codec": [
-                276
+                277
             ],
             "width": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneFilterType": {
             "AND": [
-                203
+                204
             ],
             "NOT": [
-                203
+                204
             ],
             "OR": [
-                203
+                204
             ],
             "audio_codec": [
-                277
+                278
             ],
             "bitrate": [
-                140
+                141
             ],
             "captions": [
-                277
+                278
             ],
             "checksum": [
-                277
+                278
             ],
             "code": [
-                277
+                278
             ],
             "created_at": [
-                294
+                295
             ],
             "custom_fields": [
                 45
@@ -7196,157 +7243,160 @@ export default {
                 49
             ],
             "details": [
-                277
+                278
             ],
             "director": [
-                277
+                278
             ],
             "duplicated": [
                 53
             ],
             "duration": [
-                140
+                141
             ],
             "file_count": [
-                140
+                141
             ],
             "files_filter": [
                 58
             ],
             "framerate": [
-                140
+                141
             ],
             "galleries": [
-                159
+                160
             ],
             "galleries_filter": [
                 89
             ],
             "groups": [
-                112
+                113
             ],
             "groups_filter": [
                 107
             ],
             "has_markers": [
-                276
+                277
             ],
             "id": [
-                140
+                141
             ],
             "interactive": [
                 11
             ],
             "interactive_speed": [
-                140
+                141
             ],
             "is_missing": [
-                276
+                277
             ],
             "last_played_at": [
-                294
+                295
             ],
             "markers_filter": [
-                209
+                210
             ],
             "movies": [
-                159
+                160
             ],
             "movies_filter": [
-                157
+                158
             ],
             "o_counter": [
-                140
+                141
             ],
             "organized": [
                 11
             ],
             "orientation": [
-                161
+                162
             ],
             "oshash": [
-                277
+                278
             ],
             "path": [
-                277
+                278
             ],
             "performer_age": [
-                140
+                141
             ],
             "performer_count": [
-                140
+                141
             ],
             "performer_favorite": [
                 11
             ],
             "performer_tags": [
-                112
+                113
             ],
             "performers": [
-                159
+                160
             ],
             "performers_filter": [
-                171
+                172
             ],
             "phash": [
-                277
+                278
             ],
             "phash_distance": [
-                174
+                175
             ],
             "play_count": [
-                140
+                141
             ],
             "play_duration": [
-                140
+                141
+            ],
+            "production_date": [
+                49
             ],
             "rating100": [
-                140
+                141
             ],
             "resolution": [
-                189
+                190
             ],
             "resume_time": [
-                140
+                141
             ],
             "stash_id_count": [
-                140
+                141
             ],
             "stash_id_endpoint": [
-                271
+                272
             ],
             "stash_ids_endpoint": [
-                273
+                274
             ],
             "studios": [
-                112
+                113
             ],
             "studios_filter": [
-                281
+                282
             ],
             "tag_count": [
-                140
+                141
             ],
             "tags": [
-                112
+                113
             ],
             "tags_filter": [
-                289
+                290
             ],
             "title": [
-                277
+                278
             ],
             "updated_at": [
-                294
+                295
             ],
             "url": [
-                277
+                278
             ],
             "video_codec": [
-                277
+                278
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneGroup": {
@@ -7354,73 +7404,73 @@ export default {
                 102
             ],
             "scene_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneGroupInput": {
             "group_id": [
-                114
+                115
             ],
             "scene_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneHashInput": {
             "checksum": [
-                276
+                277
             ],
             "oshash": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMarker": {
             "created_at": [
-                292
+                293
             ],
             "end_seconds": [
                 77
             ],
             "id": [
-                114
+                115
             ],
             "preview": [
-                276
+                277
             ],
             "primary_tag": [
-                286
+                287
             ],
             "scene": [
-                199
+                200
             ],
             "screenshot": [
-                276
+                277
             ],
             "seconds": [
                 77
             ],
             "stream": [
-                276
+                277
             ],
             "tags": [
-                286
+                287
             ],
             "title": [
-                276
+                277
             ],
             "updated_at": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMarkerCreateInput": {
@@ -7428,71 +7478,71 @@ export default {
                 77
             ],
             "primary_tag_id": [
-                114
+                115
             ],
             "scene_id": [
-                114
+                115
             ],
             "seconds": [
                 77
             ],
             "tag_ids": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMarkerFilterType": {
             "created_at": [
-                294
+                295
             ],
             "duration": [
                 78
             ],
             "performers": [
-                159
+                160
             ],
             "scene_created_at": [
-                294
+                295
             ],
             "scene_date": [
                 49
             ],
             "scene_filter": [
-                203
+                204
             ],
             "scene_tags": [
-                112
+                113
             ],
             "scene_updated_at": [
-                294
+                295
             ],
             "scenes": [
-                159
+                160
             ],
             "tags": [
-                112
+                113
             ],
             "updated_at": [
-                294
+                295
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMarkerTag": {
             "scene_markers": [
-                207
+                208
             ],
             "tag": [
-                286
+                287
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMarkerUpdateInput": {
@@ -7500,30 +7550,30 @@ export default {
                 77
             ],
             "id": [
-                114
+                115
             ],
             "primary_tag_id": [
-                114
+                115
             ],
             "scene_id": [
-                114
+                115
             ],
             "seconds": [
                 77
             ],
             "tag_ids": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMergeInput": {
             "destination": [
-                114
+                115
             ],
             "o_history": [
                 11
@@ -7532,46 +7582,46 @@ export default {
                 11
             ],
             "source": [
-                114
+                115
             ],
             "values": [
-                221
+                222
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMovie": {
             "movie": [
-                154
+                155
             ],
             "scene_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMovieID": {
             "movie_id": [
-                114
+                115
             ],
             "scene_index": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneMovieInput": {
             "movie_id": [
-                114
+                115
             ],
             "scene_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneParserInput": {
@@ -7582,197 +7632,200 @@ export default {
                 11
             ],
             "ignoreWords": [
-                276
+                277
             ],
             "whitespaceCharacters": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneParserResult": {
             "code": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "gallery_ids": [
-                114
+                115
             ],
             "movies": [
-                214
+                215
             ],
             "performer_ids": [
-                114
+                115
             ],
             "rating": [
-                138
+                139
             ],
             "rating100": [
-                138
+                139
             ],
             "scene": [
-                199
+                200
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneParserResultType": {
             "count": [
-                138
+                139
             ],
             "results": [
-                217
+                218
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScenePathsType": {
             "caption": [
-                276
+                277
             ],
             "funscript": [
-                276
+                277
             ],
             "interactive_heatmap": [
-                276
+                277
             ],
             "preview": [
-                276
+                277
             ],
             "screenshot": [
-                276
+                277
             ],
             "sprite": [
-                276
+                277
             ],
             "stream": [
-                276
+                277
             ],
             "vtt": [
-                276
+                277
             ],
             "webp": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneStreamEndpoint": {
             "label": [
-                276
+                277
             ],
             "mime_type": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SceneUpdateInput": {
             "clientMutationId": [
-                276
+                277
             ],
             "code": [
-                276
+                277
             ],
             "cover_image": [
-                276
+                277
             ],
             "custom_fields": [
                 46
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "gallery_ids": [
-                114
+                115
             ],
             "groups": [
-                205
+                206
             ],
             "id": [
-                114
+                115
             ],
             "movies": [
-                215
+                216
             ],
             "o_counter": [
-                138
+                139
             ],
             "organized": [
                 11
             ],
             "performer_ids": [
-                114
+                115
             ],
             "play_count": [
-                138
+                139
             ],
             "play_duration": [
                 77
             ],
             "primary_file_id": [
-                114
+                115
+            ],
+            "production_date": [
+                277
             ],
             "rating100": [
-                138
+                139
             ],
             "resume_time": [
                 77
             ],
             "stash_ids": [
-                272
+                273
             ],
             "studio_id": [
-                114
+                115
             ],
             "tag_ids": [
-                114
+                115
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScenesDestroyInput": {
@@ -7786,820 +7839,826 @@ export default {
                 11
             ],
             "ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeContentType": {},
         "ScrapeMultiPerformersInput": {
             "performer_ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeMultiScenesInput": {
             "scene_ids": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeSingleGalleryInput": {
             "gallery_id": [
-                114
+                115
             ],
             "gallery_input": [
-                237
+                238
             ],
             "query": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeSingleGroupInput": {
             "group_id": [
-                114
+                115
             ],
             "group_input": [
-                239
+                240
             ],
             "query": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeSingleImageInput": {
             "image_id": [
-                114
+                115
             ],
             "image_input": [
-                241
+                242
             ],
             "query": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeSingleMovieInput": {
             "movie_id": [
-                114
+                115
             ],
             "movie_input": [
-                243
+                244
             ],
             "query": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeSinglePerformerInput": {
             "performer_id": [
-                114
+                115
             ],
             "performer_input": [
-                245
+                246
             ],
             "query": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeSingleSceneInput": {
             "query": [
-                276
+                277
             ],
             "scene_id": [
-                114
+                115
             ],
             "scene_input": [
-                247
+                248
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeSingleStudioInput": {
             "query": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeSingleTagInput": {
             "query": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapeType": {},
         "ScrapedContent": {
             "on_ScrapedGallery": [
-                236
+                237
             ],
             "on_ScrapedGroup": [
-                238
+                239
             ],
             "on_ScrapedImage": [
-                240
+                241
             ],
             "on_ScrapedMovie": [
-                242
+                243
             ],
             "on_ScrapedPerformer": [
-                244
+                245
             ],
             "on_ScrapedScene": [
-                246
+                247
             ],
             "on_ScrapedStudio": [
-                248
-            ],
-            "on_ScrapedTag": [
                 249
             ],
+            "on_ScrapedTag": [
+                250
+            ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedGallery": {
             "code": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "performers": [
-                244
+                245
             ],
             "photographer": [
-                276
+                277
             ],
             "studio": [
-                248
-            ],
-            "tags": [
                 249
             ],
+            "tags": [
+                250
+            ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedGalleryInput": {
             "code": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "photographer": [
-                276
+                277
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedGroup": {
             "aliases": [
-                276
+                277
             ],
             "back_image": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                276
+                277
             ],
             "front_image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "rating": [
-                276
+                277
             ],
             "stored_id": [
-                114
+                115
             ],
             "studio": [
-                248
-            ],
-            "synopsis": [
-                276
-            ],
-            "tags": [
                 249
             ],
+            "synopsis": [
+                277
+            ],
+            "tags": [
+                250
+            ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedGroupInput": {
             "aliases": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "rating": [
-                276
+                277
             ],
             "synopsis": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedImage": {
             "code": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "performers": [
-                244
+                245
             ],
             "photographer": [
-                276
+                277
             ],
             "studio": [
-                248
-            ],
-            "tags": [
                 249
             ],
+            "tags": [
+                250
+            ],
             "title": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedImageInput": {
             "code": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "title": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedMovie": {
             "aliases": [
-                276
+                277
             ],
             "back_image": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                276
+                277
             ],
             "front_image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "rating": [
-                276
+                277
             ],
             "stored_id": [
-                114
+                115
             ],
             "studio": [
-                248
-            ],
-            "synopsis": [
-                276
-            ],
-            "tags": [
                 249
             ],
+            "synopsis": [
+                277
+            ],
+            "tags": [
+                250
+            ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedMovieInput": {
             "aliases": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "rating": [
-                276
+                277
             ],
             "synopsis": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedPerformer": {
             "aliases": [
-                276
+                277
             ],
             "birthdate": [
-                276
+                277
             ],
             "career_end": [
-                276
+                277
             ],
             "career_length": [
-                276
+                277
             ],
             "career_start": [
-                276
+                277
             ],
             "circumcised": [
-                276
+                277
             ],
             "country": [
-                276
+                277
             ],
             "death_date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "disambiguation": [
-                276
+                277
             ],
             "ethnicity": [
-                276
+                277
             ],
             "eye_color": [
-                276
+                277
             ],
             "fake_tits": [
-                276
+                277
             ],
             "gender": [
-                276
+                277
             ],
             "hair_color": [
-                276
+                277
             ],
             "height": [
-                276
+                277
             ],
             "image": [
-                276
+                277
             ],
             "images": [
-                276
+                277
             ],
             "instagram": [
-                276
+                277
             ],
             "measurements": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "penis_length": [
-                276
+                277
             ],
             "piercings": [
-                276
+                277
             ],
             "remote_site_id": [
-                276
+                277
             ],
             "stored_id": [
-                114
+                115
             ],
             "tags": [
-                249
+                250
             ],
             "tattoos": [
-                276
+                277
             ],
             "twitter": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "weight": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedPerformerInput": {
             "aliases": [
-                276
+                277
             ],
             "birthdate": [
-                276
+                277
             ],
             "career_end": [
-                276
+                277
             ],
             "career_length": [
-                276
+                277
             ],
             "career_start": [
-                276
+                277
             ],
             "circumcised": [
-                276
+                277
             ],
             "country": [
-                276
+                277
             ],
             "death_date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "disambiguation": [
-                276
+                277
             ],
             "ethnicity": [
-                276
+                277
             ],
             "eye_color": [
-                276
+                277
             ],
             "fake_tits": [
-                276
+                277
             ],
             "gender": [
-                276
+                277
             ],
             "hair_color": [
-                276
+                277
             ],
             "height": [
-                276
+                277
             ],
             "instagram": [
-                276
+                277
             ],
             "measurements": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "penis_length": [
-                276
+                277
             ],
             "piercings": [
-                276
+                277
             ],
             "remote_site_id": [
-                276
+                277
             ],
             "stored_id": [
-                114
+                115
             ],
             "tattoos": [
-                276
+                277
             ],
             "twitter": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "weight": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedScene": {
             "code": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "director": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "file": [
-                202
+                203
             ],
             "fingerprints": [
-                261
+                262
             ],
             "groups": [
-                238
+                239
             ],
             "image": [
-                276
+                277
             ],
             "movies": [
-                242
+                243
             ],
             "performers": [
-                244
+                245
+            ],
+            "production_date": [
+                277
             ],
             "remote_site_id": [
-                276
+                277
             ],
             "studio": [
-                248
-            ],
-            "tags": [
                 249
             ],
+            "tags": [
+                250
+            ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedSceneInput": {
             "code": [
-                276
+                277
             ],
             "date": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "director": [
-                276
+                277
+            ],
+            "production_date": [
+                277
             ],
             "remote_site_id": [
-                276
+                277
             ],
             "title": [
-                276
+                277
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedStudio": {
             "aliases": [
-                276
+                277
             ],
             "details": [
-                276
+                277
             ],
             "image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "parent": [
-                248
-            ],
-            "remote_site_id": [
-                276
-            ],
-            "stored_id": [
-                114
-            ],
-            "tags": [
                 249
             ],
+            "remote_site_id": [
+                277
+            ],
+            "stored_id": [
+                115
+            ],
+            "tags": [
+                250
+            ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScrapedTag": {
             "alias_list": [
-                276
+                277
             ],
             "description": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "parent": [
-                249
+                250
             ],
             "remote_site_id": [
-                276
+                277
             ],
             "stored_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Scraper": {
             "gallery": [
-                253
+                254
             ],
             "group": [
-                253
+                254
             ],
             "id": [
-                114
+                115
             ],
             "image": [
-                253
+                254
             ],
             "movie": [
-                253
+                254
             ],
             "name": [
-                276
+                277
             ],
             "performer": [
-                253
+                254
             ],
             "scene": [
-                253
+                254
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScraperSource": {
             "scraper_id": [
-                114
+                115
             ],
             "stash_box_endpoint": [
-                276
+                277
             ],
             "stash_box_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScraperSourceInput": {
             "scraper_id": [
-                114
+                115
             ],
             "stash_box_endpoint": [
-                276
+                277
             ],
             "stash_box_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "ScraperSpec": {
             "supported_scrapes": [
-                234
+                235
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SetDefaultFilterInput": {
@@ -8610,71 +8669,77 @@ export default {
                 60
             ],
             "object_filter": [
-                148
+                149
             ],
             "ui_options": [
-                148
+                149
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SetFingerprintsInput": {
             "type": [
-                276
+                277
             ],
             "value": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SetupInput": {
             "blobsLocation": [
-                276
+                277
             ],
             "cacheLocation": [
-                276
+                277
             ],
             "configLocation": [
-                276
+                277
             ],
             "databaseFile": [
-                276
+                277
             ],
             "generatedLocation": [
-                276
+                277
+            ],
+            "initialPassword": [
+                277
+            ],
+            "initialUsername": [
+                277
             ],
             "sfwContentMode": [
                 11
             ],
             "stashes": [
-                269
+                270
             ],
             "storeBlobsInDatabase": [
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SortDirectionEnum": {},
         "StashBox": {
             "api_key": [
-                276
+                277
             ],
             "endpoint": [
-                276
+                277
             ],
             "max_requests_per_minute": [
-                138
+                139
             ],
             "name": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxBatchTagInput": {
@@ -8682,149 +8747,155 @@ export default {
                 11
             ],
             "endpoint": [
-                138
+                139
             ],
             "exclude_fields": [
-                276
+                277
             ],
             "ids": [
-                114
+                115
+            ],
+            "merge_fields": [
+                277
             ],
             "names": [
-                276
+                277
             ],
             "performer_ids": [
-                114
+                115
             ],
             "performer_names": [
-                276
+                277
             ],
             "refresh": [
                 11
             ],
             "stash_box_endpoint": [
-                276
+                277
             ],
             "stash_ids": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxDraftSubmissionInput": {
             "id": [
-                276
+                277
             ],
             "stash_box_endpoint": [
-                276
+                277
             ],
             "stash_box_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxFingerprint": {
             "algorithm": [
-                276
+                277
             ],
             "duration": [
-                138
+                139
             ],
             "hash": [
-                276
+                277
+            ],
+            "submissions": [
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxFingerprintSubmissionInput": {
             "scene_ids": [
-                276
+                277
             ],
             "stash_box_endpoint": [
-                276
+                277
             ],
             "stash_box_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxInput": {
             "api_key": [
-                276
+                277
             ],
             "endpoint": [
-                276
+                277
             ],
             "max_requests_per_minute": [
-                138
+                139
             ],
             "name": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxPerformerQueryInput": {
             "performer_ids": [
-                114
+                115
             ],
             "q": [
-                276
+                277
             ],
             "stash_box_endpoint": [
-                276
+                277
             ],
             "stash_box_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxPerformerQueryResult": {
             "query": [
-                276
+                277
             ],
             "results": [
-                244
+                245
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxSceneQueryInput": {
             "q": [
-                276
+                277
             ],
             "scene_ids": [
-                114
+                115
             ],
             "stash_box_endpoint": [
-                276
+                277
             ],
             "stash_box_index": [
-                138
+                139
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashBoxValidationResult": {
             "status": [
-                276
+                277
             ],
             "valid": [
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashConfig": {
@@ -8835,10 +8906,10 @@ export default {
                 11
             ],
             "path": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashConfigInput": {
@@ -8849,116 +8920,116 @@ export default {
                 11
             ],
             "path": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashID": {
             "endpoint": [
-                276
+                277
             ],
             "stash_id": [
-                276
+                277
             ],
             "updated_at": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashIDCriterionInput": {
             "endpoint": [
-                276
+                277
             ],
             "modifier": [
                 44
             ],
             "stash_id": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashIDInput": {
             "endpoint": [
-                276
+                277
             ],
             "stash_id": [
-                276
+                277
             ],
             "updated_at": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StashIDsCriterionInput": {
             "endpoint": [
-                276
+                277
             ],
             "modifier": [
                 44
             ],
             "stash_ids": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StatsResultType": {
             "gallery_count": [
-                138
+                139
             ],
             "group_count": [
-                138
+                139
             ],
             "image_count": [
-                138
+                139
             ],
             "images_size": [
                 77
             ],
             "movie_count": [
-                138
+                139
             ],
             "performer_count": [
-                138
+                139
             ],
             "scene_count": [
-                138
+                139
             ],
             "scenes_duration": [
                 77
             ],
             "scenes_played": [
-                138
+                139
             ],
             "scenes_size": [
                 77
             ],
             "studio_count": [
-                138
+                139
             ],
             "tag_count": [
-                138
+                139
             ],
             "total_o_count": [
-                138
+                139
             ],
             "total_play_count": [
-                138
+                139
             ],
             "total_play_duration": [
                 77
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StreamingResolutionEnum": {},
@@ -8968,44 +9039,44 @@ export default {
                 44
             ],
             "value": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Studio": {
             "aliases": [
-                276
+                277
             ],
             "child_studios": [
-                278
+                279
             ],
             "created_at": [
-                292
+                293
             ],
             "custom_fields": [
-                148
+                149
             ],
             "details": [
-                276
+                277
             ],
             "favorite": [
                 11
             ],
             "gallery_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "group_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
@@ -9013,92 +9084,108 @@ export default {
                 102
             ],
             "id": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
             ],
             "image_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "image_path": [
-                276
+                277
             ],
             "movie_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "movies": [
-                154
+                155
             ],
             "name": [
-                276
+                277
             ],
             "o_counter": [
-                138
+                139,
+                {
+                    "depth": [
+                        139
+                    ]
+                }
             ],
             "organized": [
                 11
             ],
             "parent_studio": [
-                278
+                279
             ],
             "performer_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "rating100": [
-                138
+                139
             ],
             "scene_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
+                    ]
+                }
+            ],
+            "scene_marker_count": [
+                139,
+                {
+                    "depth": [
+                        139
                     ]
                 }
             ],
             "stash_ids": [
-                270
+                271
             ],
             "tags": [
-                286
+                287
             ],
             "updated_at": [
-                292
+                293
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StudioCreateInput": {
             "aliases": [
-                276
+                277
+            ],
+            "child_ids": [
+                115
             ],
             "custom_fields": [
-                148
+                149
             ],
             "details": [
-                276
+                277
             ],
             "favorite": [
                 11
@@ -9107,68 +9194,68 @@ export default {
                 11
             ],
             "image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "organized": [
                 11
             ],
             "parent_id": [
-                114
+                115
             ],
             "rating100": [
-                138
+                139
             ],
             "stash_ids": [
-                272
+                273
             ],
             "tag_ids": [
-                114
+                115
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StudioDestroyInput": {
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StudioFilterType": {
             "AND": [
-                281
+                282
             ],
             "NOT": [
-                281
+                282
             ],
             "OR": [
-                281
+                282
             ],
             "aliases": [
-                277
+                278
             ],
             "child_count": [
-                140
+                141
             ],
             "created_at": [
-                294
+                295
             ],
             "custom_fields": [
                 45
             ],
             "details": [
-                277
+                278
             ],
             "favorite": [
                 11
@@ -9177,10 +9264,10 @@ export default {
                 89
             ],
             "gallery_count": [
-                140
+                141
             ],
             "group_count": [
-                140
+                141
             ],
             "groups_filter": [
                 107
@@ -9189,283 +9276,286 @@ export default {
                 11
             ],
             "image_count": [
-                140
+                141
             ],
             "images_filter": [
-                129
+                130
             ],
             "is_missing": [
-                276
+                277
             ],
             "name": [
-                277
+                278
             ],
             "organized": [
                 11
             ],
             "parents": [
-                159
+                160
             ],
             "rating100": [
-                140
+                141
             ],
             "scene_count": [
-                140
+                141
             ],
             "scenes_filter": [
-                203
+                204
             ],
             "stash_id_endpoint": [
-                271
+                272
             ],
             "stash_ids_endpoint": [
-                273
+                274
             ],
             "tag_count": [
-                140
+                141
             ],
             "tags": [
-                112
+                113
             ],
             "updated_at": [
-                294
+                295
             ],
             "url": [
-                277
+                278
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "StudioUpdateInput": {
             "aliases": [
-                276
+                277
+            ],
+            "child_ids": [
+                115
             ],
             "custom_fields": [
                 46
             ],
             "details": [
-                276
+                277
             ],
             "favorite": [
                 11
             ],
             "id": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
             ],
             "image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "organized": [
                 11
             ],
             "parent_id": [
-                114
+                115
             ],
             "rating100": [
-                138
+                139
             ],
             "stash_ids": [
-                272
+                273
             ],
             "tag_ids": [
-                114
+                115
             ],
             "url": [
-                276
+                277
             ],
             "urls": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Subscription": {
             "jobsSubscribe": [
-                143
+                144
             ],
             "loggingSubscribe": [
-                146
+                147
             ],
             "scanCompleteSubscribe": [
                 11
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SystemStatus": {
             "appSchema": [
-                138
+                139
             ],
             "configPath": [
-                276
+                277
             ],
             "databasePath": [
-                276
+                277
             ],
             "databaseSchema": [
-                138
+                139
             ],
             "ffmpegPath": [
-                276
+                277
             ],
             "ffprobePath": [
-                276
+                277
             ],
             "homeDir": [
-                276
+                277
             ],
             "os": [
-                276
+                277
             ],
             "status": [
-                285
+                286
             ],
             "workingDir": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "SystemStatusEnum": {},
         "Tag": {
             "aliases": [
-                276
+                277
             ],
             "child_count": [
-                138
+                139
             ],
             "children": [
-                286
+                287
             ],
             "created_at": [
-                292
+                293
             ],
             "custom_fields": [
-                148
+                149
             ],
             "description": [
-                276
+                277
             ],
             "favorite": [
                 11
             ],
             "gallery_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "group_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "id": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
             ],
             "image_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "image_path": [
-                276
+                277
             ],
             "movie_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "name": [
-                276
+                277
             ],
             "parent_count": [
-                138
+                139
             ],
             "parents": [
-                286
+                287
             ],
             "performer_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "scene_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "scene_marker_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "sort_name": [
-                276
+                277
             ],
             "stash_ids": [
-                270
+                271
             ],
             "studio_count": [
-                138,
+                139,
                 {
                     "depth": [
-                        138
+                        139
                     ]
                 }
             ],
             "updated_at": [
-                292
+                293
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "TagCreateInput": {
             "aliases": [
-                276
+                277
             ],
             "child_ids": [
-                114
+                115
             ],
             "custom_fields": [
-                148
+                149
             ],
             "description": [
-                276
+                277
             ],
             "favorite": [
                 11
@@ -9474,59 +9564,59 @@ export default {
                 11
             ],
             "image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "parent_ids": [
-                114
+                115
             ],
             "sort_name": [
-                276
+                277
             ],
             "stash_ids": [
-                272
+                273
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "TagDestroyInput": {
             "id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "TagFilterType": {
             "AND": [
-                289
+                290
             ],
             "NOT": [
-                289
+                290
             ],
             "OR": [
-                289
+                290
             ],
             "aliases": [
-                277
+                278
             ],
             "child_count": [
-                140
+                141
             ],
             "children": [
-                112
+                113
             ],
             "created_at": [
-                294
+                295
             ],
             "custom_fields": [
                 45
             ],
             "description": [
-                277
+                278
             ],
             "favorite": [
                 11
@@ -9535,10 +9625,10 @@ export default {
                 89
             ],
             "gallery_count": [
-                140
+                112
             ],
             "group_count": [
-                140
+                112
             ],
             "groups_filter": [
                 107
@@ -9547,119 +9637,119 @@ export default {
                 11
             ],
             "image_count": [
-                140
-            ],
-            "images_filter": [
-                129
-            ],
-            "is_missing": [
-                276
-            ],
-            "marker_count": [
-                140
-            ],
-            "markers_filter": [
-                209
-            ],
-            "movie_count": [
-                140
-            ],
-            "name": [
-                277
-            ],
-            "parent_count": [
-                140
-            ],
-            "parents": [
                 112
             ],
-            "performer_count": [
-                140
+            "images_filter": [
+                130
             ],
-            "performers_filter": [
-                171
-            ],
-            "scene_count": [
-                140
-            ],
-            "scenes_filter": [
-                203
-            ],
-            "sort_name": [
+            "is_missing": [
                 277
             ],
+            "marker_count": [
+                112
+            ],
+            "markers_filter": [
+                210
+            ],
+            "movie_count": [
+                112
+            ],
+            "name": [
+                278
+            ],
+            "parent_count": [
+                141
+            ],
+            "parents": [
+                113
+            ],
+            "performer_count": [
+                112
+            ],
+            "performers_filter": [
+                172
+            ],
+            "scene_count": [
+                112
+            ],
+            "scenes_filter": [
+                204
+            ],
+            "sort_name": [
+                278
+            ],
             "stash_id_endpoint": [
-                271
+                272
             ],
             "stash_ids_endpoint": [
-                273
+                274
             ],
             "studio_count": [
-                140
+                112
             ],
             "studios_filter": [
-                281
+                282
             ],
             "updated_at": [
-                294
+                295
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "TagUpdateInput": {
             "aliases": [
-                276
+                277
             ],
             "child_ids": [
-                114
+                115
             ],
             "custom_fields": [
                 46
             ],
             "description": [
-                276
+                277
             ],
             "favorite": [
                 11
             ],
             "id": [
-                114
+                115
             ],
             "ignore_auto_tag": [
                 11
             ],
             "image": [
-                276
+                277
             ],
             "name": [
-                276
+                277
             ],
             "parent_ids": [
-                114
+                115
             ],
             "sort_name": [
-                276
+                277
             ],
             "stash_ids": [
-                272
+                273
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "TagsMergeInput": {
             "destination": [
-                114
+                115
             ],
             "source": [
-                114
+                115
             ],
             "values": [
-                290
+                291
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Time": {},
@@ -9669,62 +9759,62 @@ export default {
                 44
             ],
             "value": [
-                276
+                277
             ],
             "value2": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "Upload": {},
         "Version": {
             "build_time": [
-                276
+                277
             ],
             "hash": [
-                276
+                277
             ],
             "version": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "VideoCaption": {
             "caption_type": [
-                276
+                277
             ],
             "language_code": [
-                276
+                277
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "VideoFile": {
             "audio_codec": [
-                276
+                277
             ],
             "basename": [
-                276
+                277
             ],
             "bit_rate": [
-                138
+                139
             ],
             "created_at": [
-                292
+                293
             ],
             "duration": [
                 77
             ],
             "fingerprint": [
-                276,
+                277,
                 {
                     "type": [
-                        276,
+                        277,
                         "String!"
                     ]
                 }
@@ -9733,101 +9823,104 @@ export default {
                 75
             ],
             "format": [
-                276
+                277
             ],
             "frame_rate": [
                 77
             ],
             "height": [
-                138
+                139
             ],
             "id": [
-                114
+                115
             ],
             "mod_time": [
-                292
+                293
             ],
             "parent_folder": [
                 79
             ],
             "parent_folder_id": [
-                114
+                115
             ],
             "path": [
-                276
+                277
+            ],
+            "scenes": [
+                200
             ],
             "size": [
-                139
+                140
             ],
             "updated_at": [
-                292
+                293
             ],
             "video_codec": [
-                276
+                277
             ],
             "width": [
-                138
+                139
             ],
             "zip_file": [
                 8
             ],
             "zip_file_id": [
-                114
+                115
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "VideoFileFilterInput": {
             "audio_codec": [
-                277
+                278
             ],
             "bitrate": [
-                140
+                141
             ],
             "captions": [
-                277
+                278
             ],
             "duration": [
-                140
+                141
             ],
             "format": [
-                277
+                278
             ],
             "framerate": [
-                140
+                141
             ],
             "interactive": [
                 11
             ],
             "interactive_speed": [
-                140
+                141
             ],
             "orientation": [
-                161
+                162
             ],
             "resolution": [
-                189
+                190
             ],
             "video_codec": [
-                277
+                278
             ],
             "__typename": [
-                276
+                277
             ]
         },
         "VisualFile": {
             "on_ImageFile": [
-                126
+                127
             ],
             "on_VideoFile": [
-                298
+                299
             ],
             "on_BaseFile": [
                 7
             ],
             "__typename": [
-                276
+                277
             ]
         }
     }
